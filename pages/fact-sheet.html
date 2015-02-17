@@ -1,0 +1,141 @@
+
+{# ------------------------------------------------------- #}
+
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
+{% extends "templates/partials/base.html" %}
+
+{# This sets our page <title>. It will append "- Homepage" to the site title defined in base. #}
+{% block title %}{% parent %} - Homepage{% endblock %}
+
+{% block content %}
+
+{% include "templates/partials/nav.html" %}
+{% include "templates/partials/side-nav.html" %}
+
+<section class="image-break" id="{{cms.imagebreaks.image_breaks[4].id}}" style="background-image:url('{{cms.imagebreaks.image_breaks[4].image|imageSize(1600)}}');">
+    <div class="container">
+      <header class="six columns">
+        <h1>risd <br/>in <br/> brief</h1>
+      </header>
+    </div> 
+  </section>
+
+  <section id="fact-sheet">
+    <div class="container">
+      <div class="row">
+        <header class="three columns">
+          <h2>{{cms.factsheet.name}}</h2>
+        </header>
+
+        <article class="eight columns">
+          {{cms.factsheet.overview|safe}}
+        </article>
+      </div>
+
+      
+      <div class="row info-graphic-group">
+        <h3 class="three columns">student body</h3>
+        <div class="eight columns">
+        {% for row in cms.factsheet.student_body %}
+          <figure class="four columns info-graphic">
+            <p class="info-graphic-title">{{row.title}}</p>
+            <p class="info-graphic-data">{{row.data}}</p>
+            {% if row.note %}
+            <p class="info-graphic-note">{{row.note}}</p>
+            {% endif %}
+          </figure>
+        {% endfor %}
+        </div>
+      </div>
+
+      <div class="row info-graphic-group">
+        <h3 class="three columns">faculty</h3>
+        <div class="eight columns">
+          {% for row in cms.factsheet.faculty %}
+            <figure class="four columns info-graphic">
+              <p class="info-graphic-title">{{row.title}}</p>
+              <p class="info-graphic-data">{{row.data}}</p>
+            </figure>
+          {% endfor %}
+        </div>
+      </div>
+      
+      <div class="row info-graphic-group">
+        <h3 class="three columns">acceptance rate</h3>
+        <div class="eight columns">
+          {% for row in cms.factsheet.acceptance_rate %}
+            <figure class="four columns info-graphic">
+              <p class="info-graphic-title">{{row.title}}</p>
+              <p class="info-graphic-data">{{row.data}}</p>
+            </figure>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="row info-graphic-group">
+        <h3 class="three columns">retention rate</h3>
+        <div class="eight columns">
+          {% for row in cms.factsheet.retention_rate %}
+            <figure class="four columns info-graphic">
+              <p class="info-graphic-title">{{row.title}}</p>
+              <p class="info-graphic-data">{{row.data}}</p>
+            </figure>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="row info-graphic-group">
+        <h3 class="three columns">graduation rate</h3>
+        <div class="eight columns">
+          {% for row in cms.factsheet.graduation_rate %}
+            <figure class="four columns info-graphic">
+              <p class="info-graphic-title">{{row.title}}</p>
+              <p class="info-graphic-data">{{row.data}}</p>
+            </figure>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="fact-sheet">
+      <div class="container">
+
+      <img src="{{cms.factsheet.mission_image|imageSize(800)}}" class="three columns" alt="">
+        <article class="eight columns">
+          {{cms.factsheet.mission|safe}}
+        </article>
+
+        <article class="eight columns offset-by-three">
+          {{cms.factsheet.academics|safe}}
+        </article>
+        
+        <img src="{{cms.factsheet.degree_programs_image|imageSize(800)}}" class="three columns" alt="">
+
+        <article class="eight columns">
+          {{cms.factsheet.degree_programs|safe}}
+        </article> 
+        
+        <img src="{{cms.factsheet.alumni_image|imageSize(800)}}" class="three columns" alt="">
+        <article class="eight columns">
+          {{cms.factsheet.alumni|safe}}
+        </article>   
+      
+        <img src="{{cms.factsheet.location_image|imageSize(800)}}" class="three columns" alt="">
+        <article class="eight columns">
+          {{cms.factsheet.location|safe}}
+        </article>
+      
+        <article class="eight columns offset-by-three">
+          {{cms.factsheet.accreditation|safe}}
+        </article>
+
+       <article class="eight columns offset-by-three">
+         {{cms.factsheet.financial_info|safe}}
+       </article>
+       <div class="eight columns offset-by-three">
+         <h3><a href="../past-presidents">Brief history of RISD's presidents</a></h3>
+       </div>
+
+      </div>
+    </section>

@@ -1,0 +1,92 @@
+{# ------------------------------------------------------- #}
+{# ONE OFF VIEW searchprocess #}
+{# This page can use any data from http:localhost:2000/cms/#/form/searchprocess/ #}
+{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
+{# http://paularmstrong.github.io/swig/docs/tags/ #}
+{# Learn about calling data into Webhook pages here: #}
+{# http://www.webhook.com/docs/template-rules-and-filters/ #}
+{# ------------------------------------------------------- #}
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
+{% extends "templates/partials/base.html" %}
+{# This sets our page <title>. It will append this searchprocess's name to the site title defined in base.html #}
+{% block title %}{% parent %} - {{ cms.searchprocess.name }}{% endblock %}
+{% block content %}
+  <h1>{{ cms.searchprocess.name }}</h1>
+  <ul>
+      <li>
+        <strong>Name: </strong>
+        {{ cms.searchprocess.name }}
+      </li>
+      <li>
+        <strong>Create Date: </strong>
+        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
+        {{ cms.searchprocess.create_date|date('F d Y') }}
+      </li>
+      <li>
+        <strong>Last Updated: </strong>
+        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
+        {{ cms.searchprocess.last_updated|date('F d Y') }}
+      </li>
+      <li>
+        <strong>Search Process: </strong>
+        {{ cms.searchprocess.search_process|safe }}
+      </li>
+      <li>
+        <strong>Preview URL: </strong>
+        {{ cms.searchprocess.preview_url }}
+      </li>
+      <li>
+        <strong>Slug: </strong>
+        {{ cms.searchprocess.slug }}
+      </li>
+      <li>
+        <strong> Core committee co-chairs: </strong>
+        {# Loop of your Repeatable Form items. Remember, you can sort the order in your CMS if you need. #}
+        <ul>
+        {% for row in cms.searchprocess._core_committee_cochairs %}
+            <li>
+              <strong>Name: </strong>
+              {{ row.name }}
+            </li>
+            <li>
+              <strong>Title: </strong>
+              {{ row.title }}
+            </li>
+        {% endfor %}
+        </ul>
+      </li>
+      <li>
+        <strong>Core committee members: </strong>
+        {# Loop of your Repeatable Form items. Remember, you can sort the order in your CMS if you need. #}
+        <ul>
+        {% for row in cms.searchprocess.core_committee_members %}
+            <li>
+              <strong>Name: </strong>
+              {{ row.name }}
+            </li>
+            <li>
+              <strong>Title: </strong>
+              {{ row.title }}
+            </li>
+        {% endfor %}
+        </ul>
+      </li>
+      <li>
+        <strong>Trustee alternate: </strong>
+        {# Loop of your Repeatable Form items. Remember, you can sort the order in your CMS if you need. #}
+        <ul>
+        {% for row in cms.searchprocess.trustee_alternate %}
+            <li>
+              <strong>Name: </strong>
+              {{ row.name }}
+            </li>
+            <li>
+              <strong>Title: </strong>
+              {{ row.title }}
+            </li>
+        {% endfor %}
+        </ul>
+      </li>
+  </ul>
+{% endblock %}

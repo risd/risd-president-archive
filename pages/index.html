@@ -1,0 +1,29 @@
+
+{# ------------------------------------------------------- #}
+
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
+{% extends "templates/partials/base.html" %}
+
+{# This sets our page <title>. It will append "- Homepage" to the site title defined in base. #}
+{% block title %}{% parent %} - Homepage{% endblock %}
+
+{% block content %}
+
+{% include "templates/partials/side-nav.html" %}
+ 
+RISD
+ <!--
+
+ R R R R   
+ I I I I 
+ S S S S 
+ D D D D 
+
+ -->
+  
+
+  
+
+
+{% endblock %}

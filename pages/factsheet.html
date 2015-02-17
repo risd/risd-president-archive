@@ -1,0 +1,210 @@
+{# ------------------------------------------------------- #}
+{# ONE OFF VIEW factsheet #}
+{# This page can use any data from http:localhost:2000/cms/#/form/factsheet/ #}
+{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
+{# http://paularmstrong.github.io/swig/docs/tags/ #}
+{# Learn about calling data into Webhook pages here: #}
+{# http://www.webhook.com/docs/template-rules-and-filters/ #}
+{# ------------------------------------------------------- #}
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
+{% extends "templates/partials/base.html" %}
+{# This sets our page <title>. It will append this factsheet's name to the site title defined in base.html #}
+{% block title %}{% parent %} - {{ cms.factsheet.name }}{% endblock %}
+{% block content %}
+  <h1>{{ cms.factsheet.name }}</h1>
+  <ul>
+      <li>
+        <strong>Name: </strong>
+        {{ cms.factsheet.name }}
+      </li>
+      <li>
+        <strong>Create Date: </strong>
+        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
+        {{ cms.factsheet.create_date|date('F d Y') }}
+      </li>
+      <li>
+        <strong>Last Updated: </strong>
+        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
+        {{ cms.factsheet.last_updated|date('F d Y') }}
+      </li>
+      <li>
+        <strong>Website: </strong>
+        {{ cms.factsheet.website }}
+      </li>
+      <li>
+        <strong>Phone number: </strong>
+        {{ cms.factsheet.phone_number }}
+      </li>
+      <li>
+        <strong>Overview: </strong>
+        {{ cms.factsheet.overview|safe }}
+      </li>
+      <li>
+        <strong>Student Body: </strong>
+        {# Loop of your Repeatable Form items. Remember, you can sort the order in your CMS if you need. #}
+        <ul>
+        {% for row in cms.factsheet.student_body %}
+            <li>
+              <strong>Title: </strong>
+              {{ row.title }}
+            </li>
+            <li>
+              <strong>Data: </strong>
+              {{ row.data }}
+            </li>
+            <li>
+              <strong>Note: </strong>
+              {{ row.note }}
+            </li>
+        {% endfor %}
+        </ul>
+      </li>
+      <li>
+        <strong>Faculty: </strong>
+        {# Loop of your Repeatable Form items. Remember, you can sort the order in your CMS if you need. #}
+        <ul>
+        {% for row in cms.factsheet.faculty %}
+            <li>
+              <strong>Title: </strong>
+              {{ row.title }}
+            </li>
+            <li>
+              <strong>Data: </strong>
+              {{ row.data }}
+            </li>
+        {% endfor %}
+        </ul>
+      </li>
+      <li>
+        <strong>Acceptance Rate: </strong>
+        {# Loop of your Repeatable Form items. Remember, you can sort the order in your CMS if you need. #}
+        <ul>
+        {% for row in cms.factsheet.acceptance_rate %}
+            <li>
+              <strong>Title: </strong>
+              {{ row.title }}
+            </li>
+            <li>
+              <strong>Data: </strong>
+              {{ row.data }}
+            </li>
+        {% endfor %}
+        </ul>
+      </li>
+      <li>
+        <strong>Retention Rate: </strong>
+        {# Loop of your Repeatable Form items. Remember, you can sort the order in your CMS if you need. #}
+        <ul>
+        {% for row in cms.factsheet.retention_rate %}
+            <li>
+              <strong>Title: </strong>
+              {{ row.title }}
+            </li>
+            <li>
+              <strong>Data: </strong>
+              {{ row.data }}
+            </li>
+        {% endfor %}
+        </ul>
+      </li>
+      <li>
+        <strong>Graduation Rate: </strong>
+        {# Loop of your Repeatable Form items. Remember, you can sort the order in your CMS if you need. #}
+        <ul>
+        {% for row in cms.factsheet.graduation_rate %}
+            <li>
+              <strong>Title: </strong>
+              {{ row.title }}
+            </li>
+            <li>
+              <strong>Data: </strong>
+              {{ row.data }}
+            </li>
+        {% endfor %}
+        </ul>
+      </li>
+      <li>
+        <strong>Academics: </strong>
+        {{ cms.factsheet.academics|safe }}
+      </li>
+      <li>
+        <strong>Degree Programs Image: </strong>
+        {# You can pull out a lot more information from the image property. Info here: #}
+        {# http://www.webhook.com/docs/widget-template-reference/#image #}
+        <img src="{{ cms.factsheet.degree_programs_image|imageSize(200) }}" />
+      </li>
+      <li>
+        <strong>Degree Programs: </strong>
+        {{ cms.factsheet.degree_programs|safe }}
+      </li>
+      <li>
+        <strong>Alumni Image: </strong>
+        {# You can pull out a lot more information from the image property. Info here: #}
+        {# http://www.webhook.com/docs/widget-template-reference/#image #}
+        <img src="{{ cms.factsheet.alumni_image|imageSize(200) }}" />
+      </li>
+      <li>
+        <strong>Alumni: </strong>
+        {{ cms.factsheet.alumni|safe }}
+      </li>
+      <li>
+        <strong>Mission Image: </strong>
+        {# You can pull out a lot more information from the image property. Info here: #}
+        {# http://www.webhook.com/docs/widget-template-reference/#image #}
+        <img src="{{ cms.factsheet.mission_image|imageSize(200) }}" />
+      </li>
+      <li>
+        <strong>Mission: </strong>
+        {{ cms.factsheet.mission|safe }}
+      </li>
+      <li>
+        <strong>Preview URL: </strong>
+        {{ cms.factsheet.preview_url }}
+      </li>
+      <li>
+        <strong>Slug: </strong>
+        {{ cms.factsheet.slug }}
+      </li>
+      <li>
+        <strong>Location Image: </strong>
+        {# You can pull out a lot more information from the image property. Info here: #}
+        {# http://www.webhook.com/docs/widget-template-reference/#image #}
+        <img src="{{ cms.factsheet.location_image|imageSize(200) }}" />
+      </li>
+      <li>
+        <strong>Location: </strong>
+        {{ cms.factsheet.location|safe }}
+      </li>
+      <li>
+        <strong>Accreditation Image: </strong>
+        {# You can pull out a lot more information from the image property. Info here: #}
+        {# http://www.webhook.com/docs/widget-template-reference/#image #}
+        <img src="{{ cms.factsheet.accreditation_image|imageSize(200) }}" />
+      </li>
+      <li>
+        <strong>Accreditation: </strong>
+        {{ cms.factsheet.accreditation|safe }}
+      </li>
+      <li>
+        <strong>Financial Info: </strong>
+        {{ cms.factsheet.financial_info|safe }}
+      </li>
+      <li>
+        <strong>Financial Information: </strong>
+        {# Loop of your Repeatable Form items. Remember, you can sort the order in your CMS if you need. #}
+        <ul>
+        {% for row in cms.factsheet.financial_information %}
+            <li>
+              <strong>Title: </strong>
+              {{ row.title }}
+            </li>
+            <li>
+              <strong>Data: </strong>
+              {{ row.data }}
+            </li>
+        {% endfor %}
+        </ul>
+      </li>
+  </ul>
+{% endblock %}

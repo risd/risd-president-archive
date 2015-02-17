@@ -1,0 +1,54 @@
+
+{# ------------------------------------------------------- #}
+
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
+{% extends "templates/partials/base.html" %}
+
+{# This sets our page <title>. It will append "- Homepage" to the site title defined in base. #}
+{% block title %}{% parent %} - Homepage{% endblock %}
+
+{% block content %}
+
+{% include "templates/partials/nav.html" %}
+{% include "templates/partials/side-nav.html" %}
+
+<section class="image-break {{cms.imagebreaks.image_breaks[0].id}}" id="press-release" style="background-image:url('{{cms.imagebreaks.image_breaks[0].image|imageSize(1600)}}');">
+    <div class="container">
+      <header class="six columns">
+        <h1>press release</h1>
+      </header>
+    </div> 
+  </section>
+  
+  <section>
+    <div class="container">
+      <header class="row">
+        <h2 class="eight columns">{{ cms.pressrelease.name }}</h2>
+      </header>
+      <div class="row">
+        <div class="three columns alpha">
+          <img src="{{cms.bio.portrait|imageSize(800)}}" class="side-rail" alt="RISD President Rosanne Sommerson"/>
+        </div>
+        <article class="eight columns">
+          {{cms.pressrelease.press_release|safe}}
+        </article>
+        
+        <div class="image-gallery twelve columns">
+          <ul>
+            {% for item in cms.pressrelease.gallery %}
+              <li><img src="{{item|imageSize(1100)}}"/> an Image<br/>
+              {{item.caption}}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+      
+
+        <div class="eight columns offset-by-three">
+          <h3><a href="../search-process">More about the search process</a></h3>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,106 @@
+body{
+	font-size:20px;
+}
+
+@font-face{
+	font-family:"Calibre Web";
+	src:url('../fonts/CalibreWeb-Regular.woff'),
+		url('../fonts/CalibreWeb-Regular.eot');
+	font-weight:300;
+}
+
+@font-face{
+	font-family:"Calibre Web Italic";
+	src:url('../fonts/CalibreWeb-RegularItalic.woff'),
+		url('../fonts/CalibreWeb-RegularItalic.eot');
+	font-weight:300;
+}
+
+
+
+@font-face{
+	font-family:"Calibre Web Semibold";
+	src:url('../fonts/CalibreWeb-Semibold.woff'),
+		url('../fonts/CalibreWeb-Semibold.eot');
+	font-weight:600;
+}
+
+@font-face{
+	font-family:"Calibre Web Semibold Italic";
+	src:url('../fonts/CalibreWeb-SemiboldItalic.woff'),
+		url('../fonts/CalibreWeb-SemiboldItalic.eot');
+	font-weight:300;
+}
+.main-title{
+	@media screen and (min-width:550px){
+		font-size:160px;
+		margin-bottom:0.25em;
+	}
+}
+
+h1{
+	letter-spacing:-0.025em;
+	line-height:0.7em;
+	// mix-blend-mode: multiply;
+	@media screen and (min-width:550px){
+		font-size:100px;
+		margin-top:0.25em;
+	}
+	@media screen and (min-width:750px){
+		font-size:170px;
+	}
+	@media screen and (min-width:900px){
+		font-size:200px;
+	}
+}
+
+h2{
+	line-height:1.1em;
+	@media screen and (min-width:550px){
+
+	}
+
+	@media screen and (min-width:750px){
+		font-size:2em;
+	}
+
+	@media screen and (min-width:900px){
+
+	}
+	
+	
+}
+strong,
+b{
+	font-family:"Calibre Web Semibold";
+}
+
+em,
+i{
+	font-family:"Calibre Web Italic";
+	font-style:normal;
+}
+
+h1, h2, h3, h4{
+	font-family:"Calibre Web Semibold", Avenir, Helvetica, Arial, Sans-serif;
+	// font-weight:600;
+	font-weight:normal;
+	color:$rust;	
+}
+
+h3{
+	letter-spacing:0.45px;
+}
+
+p,li{
+	font-family:"Calibre Web", Avenir, Helvetica, Arial, Sans-serif;
+	letter-spacing:0.25px;
+}
+
+h4{
+	margin-top:1em;
+}
+
+strong, b{
+	font-weight:500;
+}
