@@ -34,15 +34,17 @@
           {{cms.pressrelease.press_release|safe}}
         </article>
         
-        <div class="image-gallery twelve columns">
-          <ul>
+        
+        <div class="press-images">
             {% for item in cms.pressrelease.gallery %}
-              <li><img src="{{item|imageSize(1100)}}"/> an Image<br/>
-              {{item.caption}}
-              </li>
+              <figure class="four columns">
+                <a href="{{item.url}}" download><img src="{{item|imageSize(1100)}}"/></a>
+                <figcaption>{{item.caption}}</figcaption>
+              </figure>
             {% endfor %}
-          </ul>
         </div>
+          
+        
 
       
 

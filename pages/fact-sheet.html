@@ -16,7 +16,7 @@
 <section class="image-break" id="{{cms.imagebreaks.image_breaks[4].id}}" style="background-image:url('{{cms.imagebreaks.image_breaks[4].image|imageSize(1600)}}');">
     <div class="container">
       <header class="six columns">
-        <h1>risd <br/>in <br/> brief</h1>
+        <h1>risd <br/> facts</h1>
       </header>
     </div> 
   </section>
@@ -116,8 +116,8 @@
           {{cms.factsheet.degree_programs|safe}}
         </article> 
         
-        <img src="{{cms.factsheet.alumni_image|imageSize(800)}}" class="three columns" alt="">
-        <article class="eight columns">
+        {# <img src="{{cms.factsheet.alumni_image|imageSize(800)}}" class="three columns" alt=""> #}
+        <article class="eight columns offset-by-three">
           {{cms.factsheet.alumni|safe}}
         </article>   
       

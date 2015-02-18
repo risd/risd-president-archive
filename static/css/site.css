@@ -131,7 +131,7 @@ html[xmlns] .flexslider .slides {
   font-family: Times;
   font-size: 40px;
   display: inline-block;
-  content: '\f001'; }
+  content: '⇠'; }
 
 .flex-direction-nav a.flex-next:before {
   content: '⇢'; }
@@ -144,14 +144,14 @@ html[xmlns] .flexslider .slides {
   text-align: right; }
 
 .flexslider:hover .flex-direction-nav .flex-prev {
-  opacity: 0.7;
+  opacity: 1.0;
   left: 10px; }
 
 .flexslider:hover .flex-direction-nav .flex-prev:hover {
   opacity: 1; }
 
 .flexslider:hover .flex-direction-nav .flex-next {
-  opacity: 0.7;
+  opacity: 1.0;
   right: 10px; }
 
 .flexslider:hover .flex-direction-nav .flex-next:hover {
@@ -200,11 +200,11 @@ html[xmlns] .flexslider .slides {
   *display: inline; }
 
 .flex-control-paging li a {
-  width: 11px;
-  height: 11px;
+  width: 8px;
+  height: 8px;
   display: block;
   background: #666;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.25);
   cursor: pointer;
   text-indent: -9999px;
   -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
@@ -220,7 +220,7 @@ html[xmlns] .flexslider .slides {
   background: rgba(0, 0, 0, 0.7); }
 
 .flex-control-paging li a.flex-active {
-  background: #000;
+  background: #306494;
   background: rgba(0, 0, 0, 0.9);
   cursor: default; }
 
@@ -697,12 +697,13 @@ body {
   font-weight: 300; }
 @media screen and (min-width: 550px) {
   .main-title {
-    font-size: 160px;
+    font-size: 60px;
     margin-bottom: 0.25em; } }
 
 h1 {
   letter-spacing: -0.025em;
-  line-height: 0.7em; }
+  line-height: 0.7em;
+  mix-blend-mode: multiply; }
   @media screen and (min-width: 550px) {
     h1 {
       font-size: 100px;
@@ -712,13 +713,17 @@ h1 {
       font-size: 170px; } }
   @media screen and (min-width: 900px) {
     h1 {
-      font-size: 200px; } }
+      font-size: 200px;
+      margin-top: -0.125em; } }
 
 h2 {
   line-height: 1.1em; }
+  @media screen and (min-width: 550px) {
+    h2 {
+      font-size: 1.25em; } }
   @media screen and (min-width: 750px) {
     h2 {
-      font-size: 2em; } }
+      font-size: 1.5em; } }
 
 strong,
 b {
@@ -737,7 +742,7 @@ h1, h2, h3, h4 {
 h3 {
   letter-spacing: 0.45px; }
 
-p, li {
+p, li, figcaption {
   font-family: "Calibre Web", Avenir, Helvetica, Arial, Sans-serif;
   letter-spacing: 0.25px; }
 
@@ -805,13 +810,19 @@ body {
     margin-top: 2em;
     padding: 0; }
     .second-nav ul li {
-      font-size: 2.5em;
+      font-size: 2em;
       line-height: 1em;
       list-style: none; }
       @media screen and (min-width: 550px) {
         .second-nav ul li {
-          font-size: 4em;
+          font-size: 2.5em;
           line-height: 1em; } }
+      @media screen and (min-width: 700px) {
+        .second-nav ul li {
+          font-size: 3em; } }
+      @media screen and (min-width: 1000px) {
+        .second-nav ul li {
+          font-size: 4em; } }
   .second-nav svg#risd-seal {
     max-width: 50px;
     max-height: 50px; }
@@ -840,12 +851,38 @@ img {
   min-height: 80vh;
   background-size: cover; }
 
-.title-slide h1.main-title {
-  color: #306494;
-  text-align: left;
-  margin-top: 0.5em;
-  line-height: 1em;
-  margin-bottom: 0em; }
+#press-release,
+#facts,
+#past-presidents,
+#search-process {
+  background-position: -60vw 0; }
+  @media screen and (min-width: 550px) {
+    #press-release,
+    #facts,
+    #past-presidents,
+    #search-process {
+      background-position: -30vw 0; } }
+  @media screen and (min-width: 720px) {
+    #press-release,
+    #facts,
+    #past-presidents,
+    #search-process {
+      background-position: 0vw 0; } }
+
+.title-slide {
+  background-position: -70vw 0; }
+  .title-slide h1.main-title {
+    color: #306494;
+    text-align: left;
+    margin-top: 1em;
+    line-height: 1em;
+    margin-bottom: 0em; }
+  @media screen and (min-width: 550px) {
+    .title-slide {
+      background-position: -20vw 0; } }
+  @media screen and (min-width: 800px) {
+    .title-slide {
+      background-position: 0 0; } }
 
 .info-graphic-group {
   border-bottom: 1px solid gainsboro; }
@@ -939,19 +976,35 @@ figure[data-type=quote] {
         margin-left: 1em; } }
   figure[data-type=quote] cite {
     font-family: "Calibre Web";
-    font-style: normal; }
+    font-style: normal;
+    font-size: 20px;
+    font-weight: normal; }
 
 figure[data-type=quote].side-rail {
   margin: 0em;
   padding: 0em; }
   figure[data-type=quote].side-rail blockquote {
+    font-size: 20px;
     margin: 0em; }
 
 .image-gallery ul {
   list-style: none; }
 
 .fact-sheet .three.columns {
+  margin-left: 0;
+  margin-top: 4.25em; }
+
+.press-images figure {
+  margin-right: 0; }
+.press-images figure:first-child {
   margin-left: 0; }
+.press-images figure:nth-child(5) {
+  margin-left: 0; }
+
+a.flex-next,
+a.flex-prev {
+  color: white;
+  border-bottom: none; }
 
 .past-president {
   margin-bottom: 2em; }
@@ -960,7 +1013,6 @@ figure[data-type=quote].side-rail {
   max-height: 7em;
   opacity: 0.5;
   mix-blend-mode: multiply;
-  background: #306494;
   border-radius: 100%;
   border: 4px solid white;
   box-shadow: 0px 0px 1px #c8c8c8;
@@ -1017,12 +1069,6 @@ svg#search-process {
 .core.committee-member:nth-child(5),
 .core.committee-member:nth-child(6) {
   min-height: 8em; }
-
-#announcement {
-  background: #becfd5;
-  color: #323232; }
-  #announcement h2 {
-    color: #f0f0f0; }
 
 img.side-rail {
   margin-top: 1em; }

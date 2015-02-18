@@ -29,11 +29,18 @@
       </div>
       <div class="eight columns">
         {{cms.bio.long_bio|safe}}
+        <div class="flexslider">
+          <ul class="slides">
+            {% for image in cms.bio.risd_roots %}
+                <li><img src="{{image|imageSize(800)}}"></li>
+            {% endfor %}
+          </ul>
+        </div>
         {{cms.bio.deep_roots|safe}}
         <div class="flexslider">
           <ul class="slides">
             {% for image in cms.bio.work %}
-                <li><img src="{{image|imageSize(300)}}"></li>
+                <li><img src="{{image|imageSize(800)}}"></li>
             {% endfor %}
           </ul>
         </div>
