@@ -138,7 +138,7 @@ function masonrySetup () {
             container
                 .getBoundingClientRect()
                 .width;
-    var columnWidth = containerWidth * 0.3;
+    var columnWidth = containerWidth / 3;
 
     imagesLoaded(container, function () {
         var msnry = new Masonry(container,
