@@ -144,7 +144,6 @@ function masonrySetup () {
         var msnry = new Masonry(container,
                                 { itemSelector: '.press-image',
                                   columnWidth: columnWidth});
-        console.log(msnry);
-        window.msnry = msnry;
+        msnry.bindResize();
     });
 }
