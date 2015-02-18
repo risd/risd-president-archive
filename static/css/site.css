@@ -990,6 +990,21 @@ figure[data-type=quote].side-rail {
 .image-gallery ul {
   list-style: none; }
 
+.flexslider {
+  background: none;
+  border: none; }
+
+.slides li {
+  margin-bottom: 0em; }
+
+p.caption {
+  font-size: 0.8em;
+  margin-top: 0.5em;
+  color: #969696;
+  margin-bottom: 0em;
+  line-height: 1.2em;
+  letter-spacing: 1px; }
+
 .fact-sheet .three.columns {
   margin-left: 0;
   margin-top: 4.25em; }
