@@ -32,8 +32,9 @@ body{
 	font-weight:300;
 }
 .main-title{
+	mix-blend-mode:normal;
 	@media screen and (min-width:550px){
-		font-size:60px;
+		font-size:120px;
 		margin-bottom:0.25em;
 
 	}
