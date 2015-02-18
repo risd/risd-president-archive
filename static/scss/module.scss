@@ -40,6 +40,9 @@ body{
 			// background:yellow;
 		}
 	}
+	a.risd-link:link{
+		border-bottom:none;
+	}
 	svg#risd-seal{
 		z-index:10;
 		// position:fixed;
@@ -320,6 +323,24 @@ figure[data-type=quote].side-rail{
 	}
 }
 
+.flexslider{
+	background:none;
+	border:none;
+}
+.slides{
+	li{
+		margin-bottom:0em;
+	}
+}
+
+p.caption{
+	font-size:0.8em;
+	margin-top:0.5em;
+	color:rgb(150,150,150);
+	margin-bottom:0em;
+	line-height:1.2em;
+	letter-spacing:1px;
+}
 
 // Fact Sheet
 .fact-sheet{

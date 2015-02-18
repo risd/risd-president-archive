@@ -32,8 +32,9 @@ body{
 	font-weight:300;
 }
 .main-title{
+	mix-blend-mode:normal;
 	@media screen and (min-width:550px){
-		font-size:60px;
+		font-size:120px;
 		margin-bottom:0.25em;
 
 	}
@@ -41,7 +42,7 @@ body{
 
 h1{
 	letter-spacing:-0.025em;
-	line-height:0.7em;
+	line-height:0.9em;
 	mix-blend-mode: multiply;
 	@media screen and (min-width:550px){
 		font-size:100px;
