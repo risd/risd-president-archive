@@ -332,16 +332,31 @@ figure[data-type=quote].side-rail{
 
 // press images
 .press-images{
-	figure{
-		margin-right:0;
+	figure {
+		// margin-right:0;
 	}
-	figure:first-child{
-		margin-left:0;
+	figure:first-child {
+		// margin-left:0;
 	}
 
-	figure:nth-child(5){
-		margin-left:0;
+	figure:nth-child(5) {
+		// margin-left:0;
 	}
+	.press-image {
+		width: 30%;
+		margin: 0;
+
+		.press-image-wrapper {
+			position: relative;
+			margin-left: 10px;
+			margin-right: 10px;
+			margin-bottom: 20px;
+		}
+	}
+	// figcaption {
+	// 	margin-bottom: 20px;
+	// 	margin-right: 20px;
+	// }
 }
 
 

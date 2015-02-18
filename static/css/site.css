@@ -994,12 +994,14 @@ figure[data-type=quote].side-rail {
   margin-left: 0;
   margin-top: 4.25em; }
 
-.press-images figure {
-  margin-right: 0; }
-.press-images figure:first-child {
-  margin-left: 0; }
-.press-images figure:nth-child(5) {
-  margin-left: 0; }
+.press-images .press-image {
+  width: 30%;
+  margin: 0; }
+  .press-images .press-image .press-image-wrapper {
+    position: relative;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px; }
 
 a.flex-next,
 a.flex-prev {
@@ -1072,5 +1074,3 @@ svg#search-process {
 
 img.side-rail {
   margin-top: 1em; }
-
-/*# sourceMappingURL=site.css.map */

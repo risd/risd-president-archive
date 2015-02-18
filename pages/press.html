@@ -33,21 +33,20 @@
         <article class="eight columns">
           {{cms.pressrelease.press_release|safe}}
         </article>
-        
-        
+      </div>
+      <div class="row">
         <div class="press-images">
             {% for item in cms.pressrelease.gallery %}
-              <figure class="four columns">
-                <a href="{{item.url}}" download><img src="{{item|imageSize(1100)}}"/></a>
-                <figcaption>{{item.caption}}</figcaption>
+              <figure class="press-image">
+                <div class="press-image-wrapper">
+                  <a href="{{item.url}}" download><img src="{{item|imageSize(1100)}}"/></a>
+                  <figcaption>{{item.caption}}</figcaption>
+                </div>
               </figure>
             {% endfor %}
         </div>
-          
-        
-
-      
-
+      </div>
+      <div class='row'>
         <div class="eight columns offset-by-three">
           <h3><a href="../search-process">More about the search process</a></h3>
         </div>
