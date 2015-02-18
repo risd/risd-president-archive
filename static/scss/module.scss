@@ -354,7 +354,10 @@ p.caption{
 // press images
 .press-images{
 	figure {
-		// margin-right:0;
+		-webkit-margin-after: 0;
+		-webkit-margin-before: 0;
+		-webkit-margin-start: 0;
+		-webkit-margin-end: 0;
 	}
 	figure:first-child {
 		// margin-left:0;
@@ -364,9 +367,10 @@ p.caption{
 		// margin-left:0;
 	}
 	.press-image {
+
 		@media screen and (min-width:700px){
-			width: 30%;
-			margin: 0;
+		width: 33%;
+		margin: 0;
 
 		}
 		
