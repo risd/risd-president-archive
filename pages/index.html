@@ -10,8 +10,30 @@
 
 {% block content %}
 
+{% include "templates/partials/nav.html" %}
 {% include "templates/partials/side-nav.html" %}
- 
+  <section class="title-slide image-break" style="background-image:url('{{cms.imagebreaks.image_breaks[5].image|imageSize(1800)}}');">
+    <div class="container">
+      <header class="twelve columns">
+        <h1 class="main-title">RISD's <br/>17th<br/> President</h1>
+      </header>
+    </div>
+  </section>
+
+  <section id="announcement">
+    <div class="container">
+      <div class="three columns">
+        
+      </div>
+      <div class="eight columns offset-by-three">
+        <h2>{{cms.announcement.name}}</h2>
+        {{cms.announcement.announcement|safe}}
+      </div>
+      <div class="eight columns offset-by-three">
+        <h3><a href="../bio">Learn more about President Somerson</a></h3>
+      </div>
+    </div>
+  </section>
 
   
 
