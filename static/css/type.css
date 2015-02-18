@@ -1,21 +1,21 @@
 /*
 Error: Undefined variable: "$rust".
-        on line 91 of scss/type.scss
+        on line 92 of scss/type.scss
 
-86: 
-87: h1, h2, h3, h4{
-88: 	font-family:"Calibre Web Semibold", Avenir, Helvetica, Arial, Sans-serif;
-89: 	// font-weight:600;
-90: 	font-weight:normal;
-91: 	color:$rust;	
-92: }
-93: 
-94: h3{
-95: 	letter-spacing:0.45px;
-96: }
+87: 
+88: h1, h2, h3, h4{
+89: 	font-family:"Calibre Web Semibold", Avenir, Helvetica, Arial, Sans-serif;
+90: 	// font-weight:600;
+91: 	font-weight:normal;
+92: 	color:$rust;	
+93: }
+94: 
+95: h3{
+96: 	letter-spacing:0.45px;
+97: }
 
 Backtrace:
-scss/type.scss:91
+scss/type.scss:92
 /Users/mbarrett/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/script/tree/variable.rb:49:in `_perform'
 /Users/mbarrett/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/script/tree/node.rb:50:in `perform'
 /Users/mbarrett/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:384:in `visit_prop'
@@ -67,4 +67,4 @@ scss/type.scss:91
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$rust\".\A         on line 91 of scss/type.scss\A \A 86: \A 87: h1, h2, h3, h4{\A 88: 	font-family:\"Calibre Web Semibold\", Avenir, Helvetica, Arial, Sans-serif;\A 89: 	// font-weight:600;\A 90: 	font-weight:normal;\A 91: 	color:$rust;	\A 92: }\A 93: \A 94: h3{\A 95: 	letter-spacing:0.45px;\A 96: }"; }
+  content: "Error: Undefined variable: \"$rust\".\A         on line 92 of scss/type.scss\A \A 87: \A 88: h1, h2, h3, h4{\A 89: 	font-family:\"Calibre Web Semibold\", Avenir, Helvetica, Arial, Sans-serif;\A 90: 	// font-weight:600;\A 91: 	font-weight:normal;\A 92: 	color:$rust;	\A 93: }\A 94: \A 95: h3{\A 96: 	letter-spacing:0.45px;\A 97: }"; }

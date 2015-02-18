@@ -42,7 +42,7 @@
         <div class="flexslider">
           <ul class="slides">
             {% for image in cms.bio.work %}
-                <li><img src="{{image|imageSize(800)}}"><br>
+                <li><img src="{{image|imageSize(800)}}">
                     <p class="caption">{{image.caption}}</p>
                 </li>
             {% endfor %}

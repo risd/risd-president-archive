@@ -364,9 +364,12 @@ p.caption{
 		// margin-left:0;
 	}
 	.press-image {
-		width: 30%;
-		margin: 0;
+		@media screen and (min-width:700px){
+			width: 30%;
+			margin: 0;
 
+		}
+		
 		.press-image-wrapper {
 			position: relative;
 			margin-left: 10px;

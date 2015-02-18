@@ -46,14 +46,15 @@ h1{
 	mix-blend-mode: multiply;
 	@media screen and (min-width:550px){
 		font-size:100px;
-		margin-top:0.25em;
+		margin-top:-0.25em;
 	}
 	@media screen and (min-width:750px){
 		font-size:170px;
+		margin-top:-0.25em;
 	}
 	@media screen and (min-width:900px){
 		font-size:200px;
-		margin-top:-0.125em;
+		margin-top:-0.25em;
 	}
 }
 
