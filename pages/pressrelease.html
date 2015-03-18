@@ -29,6 +29,10 @@
         {{ cms.pressrelease.last_updated|date('F d Y') }}
       </li>
       <li>
+        <strong>Page Title: </strong>
+        {{ cms.pressrelease.page_title }}
+      </li>
+      <li>
         <strong>Press Release: </strong>
         {{ cms.pressrelease.press_release|safe }}
       </li>
