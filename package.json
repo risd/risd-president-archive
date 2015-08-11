@@ -1,7 +1,7 @@
 {
-  "name": "webhook-generate",
-  "version": "0.0.1",
-  "description": "Grunt site generator for webhook",
+  "name": "athena",
+  "version": "1.0.0",
+  "description": "RISD President site, built on WebHook.",
   "repository": {
     "type": "git",
     "url": "git://github.com/webhook/webhook-generate.git"
