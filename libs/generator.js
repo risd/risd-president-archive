@@ -54,6 +54,11 @@ var wrap = function()
          'var window = null;' +
          'var process = null;' +
          'var eval = null;' +
+         'var require = null;' +
+         'var __filename = null;' +
+         'var __dirname = null;' +
+         'var modules = null;' +
+         'var exports = null;' +
          last;
 
   args.push(last);
@@ -637,10 +642,13 @@ module.exports.generator = function (config, options, logger, fileParser) {
           var filename = path.basename(newFile, path.extname(file));
           var extension = path.extname(file);
 
-
-          if(path.extname(file) === '.html' && filename !== 'index' && path.basename(newFile) !== '404.html') {
+          if(path.extname(file) === '.html' && filename !== 'index' && path.basename(newFile) !== '404.html' && file.indexOf('.raw.html') === -1) {
             dir = dir + '/' + filename;
             filename = 'index';
+          }
+
+          if(filename.indexOf('.raw') !== -1 && filename.indexOf('.raw') === (filename.length - 4) && extension === '.html') {
+            filename = filename.slice(0, filename.length - 4);
           }
 
           newFile = dir + '/' + filename + path.extname(file);
@@ -934,6 +942,35 @@ module.exports.generator = function (config, options, logger, fileParser) {
     }
   }
 
+  self.staticHashs = false;
+  self.changedStaticFiles = [];
+
+  /**
+  * This creates a hash table of all the static files, used to send detailed information to livereload
+  * We only do this for static files for speed, for regular files a full reload usually is ok.
+  */
+  var createStaticHashs = function() {
+    self.staticHashs = {};
+    self.changedStaticFiles = [];
+
+    if(fs.existsSync('.build/static')) {
+      var files = wrench.readdirSyncRecursive('.build/static');
+
+      files.forEach(function(file) {
+        var file = '.build/static/' + file;
+
+        if(!fs.lstatSync(file).isDirectory()) {
+          var hash = md5(fs.readFileSync(file));
+
+          self.staticHashs[file] = hash;
+        }
+      })
+    } else {
+      self.staticHashs = false;
+      self.changedStaticFiles = [];
+    }
+  };
+
   /**
    * Cleans the build directory
    * @param  {Function}   done     Callback passed either a true value to indicate its done, or an error
@@ -949,13 +986,32 @@ module.exports.generator = function (config, options, logger, fileParser) {
   };
 
   var buildQueue = async.queue(function (task, callback) {
+    if(task.type === 'static') {
+
+      // For static builds we create a hash table to send correct livereload info
+      // We only do this for static files for speed, normal builds dont really matter
+      createStaticHashs();
+
+      removeDirectory('.build/static', function() {
+        self.copyStatic(function() {
+          self.reloadFiles(callback);
+        });
+      });
+    } else {
       self.realBuildBoth(function() {
         callback();
       }, self.reloadFiles);
+    }
   }, 1);
 
   this.buildBoth = function(done) {
-    buildQueue.push({}, function(err) {
+    buildQueue.push({ type: 'all' }, function(err) {
+      done();
+    });
+  };
+
+  this.buildStatic = function(done) {
+    buildQueue.push({ type: 'static' }, function(err) {
       done();
     });
   };
@@ -1135,7 +1191,48 @@ module.exports.generator = function (config, options, logger, fileParser) {
    * @param  {Function}   done      Callback passed either a true value to indicate its done, or an error
    */
   this.reloadFiles = function(done) {
-    request({ url : 'http://localhost:' + liveReloadPort + '/changed?files=true', timeout: 10  }, function(error, response, body) {
+    var fileList = 'true';
+
+    if(self.staticHashs !== false && fs.existsSync('.build/static')) {
+      var newFiles = wrench.readdirSyncRecursive('.build/static');
+
+      newFiles.forEach(function(file) {
+        var file = '.build/static/' + file;
+
+
+        if(!fs.lstatSync(file).isDirectory()) {
+          var hash = md5(fs.readFileSync(file));
+
+          if(hash !== self.staticHashs[file]) {
+            self.changedStaticFiles.push(file.replace('.build', ''));
+          }
+
+          if(file in self.staticHashs) {
+            delete self.staticHashs[file];
+          }
+        }
+      })
+
+      // For any left over keys, means they got deleted
+      for(var key in self.staticHashs) {
+        self.changedStaticFiles.push(key.replace('.build', ''));
+      }
+
+      if(self.changedStaticFiles.length === 0) {
+        if(done) done(true);
+        self.staticHashs = false;
+        self.changedStaticFiles = [];
+        return;
+      }
+
+      fileList = self.changedStaticFiles.join(',');
+
+      self.staticHashs = false;
+      self.changedStaticFiles = [];
+    }
+
+
+    request({ url : 'http://localhost:' + liveReloadPort + '/changed?files=' + fileList, timeout: 10  }, function(error, response, body) {
       if(done) done(true);
     });
   };
@@ -1144,7 +1241,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
    * Starts a live reload server, which will refresh the pages when signaled
    */
   this.startLiveReload = function() {
-    tinylr().listen(liveReloadPort);
+    tinylr({ liveCSS: true, liveImg: true }).listen(liveReloadPort);
   };
 
   /**
@@ -1275,7 +1372,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
             sock.sendText('done:' + JSON.stringify(tmpSlug));
           });
         } else if (message === 'build') {
-          buildQueue.push({}, function(err) { 
+          buildQueue.push({ type: 'all' }, function(err) { 
             sock.sendText('done');
           });
         } else if (message.indexOf('preset_local:') === 0) {
@@ -1486,6 +1583,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
 
   this.enableProduction = function() {
     productionFlag = true;
+    swig.setDefaults({ cache: 'memory' });
   }
 
   return this;

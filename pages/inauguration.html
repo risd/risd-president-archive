@@ -1,0 +1,35 @@
+
+{# ------------------------------------------------------- #}
+
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
+{% extends "templates/partials/base.html" %}
+
+{# This sets our page <title>. It will append "- Homepage" to the site title defined in base. #}
+{% block title %}{% parent %} - {{ cms.factsheet.name }}{% endblock %}
+
+{% block content %}
+
+{% include "templates/partials/nav.html" %}
+{% include "templates/partials/side-nav.html" %}
+<!-- 
+<section class="image-break">
+  <div class="container">
+    <header class="six columns">
+      <h1>{{cms.inauguration.name}}</h1>
+    </header>
+  </div>
+</section> -->
+
+<section>
+  <div class="container">
+    <div class="row">
+      <article class="three columns">
+        <h2>Inauguration</h2>
+      </article>
+      <article class="eight columns">
+        {{cms.inauguration.inauguration_info|safe}}
+      </article>
+    </div>
+  </div>
+</section>

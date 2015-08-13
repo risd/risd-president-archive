@@ -812,7 +812,7 @@ body {
   -moz-transition: left 0.4s ease-in-out;
   transition: left 0.4s ease-in-out; }
   .second-nav ul {
-    margin-top: 2em;
+    margin-top: 0em;
     padding: 0; }
     .second-nav ul li {
       font-size: 2em;
