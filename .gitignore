@@ -14,8 +14,8 @@ results
 
 npm-debug.log
 node_modules
+static/.sass-cache
+static/css
 
 /.build
 /.firebase.conf
-
-.sass-cache
