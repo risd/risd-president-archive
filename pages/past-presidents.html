@@ -29,15 +29,15 @@
         <div class="row past-president">
           <div class="three columns">
             <h4>
-              {{item.name}} <br /> 
+              {{item.name}} <br />
               {{item.tenure}}
             </h4>
-            <img class="past-president-portrait" src="{{item.portrait.url}}" alt=""/>  
+            <img class="past-president-portrait" src="{{item.portrait.url}}" alt=""/>
           </div>
           <div class="eight columns">
             {{item.bio|safe}}
           </div>
-          
+
         </div>
       {% endfor %}
         <div class="eight columns offset-by-three">

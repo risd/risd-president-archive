@@ -18,7 +18,7 @@
       <header class="six columns">
         <h1>risd <br/> facts</h1>
       </header>
-    </div> 
+    </div>
   </section>
 
   <section id="fact-sheet">
@@ -33,7 +33,7 @@
         </article>
       </div>
 
-      
+
       <div class="row info-graphic-group">
         <h3 class="three columns">student body</h3>
         <div class="eight columns">
@@ -60,7 +60,7 @@
           {% endfor %}
         </div>
       </div>
-      
+
       <div class="row info-graphic-group">
         <h3 class="three columns">acceptance rate</h3>
         <div class="eight columns">
@@ -109,23 +109,23 @@
         <article class="eight columns offset-by-three">
           {{cms.factsheet.academics|safe}}
         </article>
-        
+
         <img src="{{cms.factsheet.degree_programs_image|imageSize(800)}}" class="three columns" alt="">
 
         <article class="eight columns">
           {{cms.factsheet.degree_programs|safe}}
-        </article> 
-        
+        </article>
+
         {# <img src="{{cms.factsheet.alumni_image|imageSize(800)}}" class="three columns" alt=""> #}
         <article class="eight columns offset-by-three">
           {{cms.factsheet.alumni|safe}}
-        </article>   
-      
+        </article>
+
         <img src="{{cms.factsheet.location_image|imageSize(800)}}" class="three columns" alt="">
         <article class="eight columns">
           {{cms.factsheet.location|safe}}
         </article>
-      
+
         <article class="eight columns offset-by-three">
           {{cms.factsheet.accreditation|safe}}
         </article>

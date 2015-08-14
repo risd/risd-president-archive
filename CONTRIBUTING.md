@@ -108,5 +108,3 @@ Contains generic utility functions shared between files.
 ### Search
 
 The JS powered search that appears in fresh Webhook sites is located in [this repository](https://github.com/webhook/Tipue-Search). We keep it seperate from this repo so that we can push out changes without requiring a `wh update`. Generator ships with a default `/pages/search-results.html` page to interact with it. You can find more information in the Webhook docs [here](http://www.webhook.com/docs/adding-search/).
-
-
