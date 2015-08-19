@@ -17,5 +17,7 @@ node_modules
 static/.sass-cache
 static/css
 
-/.build
-/.firebase.conf
+.build
+.firebase.conf
+
+.sass-cache
