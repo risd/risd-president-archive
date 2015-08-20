@@ -1,0 +1,22 @@
+$v-tablet--width: 768px;
+$v-laptop--width: 1024px;
+$v-desktop--width: 1824px;
+
+
+@mixin v-tablet {
+    @media (min-width: #{$v-tablet--width}) {
+        @content;
+    }
+}
+
+@mixin v-laptop {
+    @media (min-width: #{$v-laptop--width}) {
+        @content;
+    }
+}
+
+@mixin v-desktop {
+    @media (min-width: #{$v-desktop--width}) {
+        @content;
+    }
+}

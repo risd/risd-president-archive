@@ -1,9 +1,9 @@
 $(document).ready(function(){
 	$('.hamburger-activator').click(function(){
-		$('.second-nav').toggleClass('on');
+		$('.mainNav').toggleClass('on');
 	});
 	$('.nav-link').click(function(){
-		$('.second-nav').toggleClass('on');
+		$('.mainNav').toggleClass('on');
 	});
 
     masonrySetup();
@@ -111,7 +111,7 @@ $(window).load(function() {
             before: function (slider) {
                 // Fires asynchronously with each slider animation
 
-                
+
                 update_slider_nav(slider);
             },
             after: function (slider) {

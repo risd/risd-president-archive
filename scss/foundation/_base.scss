@@ -1,0 +1,141 @@
+//Basic Setup-------------------------------------------
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+address,
+blockquote,
+figure,
+pre,
+dl,
+dd,
+ol,
+ul,
+table,
+section {
+    // @include l-verticalRhythm;
+}
+
+html {
+    font-family: $t-font--one;
+    line-height: $t-lineHeight--normal;
+    font-weight: $t-weight--book;
+    font-size: $t-size--base;
+    color: $c-one;
+    background-color: $c-two;
+    //lost-utility: edit;
+}
+
+body {
+    font-size: $t-size--medium;
+    font-weight: $t-weight--light;
+}
+
+a {
+    @include t-noDecoration;
+    display: block;
+    p & {
+        display: initial;
+    }
+}
+
+strong, b {
+    font-weight: $t-weight--bold;
+}
+
+i,
+em {
+    @include t-emphasis;
+}
+
+p {
+    margin-bottom: $l-space--xsmall;
+}
+
+h1 {
+    font-family: $t-font--two;
+    font-size: $t-size--xxxlarge;
+    font-weight: $t-weight--book;
+    line-height: $t-lineHeight--tight;
+    margin-bottom: $l-space--xsmall;
+    margin-left: -$t-size--xsmall/2;
+}
+
+h2 {
+    font-family: $t-font--two;
+    font-size: $t-size--xlarge;
+    font-weight: $t-weight--book;
+    line-height: $t-lineHeight--tight;
+}
+
+h3 {
+    font-family: $t-font--two;
+    font-size: $t-size--large;
+    font-weight: $t-weight--book;
+    line-height: $t-lineHeight--tight;
+}
+
+h4 {
+    font-family: $t-font--three;
+    font-size: $t-size--medium;
+    font-weight: $t-weight--book;
+    line-height: $t-lineHeight--normal;
+}
+
+h5, h6 {
+    font-family: $t-font--three;
+    font-size: $t-size--small;
+    font-weight: $t-weight--book;
+    line-height: $t-lineHeight--normal;
+}
+
+blockquote {
+    @include l-indent;
+}
+
+ol {
+    @include t-orderedList;
+}
+
+ul {
+    @include t-unorderedList;
+}
+
+div,
+img {
+    @include l-autoSize;
+}
+
+iframe {
+    width: 100%;
+    height: 300px;
+}
+
+@lost gutter 4.165rem;
+
+//Extra Setup ---------------------------------------
+
+main {
+    lost-center: 90%;
+    margin-top: $l-space--xlarge;
+}
+
+section {
+    // @include l-verticalRhythm;
+    box-sizing: border-box;
+    // border-bottom: 1px solid $c-two;
+}
+
+article {
+    // box-sizing: border-box;
+    // margin: $l-space--medium auto;
+    // padding: $l-space--medium 0;
+
+}
+
+div {
+    // margin-bottom: $l-space--medium;
+}

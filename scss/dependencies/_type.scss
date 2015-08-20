@@ -1,0 +1,129 @@
+//Currently we have only one weight of circular, because it is so expensive for web.
+@font-face {
+    font-family: Circular;
+    src: url("../fonts/lineto-circular-book.woff");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Mercury Display;
+    src: url("../fonts/MercuryDisplay-Roman.otf");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Mercury Display;
+    src: url("../fonts/MercuryDisplay-Bold.otf");
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Mercury Display;
+    src: url("../fonts/MercuryDisplay-Italic.otf");
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Mercury Display;
+    src: url("../fonts/MercuryDisplay-BolIta.otf");
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Mercury Text;
+    src: url("../fonts/MercuryTextG1-Roman-Pro.otf");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Mercury Text;
+    src: url("../fonts/MercuryTextG1-Italic-Pro.otf");
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Mercury Text;
+    src: url("../fonts/MercuryTextG1-Bold-Pro.otf");
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Mercury Text;
+    src: url("../fonts/MercuryTextG1-BoldItalic-Pro.otf");
+    font-weight: 900;
+    font-style: italic;
+}
+
+
+$t-font--one: 'Circular', 'Helvetica', 'sans-serif';
+$t-font--two: 'Mercury Display', 'Georgia', 'serif';
+$t-font--three: 'Mercury Text', 'Georgia','serif';
+
+
+$t-size--base: 13px;
+$t-size--xsmall: 1rem;
+$t-size--small: 1.25rem;
+$t-size--medium: 1.5rem;
+$t-size--large: 2rem;
+$t-size--xlarge: 3rem;
+$t-size--xxlarge: 5rem;
+$t-size--xxxlarge: 8rem;
+
+
+$t-weight--xlight: 100;
+$t-weight--light: 200;
+$t-weight--book: 400;
+$t-weight--bold: 600;
+$t-weight--black: 900;
+
+$t-lineHeight--tight: 1.2;
+$t-lineHeight--normal: 1.666;
+$t-lineHeight--loose: 2;
+
+
+@mixin t-smallCaps() {
+    text-transform: uppercase;
+    font-variant: small-caps;
+    letter-spacing: .2rem;
+}
+@mixin t-allCaps() {
+    text-transform: uppercase;
+    letter-spacing: .15rem;
+}
+
+@mixin t-noDecoration() {
+    text-decoration: none;
+    color: inherit;
+    border: none;
+    outline: none;
+}
+
+@mixin t-unorderedList() {
+    list-style-type: disc;
+    list-style-position: inside;
+    list-style-image: none;
+}
+@mixin t-orderedList() {
+    list-style-type: decimal-leading-zero;
+    list-style-position: outside;
+    list-style-image: none;
+}
+@mixin t-navList() {
+    list-style: none;
+}
+
+@mixin t-emphasis {
+    font-style: italic;
+}
+
+@mixin t-link {
+    color: $c-two;
+    text-decoration: underline;
+}

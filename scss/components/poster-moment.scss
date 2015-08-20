@@ -1,0 +1,118 @@
+@import "../dependencies/color";
+@import "../dependencies/type";
+@import "../dependencies/layout";
+@import "../dependencies/viewports";
+@import "../foundation/reset";
+@import "../foundation/base";
+
+
+.posterMoment {
+    margin: 5vh 2.5vw;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.risd-quadrant {
+    width: 50%;
+    /* min-width: 45vw; */
+    height: 45vh;
+    /* min-height: 45vh; */
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    border-top: 4px solid $c-one;
+    border-left: 4px solid $c-one;
+    &:nth-child(2n) {
+        border-right: 4px solid $c-one;
+    }
+    &:nth-child(n+3) {
+        border-bottom: 4px solid $c-one;
+    }
+}
+
+.risd-container {
+    /* display: none; */
+    position: absolute;
+    font-size: 10vw;
+    color: white;
+    width: 45vw;
+    height: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.risd-text {
+    font-family: $t-font--one;
+    font-size: $t-size--xxxlarge*3;
+}
+
+.posterItems {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.posterItem-box--large {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.posterItem-box--small {
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    box-sizing: border-box;
+
+    z-index: 100;
+    &:nth-child(2n+1) {
+        border-right: 4px solid $c-one;
+    }
+    &:nth-child(-n+2) {
+        border-bottom: 4px solid $c-one;
+    }
+}
+
+.posterItem-campaignText--large {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid $c-one;
+    h2 {
+        font-family: $t-font--one;
+    }
+}
+
+.posterItem-campaignText--small {
+    font-family: $t-font--one;
+}
+
+.posterItem-inaugurationText--large {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h2 {
+        font-family: $t-font--two;
+    }
+}
+
+.posterItem-inaugurationText--small {
+    font-family: $t-font--two;
+}

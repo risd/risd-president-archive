@@ -1,0 +1,75 @@
+@import "../dependencies/color";
+@import "../dependencies/type";
+@import "../dependencies/layout";
+@import "../dependencies/viewports";
+@import "../foundation/reset";
+@import "../foundation/base";
+
+
+//The fixed hamburger and risd seal
+.header-fixed{
+	position:fixed;
+	z-index:1000;
+	width:100%;
+	padding-top:0.5em;
+}
+.hamburger-activator{
+    max-width:30px;
+    max-height:30px;
+    &:hover {
+        cursor:pointer;
+    }
+    line{
+        stroke:$c-one;
+        stroke-width:3;
+    }
+}
+.risd-link {
+    position: absolute;
+    right: 0;
+    display: inline-block;
+}
+svg#risd-seal{
+    z-index:1010;
+    // position:fixed;
+    max-width:50px;
+    max-height:50px;
+    path{
+        fill:$c-three;
+    }
+}
+
+svg#risd-seal:hover{
+    path{
+        fill:$c-one;
+    }
+}
+
+
+//The sliding nav list
+.mainNav{
+	position:fixed;
+	width:100%;
+	height:100%;
+	background:rgba(255,255,255,0.9);
+	z-index:900;
+	left:-100%;
+    transition: left 0.4s ease-in-out;
+}
+.mainNav-item {
+    font-size:2em;
+    line-height:1em;
+    @media screen and (min-width:550px){
+        font-size:2.5em;
+        line-height:1em;
+    }
+    @media screen and (min-width:700px){
+        font-size:3em;
+    }
+    @media screen and (min-width:1000px){
+        font-size:4em;
+    }
+}
+.on{
+	left:0%;
+}
