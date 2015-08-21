@@ -10,8 +10,7 @@
 
 {% block content %}
 
-{% include "templates/partials/nav.html" %}
-{% include "templates/partials/side-nav.html" %}
+{% include "templates/partials/header.html" %}
 <!--
 <section class="image-break">
   <div class="container">
@@ -21,15 +20,9 @@
   </div>
 </section> -->
 
-<section>
-  <div class="container">
-    <div class="row">
-      <article class="three columns">
-        <h2>Inauguration</h2>
-      </article>
-      <article class="eight columns">
+<section class="inauguration">
+    <article class="inauguration-info">
+        <h2 class="inauguration-title">Inauguration</h2>
         {{cms.inauguration.inauguration_info|safe}}
-      </article>
-    </div>
-  </div>
+    </article>
 </section>

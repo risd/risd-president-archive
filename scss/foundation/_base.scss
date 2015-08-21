@@ -20,7 +20,7 @@ section {
 }
 
 html {
-    font-family: $t-font--one;
+    font-family: $t-font--three;
     line-height: $t-lineHeight--normal;
     font-weight: $t-weight--book;
     font-size: $t-size--base;
@@ -53,20 +53,24 @@ em {
 
 p {
     margin-bottom: $l-space--xsmall;
+    font-family: $t-font--three;
+    @include l-textWidth;
 }
 
 h1 {
-    font-family: $t-font--two;
-    font-size: $t-size--xxxlarge;
+    font-family: $t-font--one;
+    font-size: $t-size--xlarge;
     font-weight: $t-weight--book;
     line-height: $t-lineHeight--tight;
-    margin-bottom: $l-space--xsmall;
+    margin-bottom: $l-space--large;
     margin-left: -$t-size--xsmall/2;
+    text-align: center;
+    @include l-textWidth;
 }
 
 h2 {
-    font-family: $t-font--two;
-    font-size: $t-size--xlarge;
+    font-family: $t-font--one;
+    font-size: $t-size--large;
     font-weight: $t-weight--book;
     line-height: $t-lineHeight--tight;
 }
@@ -79,14 +83,14 @@ h3 {
 }
 
 h4 {
-    font-family: $t-font--three;
+    font-family: $t-font--two;
     font-size: $t-size--medium;
     font-weight: $t-weight--book;
     line-height: $t-lineHeight--normal;
 }
 
 h5, h6 {
-    font-family: $t-font--three;
+    font-family: $t-font--two;
     font-size: $t-size--small;
     font-weight: $t-weight--book;
     line-height: $t-lineHeight--normal;
@@ -119,8 +123,7 @@ iframe {
 //Extra Setup ---------------------------------------
 
 main {
-    lost-center: 90%;
-    margin-top: $l-space--xlarge;
+
 }
 
 section {
@@ -133,7 +136,7 @@ article {
     // box-sizing: border-box;
     // margin: $l-space--medium auto;
     // padding: $l-space--medium 0;
-
+    margin-bottom: $l-space--xxlarge;
 }
 
 div {

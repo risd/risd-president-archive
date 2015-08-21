@@ -12,8 +12,8 @@
 {# This sets our page <title>. It will append this bio's name to the site title defined in base.html #}
 {% block title %}{% parent %} - {{ cms.bio.page_title_prefix }} {{ cms.bio.name }}{% endblock %}
 {% block content %}
-{% include "templates/partials/header.html" %}
-
+{% include "templates/partials/nav.html" %}
+{% include "templates/partials/side-nav.html" %}
   <section class="image-break {{cms.imagebreaks.image_breaks[3].id}}" id="search-process" style="background-image:url('{{cms.imagebreaks.image_breaks[3].image|imageSize(1500)}}');">
     <div class="container">
       <header class="six columns">

@@ -7,7 +7,7 @@
 
 
 .posterMoment {
-    margin: 5vh 2.5vw;
+    margin: 5vh 5vw;
 
     display: flex;
     flex-wrap: wrap;
@@ -108,11 +108,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    @include t-allCaps;
     h2 {
         font-family: $t-font--two;
+        font-weight: $t-weight--bold;
     }
 }
 
 .posterItem-inaugurationText--small {
     font-family: $t-font--two;
+    font-weight: $t-weight--bold;
+    @include t-allCaps;
 }

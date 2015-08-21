@@ -10,7 +10,8 @@
 
 {% block content %}
 
-{% include "templates/partials/header.html" %}
+{% include "templates/partials/nav.html" %}
+{% include "templates/partials/side-nav.html" %}
 
 <section class="image-break" id="{{cms.imagebreaks.image_breaks[4].id}}" style="background-image:url('{{cms.imagebreaks.image_breaks[4].image|imageSize(1600)}}');">
     <div class="container">

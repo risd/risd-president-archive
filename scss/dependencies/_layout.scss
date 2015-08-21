@@ -6,6 +6,7 @@ $l-space--medium: 1.5rem*$t-lineHeight--normal;
 $l-space--large: 2.5rem*$t-lineHeight--normal;
 $l-space--xlarge: 4rem*$t-lineHeight--normal;
 $l-space--xxlarge: 6rem*$t-lineHeight--normal;
+$l-space--xxxlarge: 8rem*$t-lineHeight--normal;
 
 
 @mixin l-ruleAbove() {
@@ -50,6 +51,8 @@ $l-space--xxlarge: 6rem*$t-lineHeight--normal;
 
 @mixin l-textWidth {
     max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @mixin l-autoSize {

@@ -15,7 +15,7 @@
 @font-face {
     font-family: Mercury Display;
     src: url("../fonts/MercuryDisplay-Bold.otf");
-    font-weight: 900;
+    font-weight: 600;
     font-style: normal;
 }
 
@@ -29,7 +29,7 @@
 @font-face {
     font-family: Mercury Display;
     src: url("../fonts/MercuryDisplay-BolIta.otf");
-    font-weight: 900;
+    font-weight: 600;
     font-style: italic;
 }
 
@@ -50,14 +50,14 @@
 @font-face {
     font-family: Mercury Text;
     src: url("../fonts/MercuryTextG1-Bold-Pro.otf");
-    font-weight: 900;
+    font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
     font-family: Mercury Text;
     src: url("../fonts/MercuryTextG1-BoldItalic-Pro.otf");
-    font-weight: 900;
+    font-weight: 600;
     font-style: italic;
 }
 
@@ -95,7 +95,7 @@ $t-lineHeight--loose: 2;
 }
 @mixin t-allCaps() {
     text-transform: uppercase;
-    letter-spacing: .15rem;
+    letter-spacing: .1rem;
 }
 
 @mixin t-noDecoration() {

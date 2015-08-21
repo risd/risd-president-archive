@@ -12,7 +12,7 @@
 @font-face {
   font-family: Mercury Display;
   src: url("../fonts/MercuryDisplay-Bold.otf");
-  font-weight: 900;
+  font-weight: 600;
   font-style: normal;
 }
 @font-face {
@@ -24,7 +24,7 @@
 @font-face {
   font-family: Mercury Display;
   src: url("../fonts/MercuryDisplay-BolIta.otf");
-  font-weight: 900;
+  font-weight: 600;
   font-style: italic;
 }
 @font-face {
@@ -42,13 +42,13 @@
 @font-face {
   font-family: Mercury Text;
   src: url("../fonts/MercuryTextG1-Bold-Pro.otf");
-  font-weight: 900;
+  font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: Mercury Text;
   src: url("../fonts/MercuryTextG1-BoldItalic-Pro.otf");
-  font-weight: 900;
+  font-weight: 600;
   font-style: italic;
 }
 .wideColumn {
@@ -161,6 +161,8 @@
   }
   .twoColumn-width--equal p {
     max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
   }
   .twoColumn-width--equal img {
     width: 100%;
@@ -211,6 +213,8 @@
   }
   .twoColumn-width--small p {
     max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -258,6 +262,8 @@
   }
   .twoColumn-width--large p {
     max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -406,7 +412,7 @@ a {
 }
 
 html {
-  font-family: "Circular", "Helvetica", "sans-serif";
+  font-family: "Mercury Text", "Georgia", "serif";
   line-height: 1.666;
   font-weight: 400;
   font-size: 13px;
@@ -441,20 +447,28 @@ em {
 
 p {
   margin-bottom: 0.833rem;
+  font-family: "Mercury Text", "Georgia", "serif";
+  max-width: 30em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h1 {
-  font-family: "Mercury Display", "Georgia", "serif";
-  font-size: 8rem;
+  font-family: "Circular", "Helvetica", "sans-serif";
+  font-size: 3rem;
   font-weight: 400;
   line-height: 1.2;
-  margin-bottom: 0.833rem;
+  margin-bottom: 4.165rem;
   margin-left: -0.5rem;
+  text-align: center;
+  max-width: 30em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h2 {
-  font-family: "Mercury Display", "Georgia", "serif";
-  font-size: 3rem;
+  font-family: "Circular", "Helvetica", "sans-serif";
+  font-size: 2rem;
   font-weight: 400;
   line-height: 1.2;
 }
@@ -467,14 +481,14 @@ h3 {
 }
 
 h4 {
-  font-family: "Mercury Text", "Georgia", "serif";
+  font-family: "Mercury Display", "Georgia", "serif";
   font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.666;
 }
 
 h5, h6 {
-  font-family: "Mercury Text", "Georgia", "serif";
+  font-family: "Mercury Display", "Georgia", "serif";
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.666;
@@ -506,25 +520,12 @@ iframe {
   width: 100%;
   height: 300px;
 }
-main {
-  *zoom: 1;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 6.664rem;
-}
-main:before {
-  content: '';
-  display: table;
-}
-main:after {
-  content: '';
-  display: table;
-  clear: both;
-}
-
 section {
   box-sizing: border-box;
+}
+
+article {
+  margin-bottom: 9.996rem;
 }
 
 @font-face {
@@ -541,7 +542,7 @@ section {
 @font-face {
   font-family: Mercury Display;
   src: url("../fonts/MercuryDisplay-Bold.otf");
-  font-weight: 900;
+  font-weight: 600;
   font-style: normal;
 }
 @font-face {
@@ -553,7 +554,7 @@ section {
 @font-face {
   font-family: Mercury Display;
   src: url("../fonts/MercuryDisplay-BolIta.otf");
-  font-weight: 900;
+  font-weight: 600;
   font-style: italic;
 }
 @font-face {
@@ -571,13 +572,13 @@ section {
 @font-face {
   font-family: Mercury Text;
   src: url("../fonts/MercuryTextG1-Bold-Pro.otf");
-  font-weight: 900;
+  font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: Mercury Text;
   src: url("../fonts/MercuryTextG1-BoldItalic-Pro.otf");
-  font-weight: 900;
+  font-weight: 600;
   font-style: italic;
 }
 .wideColumn {
@@ -690,6 +691,8 @@ section {
   }
   .twoColumn-width--equal p {
     max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
   }
   .twoColumn-width--equal img {
     width: 100%;
@@ -740,6 +743,8 @@ section {
   }
   .twoColumn-width--small p {
     max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -787,6 +792,8 @@ section {
   }
   .twoColumn-width--large p {
     max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -935,7 +942,7 @@ a {
 }
 
 html {
-  font-family: "Circular", "Helvetica", "sans-serif";
+  font-family: "Mercury Text", "Georgia", "serif";
   line-height: 1.666;
   font-weight: 400;
   font-size: 13px;
@@ -970,20 +977,28 @@ em {
 
 p {
   margin-bottom: 0.833rem;
+  font-family: "Mercury Text", "Georgia", "serif";
+  max-width: 30em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h1 {
-  font-family: "Mercury Display", "Georgia", "serif";
-  font-size: 8rem;
+  font-family: "Circular", "Helvetica", "sans-serif";
+  font-size: 3rem;
   font-weight: 400;
   line-height: 1.2;
-  margin-bottom: 0.833rem;
+  margin-bottom: 4.165rem;
   margin-left: -0.5rem;
+  text-align: center;
+  max-width: 30em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h2 {
-  font-family: "Mercury Display", "Georgia", "serif";
-  font-size: 3rem;
+  font-family: "Circular", "Helvetica", "sans-serif";
+  font-size: 2rem;
   font-weight: 400;
   line-height: 1.2;
 }
@@ -996,14 +1011,14 @@ h3 {
 }
 
 h4 {
-  font-family: "Mercury Text", "Georgia", "serif";
+  font-family: "Mercury Display", "Georgia", "serif";
   font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.666;
 }
 
 h5, h6 {
-  font-family: "Mercury Text", "Georgia", "serif";
+  font-family: "Mercury Display", "Georgia", "serif";
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.666;
@@ -1035,25 +1050,12 @@ iframe {
   width: 100%;
   height: 300px;
 }
-main {
-  *zoom: 1;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 6.664rem;
-}
-main:before {
-  content: '';
-  display: table;
-}
-main:after {
-  content: '';
-  display: table;
-  clear: both;
-}
-
 section {
   box-sizing: border-box;
+}
+
+article {
+  margin-bottom: 9.996rem;
 }
 
 .header-fixed {
@@ -1061,11 +1063,13 @@ section {
   z-index: 1000;
   width: 100%;
   padding-top: 0.5em;
+  top: 0;
 }
 
 .hamburger-activator {
   max-width: 30px;
   max-height: 30px;
+  margin-left: 1rem;
 }
 .hamburger-activator:hover {
   cursor: pointer;
@@ -1079,6 +1083,7 @@ section {
   position: absolute;
   right: 0;
   display: inline-block;
+  margin-right: 1rem;
 }
 
 svg#risd-seal {
@@ -1102,6 +1107,7 @@ svg#risd-seal:hover path {
   z-index: 900;
   left: -100%;
   transition: left 0.4s ease-in-out;
+  top: 0;
 }
 
 .mainNav-item {
@@ -1143,7 +1149,7 @@ svg#risd-seal:hover path {
 @font-face {
   font-family: Mercury Display;
   src: url("../fonts/MercuryDisplay-Bold.otf");
-  font-weight: 900;
+  font-weight: 600;
   font-style: normal;
 }
 @font-face {
@@ -1155,7 +1161,7 @@ svg#risd-seal:hover path {
 @font-face {
   font-family: Mercury Display;
   src: url("../fonts/MercuryDisplay-BolIta.otf");
-  font-weight: 900;
+  font-weight: 600;
   font-style: italic;
 }
 @font-face {
@@ -1173,13 +1179,13 @@ svg#risd-seal:hover path {
 @font-face {
   font-family: Mercury Text;
   src: url("../fonts/MercuryTextG1-Bold-Pro.otf");
-  font-weight: 900;
+  font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: Mercury Text;
   src: url("../fonts/MercuryTextG1-BoldItalic-Pro.otf");
-  font-weight: 900;
+  font-weight: 600;
   font-style: italic;
 }
 .wideColumn {
@@ -1292,6 +1298,8 @@ svg#risd-seal:hover path {
   }
   .twoColumn-width--equal p {
     max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
   }
   .twoColumn-width--equal img {
     width: 100%;
@@ -1342,6 +1350,8 @@ svg#risd-seal:hover path {
   }
   .twoColumn-width--small p {
     max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -1389,6 +1399,8 @@ svg#risd-seal:hover path {
   }
   .twoColumn-width--large p {
     max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -1537,7 +1549,7 @@ a {
 }
 
 html {
-  font-family: "Circular", "Helvetica", "sans-serif";
+  font-family: "Mercury Text", "Georgia", "serif";
   line-height: 1.666;
   font-weight: 400;
   font-size: 13px;
@@ -1572,20 +1584,28 @@ em {
 
 p {
   margin-bottom: 0.833rem;
+  font-family: "Mercury Text", "Georgia", "serif";
+  max-width: 30em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h1 {
-  font-family: "Mercury Display", "Georgia", "serif";
-  font-size: 8rem;
+  font-family: "Circular", "Helvetica", "sans-serif";
+  font-size: 3rem;
   font-weight: 400;
   line-height: 1.2;
-  margin-bottom: 0.833rem;
+  margin-bottom: 4.165rem;
   margin-left: -0.5rem;
+  text-align: center;
+  max-width: 30em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h2 {
-  font-family: "Mercury Display", "Georgia", "serif";
-  font-size: 3rem;
+  font-family: "Circular", "Helvetica", "sans-serif";
+  font-size: 2rem;
   font-weight: 400;
   line-height: 1.2;
 }
@@ -1598,14 +1618,14 @@ h3 {
 }
 
 h4 {
-  font-family: "Mercury Text", "Georgia", "serif";
+  font-family: "Mercury Display", "Georgia", "serif";
   font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.666;
 }
 
 h5, h6 {
-  font-family: "Mercury Text", "Georgia", "serif";
+  font-family: "Mercury Display", "Georgia", "serif";
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.666;
@@ -1637,29 +1657,16 @@ iframe {
   width: 100%;
   height: 300px;
 }
-main {
-  *zoom: 1;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 6.664rem;
-}
-main:before {
-  content: '';
-  display: table;
-}
-main:after {
-  content: '';
-  display: table;
-  clear: both;
-}
-
 section {
   box-sizing: border-box;
 }
 
+article {
+  margin-bottom: 9.996rem;
+}
+
 .posterMoment {
-  margin: 5vh 2.5vw;
+  margin: 5vh 5vw;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -1808,12 +1815,65 @@ section {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
 }
 .posterItem-inaugurationText--large h2 {
   font-family: "Mercury Display", "Georgia", "serif";
+  font-weight: 600;
 }
 
 .posterItem-inaugurationText--small {
   font-family: "Mercury Display", "Georgia", "serif";
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+}
+
+main {
+  max-width: 90%;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  main {
+    max-width: 80%;
+  }
+}
+@media (min-width: 1024px) {
+  main {
+    max-width: 60%;
+  }
+}
+@media (min-width: 1824px) {
+  main {
+    max-width: 40%;
+  }
+}
+
+.campaign {
+  margin-top: 13.328rem;
+}
+
+.campaign-links {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.campaign-links--item {
+  width: 50%;
+  text-align: center;
+  box-sizing: border-box;
+}
+.campaign-links--item:nth-child(2n+1) {
+  margin-right: 4.165rem;
+}
+.campaign-links--item a {
+  display: inline-block;
+  max-width: 20rem;
+}
+.campaign-links--item span {
+  border-bottom: 2px solid #4b4b4b;
 }
 /*# sourceMappingURL=site.css.map */

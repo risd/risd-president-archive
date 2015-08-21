@@ -13,3 +13,45 @@
 @import "foundation/base";
 @import "components/nav-module";
 @import "components/poster-moment";
+
+
+main {
+    max-width: 90%;
+    margin: 0 auto;
+    @include v-tablet {
+        max-width: 80%;
+    };
+    @include v-laptop {
+        max-width: 60%;
+    };
+    @include v-desktop {
+        max-width: 40%;
+    };
+}
+
+
+.campaign {
+    margin-top: $l-space--xxxlarge;
+}
+.campaign-intro {
+
+}
+.campaign-links {
+    display: flex;
+    box-sizing: border-box;
+}
+.campaign-links--item {
+    width: 50%;
+    text-align: center;
+    box-sizing: border-box;
+    &:nth-child(2n+1) {
+        margin-right: $l-space--large;
+    }
+    a {
+        display: inline-block;
+        max-width: 20rem;
+    }
+    span {
+        border-bottom: 2px solid $c-one;
+    }
+}
