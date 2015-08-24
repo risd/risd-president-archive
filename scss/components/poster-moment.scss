@@ -7,7 +7,7 @@
 
 
 .posterMoment {
-    margin: 5vh 5vw;
+    margin: 0;
 
     display: flex;
     flex-wrap: wrap;
@@ -19,7 +19,7 @@
 .risd-quadrant {
     width: 50%;
     /* min-width: 45vw; */
-    height: 45vh;
+    height: 50vh;
     /* min-height: 45vh; */
     display: flex;
     flex-wrap: wrap;
@@ -39,8 +39,8 @@
     position: absolute;
     font-size: 10vw;
     color: white;
-    width: 45vw;
-    height: 45vh;
+    width: 49%;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,7 +48,8 @@
 
 .risd-text {
     font-family: $t-font--one;
-    font-size: $t-size--xxxlarge*3;
+    font-size: $t-size--xxxlarge*3.5;
+    margin-bottom: 1rem;
 }
 
 .posterItems {

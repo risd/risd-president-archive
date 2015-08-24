@@ -13,25 +13,16 @@
 @import "foundation/base";
 @import "components/nav-module";
 @import "components/poster-moment";
+@import "vendor/flexslider";
 
 
-main {
-    max-width: 90%;
-    margin: 0 auto;
-    @include v-tablet {
-        max-width: 80%;
-    };
-    @include v-laptop {
-        max-width: 60%;
-    };
-    @include v-desktop {
-        max-width: 40%;
-    };
-}
 
-
+//Home Page
 .campaign {
     margin-top: $l-space--xxxlarge;
+}
+.campaign-description {
+
 }
 .campaign-intro {
 
@@ -54,4 +45,91 @@ main {
     span {
         border-bottom: 2px solid $c-one;
     }
+}
+
+
+//Inauguration Page
+.inauguration {
+    margin-top: $l-space--xlarge;
+}
+.inauguration-title {
+
+}
+.inauguration-info {
+    display: flex;
+    flex-wrap: wrap;
+    p {
+        @include l-textWidth;
+    }
+}
+.inauguration-date {
+    width: 50%;
+    text-align: center;
+    font-size: $t-size--large;
+    margin-bottom: $l-space--large;
+    p {
+        max-width: 20rem;
+    }
+}
+.inauguration-address {
+    width: 50%;
+    text-align: center;
+    font-size: $t-size--large;
+    margin-bottom: $l-space--large;
+    p {
+        max-width: 20rem;
+    }
+}
+
+
+//President's Bio page
+.bio {
+}
+.bio-description {
+
+}
+
+
+
+//Hero Images
+.image-break {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+.image-container {
+    width: 90%;
+    height: 90vh;
+    background-position: 50% 25%;
+    box-sizing: border-box;
+    border: 4px solid $c-one;
+}
+
+
+// Image Slider Gallery
+.image-gallery{
+	ul{
+		list-style:none;
+	}
+}
+//Edit flexslider styles in vendor/flexslider.scss
+.flexslider{
+	background:none;
+	border:none;
+}
+.slides{
+	li{
+		margin-bottom:0em;
+	}
+}
+p.caption{
+	font-size:0.8em;
+	margin-top:0.5em;
+	color:rgb(150,150,150);
+	margin-bottom:0em;
+	line-height:1.2em;
+	letter-spacing:1px;
 }

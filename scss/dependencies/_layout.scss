@@ -66,62 +66,20 @@ $l-space--xxxlarge: 8rem*$t-lineHeight--normal;
 
 
 .wideColumn {
-    lost-center: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    max-width: 90%;
     margin: 0 auto;
 }
 
-
-.twoColumn {
-    lost-center: 100%;
-    padding: 0;
-    margin: 0;
+.narrowColumn {
+    max-width: 90%;
+    margin: 0 auto;
     @include v-tablet {
-        lost-center: 80%;
+        max-width: 80%;
     };
-    img {
-        width: 100%;
-    }
-}
-.twoColumn-width--equal {
-    lost-column: 1 1;
-    box-sizing: border-box;
-
-    @include v-tablet {
-        lost-column: 1/2 2;
-        @include l-horizontalRhythm;
-        p {
-            @include l-textWidth;
-        }
-        img {
-            width: 100%;
-        }
+    @include v-laptop {
+        max-width: 60%;
     };
-}
-//Smaller column to be paired with the larger column defined below.
-.twoColumn-width--small {
-    lost-column: 1 1;
-    box-sizing: border-box;
-
-    @include v-tablet {
-        lost-column: 2/5 2;
-        @include l-horizontalRhythm;
-        p {
-            @include l-textWidth;
-        }
-    };
-}
-.twoColumn-width--large {
-    lost-column: 1 1;
-    box-sizing: border-box;
-
-    @include v-tablet {
-        lost-column: 3/5 2;
-        @include l-horizontalRhythm;
-        p {
-            @include l-textWidth;
-        }
+    @include v-desktop {
+        max-width: 40%;
     };
 }

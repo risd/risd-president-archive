@@ -17,15 +17,15 @@
 {% endblock %}
 
 {% include "templates/partials/poster-moment.html" %}
-{% set data = cms.home %}
+{% set home = cms.home %}
 
-<main>
-    <section class="campaign">
+<main class="campaign">
+    <section class="campaign-description narrowColumn">
         <article class="campaign-intro">
-            {{ data.campaign_intro|safe }}
+            {{ home.campaign_intro|safe }}
         </article>
         <article class="campaign-links">
-            {% for link in data.links %}
+            {% for link in home.links %}
                 <h3 class="campaign-links--item">
                     <a href="{{ link.link_url }}" target="_blank"><span>{{ link.link_text }}</span></a>
                 </h3>

@@ -1,4 +1,3 @@
-
 {# ------------------------------------------------------- #}
 
 {# Confused what extends and blocks do? Watch a primer: #}
@@ -6,23 +5,22 @@
 {% extends "templates/partials/base.html" %}
 
 {# This sets our page <title>. It will append "- Homepage" to the site title defined in base. #}
-{% block title %}{% parent %} - {{ cms.factsheet.name }}{% endblock %}
+{% block title %}{% parent %}
+-
+{{ cms.factsheet.name }}{% endblock %}
 
 {% block content %}
+{% set inauguration = cms.inauguration %}
 
 {% include "templates/partials/header.html" %}
-<!--
-<section class="image-break">
-  <div class="container">
-    <header class="six columns">
-      <h1>{{cms.inauguration.name}}</h1>
-    </header>
-  </div>
-</section> -->
 
-<section class="inauguration">
-    <article class="inauguration-info">
-        <h2 class="inauguration-title">Inauguration</h2>
-        {{cms.inauguration.inauguration_info|safe}}
-    </article>
-</section>
+<main class="inauguration">
+    <h1 class="inauguration-title">Inauguration</h1>
+    <section class="inauguration-info narrowColumn">
+        <article class="inauguration-date">{{ inauguration.inauguration_date|safe }}</article>
+        <article class="inauguration-address">{{ inauguration.inauguration_address|safe }}</article>
+        {{ inauguration.inauguration_info|safe }}
+    </section>
+</main>
+
+{% endblock %}
