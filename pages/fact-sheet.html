@@ -1,4 +1,3 @@
-
 {# ------------------------------------------------------- #}
 
 {# Confused what extends and blocks do? Watch a primer: #}
@@ -6,135 +5,113 @@
 {% extends "templates/partials/base.html" %}
 
 {# This sets our page <title>. It will append "- Homepage" to the site title defined in base. #}
-{% block title %}{% parent %} - {{ cms.factsheet.name }}{% endblock %}
+{% block title %}{% parent %}
+-
+{{ cms.factsheet.name }}{% endblock %}
 
 {% block content %}
 
+{% block header %}
+{% set activeNavItem = 'risd facts' %}
 {% include "templates/partials/header.html" %}
+{% endblock %}
 
-<section class="image-break" id="{{cms.imagebreaks.image_breaks[4].id}}" style="background-image:url('{{cms.imagebreaks.image_breaks[4].image|imageSize(1600)}}');">
-    <div class="container">
-      <header class="six columns">
-        <h1>risd <br/> facts</h1>
-      </header>
-    </div>
-  </section>
-
-  <section id="fact-sheet">
-    <div class="container">
-      <div class="row">
-        <header class="three columns">
-          <h2>{{cms.factsheet.name}}</h2>
-        </header>
-
+<main class="factSheet">
+    <section class="image-break">
+        <div class="image-container" style="background-image:url('{{cms.imagebreaks.image_breaks[4].image|imageSize(1500)}}');"></div>
+    </section>
+    <h1 class="factSheet-title">{{cms.factsheet.name}}</h1>
+    <section id="factSheet-description narrowColumn">
         <article class="eight columns">
-          {{cms.factsheet.overview|safe}}
+            {{cms.factsheet.overview|safe}}
         </article>
-      </div>
-
-
-      <div class="row info-graphic-group">
-        <h3 class="three columns">student body</h3>
-        <div class="eight columns">
-        {% for row in cms.factsheet.student_body %}
-          <figure class="four columns info-graphic">
-            <p class="info-graphic-title">{{row.title}}</p>
-            <p class="info-graphic-data">{{row.data}}</p>
-            {% if row.note %}
-            <p class="info-graphic-note">{{row.note}}</p>
-            {% endif %}
-          </figure>
-        {% endfor %}
-        </div>
-      </div>
-
-      <div class="row info-graphic-group">
-        <h3 class="three columns">faculty</h3>
-        <div class="eight columns">
-          {% for row in cms.factsheet.faculty %}
-            <figure class="four columns info-graphic">
-              <p class="info-graphic-title">{{row.title}}</p>
-              <p class="info-graphic-data">{{row.data}}</p>
+    </section>
+    <section class="infoGraphic narrowColumn">
+        <article class="infoGraphic-category">
+            <h3 class="infoGraphic-category--title">student body</h3>
+            {% for row in cms.factsheet.student_body %}
+            <figure class="infoGraphic-item">
+                <h2 class="infoGraphic-item--title"><span>{{row.title}}</span></h2>
+                <h1 class="infoGraphic-item--data">{{row.data}}</h1>
+                {% if row.note %}
+                <p class="infoGraphic-item--note">{{row.note}}</p>
+                {% endif %}
             </figure>
-          {% endfor %}
-        </div>
-      </div>
+            {% endfor %}
+        </article>
 
-      <div class="row info-graphic-group">
-        <h3 class="three columns">acceptance rate</h3>
-        <div class="eight columns">
-          {% for row in cms.factsheet.acceptance_rate %}
-            <figure class="four columns info-graphic">
-              <p class="info-graphic-title">{{row.title}}</p>
-              <p class="info-graphic-data">{{row.data}}</p>
+        <article class="infoGraphic-category">
+            <h3 class="infoGraphic-category--title">faculty</h3>
+            {% for row in cms.factsheet.faculty %}
+            <figure class="infoGraphic-item">
+                <h2 class="infoGraphic-item--title"><span>{{row.title}}</span></h2>
+                <h1 class="infoGraphic-item--data">{{row.data}}</h1>
             </figure>
-          {% endfor %}
-        </div>
-      </div>
+            {% endfor %}
+        </article>
 
-      <div class="row info-graphic-group">
-        <h3 class="three columns">retention rate</h3>
-        <div class="eight columns">
-          {% for row in cms.factsheet.retention_rate %}
-            <figure class="four columns info-graphic">
-              <p class="info-graphic-title">{{row.title}}</p>
-              <p class="info-graphic-data">{{row.data}}</p>
+        <article class="infoGraphic-category">
+            <h3 class="infoGraphic-category--title">acceptance rate</h3>
+            {% for row in cms.factsheet.acceptance_rate %}
+            <figure class="infoGraphic-item">
+                <h2 class="infoGraphic-item--title"><span>{{row.title}}</span></h2>
+                <h1 class="infoGraphic-item--data">{{row.data}}</h1>
             </figure>
-          {% endfor %}
-        </div>
-      </div>
+            {% endfor %}
+        </article>
 
-      <div class="row info-graphic-group">
-        <h3 class="three columns">graduation rate</h3>
-        <div class="eight columns">
-          {% for row in cms.factsheet.graduation_rate %}
-            <figure class="four columns info-graphic">
-              <p class="info-graphic-title">{{row.title}}</p>
-              <p class="info-graphic-data">{{row.data}}</p>
+        <article class="infoGraphic-category">
+            <h3 class="infoGraphic-category--title">retention rate</h3>
+            {% for row in cms.factsheet.retention_rate %}
+            <figure class="infoGraphic-item">
+                <h2 class="infoGraphic-item--title"><span>{{row.title}}</span></h2>
+                <h1 class="infoGraphic-item--data">{{row.data}}</h1>
             </figure>
-          {% endfor %}
-        </div>
-      </div>
+            {% endfor %}
+        </article>
+
+        <article class="infoGraphic-category">
+            <h3 class="infoGraphic-category--title">graduation rate</h3>
+            {% for row in cms.factsheet.graduation_rate %}
+            <figure class="infoGraphic-item">
+                <h2 class="infoGraphic-item--title"><span>{{row.title}}</span></h2>
+                <h1 class="infoGraphic-item--data">{{row.data}}</h1>
+            </figure>
+            {% endfor %}
+        </article>
     </section>
 
-    <section class="fact-sheet">
-      <div class="container">
-
-      <img src="{{cms.factsheet.mission_image|imageSize(800)}}" class="three columns" alt="">
-        <article class="eight columns">
-          {{cms.factsheet.mission|safe}}
+    <section class="factSheet-description narrowColumn">
+        <article class="factSheet-description--item">
+            <img alt="" class="factSheet-description--image" src="{{cms.factsheet.mission_image|imageSize(800)}}">
+            {{cms.factsheet.mission|safe}}
         </article>
 
-        <article class="eight columns offset-by-three">
-          {{cms.factsheet.academics|safe}}
+        <article class="factSheet-description--item">
+            {{cms.factsheet.academics|safe}}
         </article>
 
-        <img src="{{cms.factsheet.degree_programs_image|imageSize(800)}}" class="three columns" alt="">
-
-        <article class="eight columns">
-          {{cms.factsheet.degree_programs|safe}}
+        <article class="factSheet-description--item">
+            <img alt="" class="factSheet-description--image" src="{{cms.factsheet.degree_programs_image|imageSize(800)}}">
+            {{cms.factsheet.degree_programs|safe}}
         </article>
 
-        {# <img src="{{cms.factsheet.alumni_image|imageSize(800)}}" class="three columns" alt=""> #}
-        <article class="eight columns offset-by-three">
-          {{cms.factsheet.alumni|safe}}
+        <article class="factSheet-description--item">
+            {# <img src="{{cms.factsheet.alumni_image|imageSize(800)}}" class="factSheet-description--image" alt=""> #}
+            {{cms.factsheet.alumni|safe}}
         </article>
 
-        <img src="{{cms.factsheet.location_image|imageSize(800)}}" class="three columns" alt="">
-        <article class="eight columns">
-          {{cms.factsheet.location|safe}}
+        <article class="factSheet-description--item">
+            <img alt="" class="factSheet-description--image" src="{{cms.factsheet.location_image|imageSize(800)}}">
+            {{cms.factsheet.location|safe}}
         </article>
 
-        <article class="eight columns offset-by-three">
-          {{cms.factsheet.accreditation|safe}}
+        <article class="factSheet-description--item">
+            {{cms.factsheet.accreditation|safe}}
         </article>
 
-       <article class="eight columns offset-by-three">
-         {{cms.factsheet.financial_info|safe}}
-       </article>
-       <div class="eight columns offset-by-three">
-         <h3><a href="../past-presidents">Brief history of RISD's presidents</a></h3>
-       </div>
-
-      </div>
+        <article class="factSheet-description--item">
+            {{cms.factsheet.financial_info|safe}}
+        </article>
     </section>
+</main>

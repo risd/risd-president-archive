@@ -5,7 +5,11 @@
 {{ cms.bio.page_title_prefix }}
 {{ cms.bio.name }}{% endblock %}
 {% block content %}
+
+{% block header %}
+{% set activeNavItem = 'president’s bio' %}
 {% include "templates/partials/header.html" %}
+{% endblock %}
 
 <main class="bio">
     <section class="image-break">
@@ -14,44 +18,45 @@
     <h1 class="bio-title">About Rosanne Somerson</h1>
     <section class="bio-description narrowColumn">
         {{cms.bio.long_bio|safe}}
-        <div class="flexslider">
-            <ul class="slides">
-                {% for image in cms.bio.risd_roots %}
-                <li><img src="{{image|imageSize(1200)}}">
-                    <p class="caption">{{image.caption}}</p>
-                </li>
-                {% endfor %}
-            </ul>
+        <div class="slider-container">
+            {% for image in cms.bio.risd_roots %}
+            <div class="slider-image">
+                <img src="{{image|imageSize(1200)}}">
+                <p class="caption">{{image.caption}}</p>
+            </div>
+            {% endfor %}
         </div>
         {{cms.bio.deep_roots|safe}}
-        <div class="flexslider">
-            <ul class="slides">
-                {% for image in cms.bio.work %}
-                <li><img src="{{image|imageSize(800)}}">
-                    <p class="caption">{{image.caption}}</p>
-                </li>
-                {% endfor %}
-            </ul>
+        <div class="slider-container">
+            {% for image in cms.bio.work %}
+            <div class="slider-image">
+                <img src="{{image|imageSize(800)}}">
+                <p class="caption">{{image.caption}}</p>
+            </div>
+            {% endfor %}
         </div>
         {{cms.bio.studio_practice|safe}}
         <h3>Highlights from President Somerson's RISD years</h3>
-        {% for row in cms.bio.timeline|sort('year')  %}
-        <div class="timeline-entry">
-            <p class="timeline-title">
-                {{row.event|safe}}
-            </p>
-
-            <p class="timeline-date">
-                {{row.year}}
-            </p>
-            {% if image %}
-            <img </div src="{{row.image}}">
-            {% endif %}
+        <article class="timeline">
+            {% for row in cms.bio.timeline|sort('year')  %}
+            <div class="timeline-entry">
+                <p class="timeline-date">
+                    {{row.year}}
+                </p>
+                <p class="timeline-title">
+                    {{row.event|safe}}
+                </p>
+                {% if image %}
+                <img </div src="{{row.image}}">
+                {% endif %}
+            </div>
             {% endfor %}
-            <h3>
-                <a href="../fact-sheet">Learn more about RISD</a>
-            </h3>
-        </div>
+        </article>
+    </section>
+    <section class="narrativeLinks">
+        <h3 class="narrativeLinks-item">
+            <a href="../fact-sheet">Learn more about RISD</a>
+        </h3>
     </section>
 </main>
 {% endblock %}

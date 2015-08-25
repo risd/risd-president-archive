@@ -24,6 +24,7 @@
         <article class="campaign-intro">
             {{ home.campaign_intro|safe }}
         </article>
+
         <article class="campaign-links">
             {% for link in home.links %}
                 <h3 class="campaign-links--item">
@@ -31,6 +32,11 @@
                 </h3>
             {% endfor %}
         </article>
+    </section>
+    <section class="narrativeLinks">
+        <h3 class="narrativeLinks-item">
+            <a href="../bio">Read more about Rosanne</a>
+        </h3>
     </section>
 </main>
 

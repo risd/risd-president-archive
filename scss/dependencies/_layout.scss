@@ -68,6 +68,15 @@ $l-space--xxxlarge: 8rem*$t-lineHeight--normal;
 .wideColumn {
     max-width: 90%;
     margin: 0 auto;
+    @include v-tablet {
+        max-width: 80%;
+    };
+    @include v-laptop {
+        max-width: 70%;
+    };
+    @include v-desktop {
+        max-width: 60%;
+    };
 }
 
 .narrowColumn {

@@ -58,21 +58,37 @@ svg#risd-seal:hover{
 	left:-100%;
     transition: left 0.4s ease-in-out;
 	top: 0;
+	border: 4px solid $c-one;
+	box-sizing: border-box;
+	font-family: $t-font--one;
+}
+.mainNav-list {
+	width: 90%;
+    height: 90vh;
+	margin: 5vh 5%;
 }
 .mainNav-item {
-    font-size:2em;
-    line-height:1em;
-    @media screen and (min-width:550px){
-        font-size:2.5em;
-        line-height:1em;
-    }
-    @media screen and (min-width:700px){
-        font-size:3em;
-    }
-    @media screen and (min-width:1000px){
-        font-size:4em;
-    }
+    font-size: $t-size--xlarge;
+    line-height: $t-lineHeight--normal;
+    @include v-tablet {
+		font-size: $t-size--xxlarge;
+	    line-height: $t-lineHeight--normal;
+    };
+    @include v-laptop {
+		font-size: $t-size--xxlarge;
+	    line-height: $t-lineHeight--normal;
+    };
+    @include v-desktop {
+		font-size: $t-size--xxxlarge;
+	    line-height: $t-lineHeight--normal;
+    };
 }
 .on{
 	left:0%;
+}
+.mainNav-active {
+	span {
+		border-bottom: 4px solid $c-one;
+	}
+
 }

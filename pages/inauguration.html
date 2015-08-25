@@ -12,7 +12,10 @@
 {% block content %}
 {% set inauguration = cms.inauguration %}
 
+{% block header %}
+{% set activeNavItem = 'inauguration' %}
 {% include "templates/partials/header.html" %}
+{% endblock %}
 
 <main class="inauguration">
     <h1 class="inauguration-title">Inauguration</h1>

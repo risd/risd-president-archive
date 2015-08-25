@@ -49,10 +49,10 @@ url:  '/fact-sheet'
         {% endif %}
         {% if loop.first %}
     <nav class="mainNav">
-        <ul>
+        <ul class="mainNav-list">
         {% endif %}
             <li class="{{ cls }} mainNav-item">
-                <a href="{{ navItem.url }}">{{navItem.name}}</a>
+                <a href="{{ navItem.url }}"><span>{{navItem.name}}</span></a>
             </li>
         {% if loop.last %}
         </ul>
