@@ -1176,7 +1176,7 @@ article {
 }
 
 .risd-quadrant {
-  width: 50%;
+  width: 90%;
   /* min-width: 45vw; */
   height: 50vh;
   /* min-height: 45vh; */
@@ -1196,13 +1196,35 @@ article {
 .risd-quadrant:nth-child(n+3) {
   border-bottom: 4px solid black;
 }
+@media (min-width: 768px) {
+  .risd-quadrant {
+    width: 50%;
+    /* min-width: 45vw; */
+    height: 50vh;
+    /* min-height: 45vh; */
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    box-sizing: border-box;
+    border-top: 4px solid black;
+    border-left: 4px solid black;
+  }
+  .risd-quadrant:nth-child(2n) {
+    border-right: 4px solid black;
+  }
+  .risd-quadrant:nth-child(n+3) {
+    border-bottom: 4px solid black;
+  }
+}
 
 .risd-container {
-  /* display: none; */
   position: absolute;
   font-size: 10vw;
   color: white;
-  width: 49%;
+  width: 90%;
   height: 50vh;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1213,6 +1235,12 @@ article {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+@media (min-width: 768px) {
+  .risd-container {
+    width: 49%;
+    height: 50vh;
+  }
 }
 
 .risd-text {
@@ -1292,9 +1320,15 @@ article {
 .posterItem-campaignText--large h2 {
   font-family: "Circular", "Helvetica", "sans-serif";
 }
+.posterItem-campaignText--large span {
+  border-bottom: 4px solid black;
+}
 
 .posterItem-campaignText--small {
   font-family: "Circular", "Helvetica", "sans-serif";
+}
+.posterItem-campaignText--small span {
+  border-bottom: 4px solid black;
 }
 
 .posterItem-inaugurationText--large {

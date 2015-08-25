@@ -17,7 +17,7 @@
 }
 
 .risd-quadrant {
-    width: 50%;
+    width: 90%;
     /* min-width: 45vw; */
     height: 50vh;
     /* min-height: 45vh; */
@@ -32,18 +32,39 @@
     &:nth-child(n+3) {
         border-bottom: 4px solid $c-one;
     }
+    @include v-tablet {
+        width: 50%;
+        /* min-width: 45vw; */
+        height: 50vh;
+        /* min-height: 45vh; */
+        display: flex;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        border-top: 4px solid $c-one;
+        border-left: 4px solid $c-one;
+        &:nth-child(2n) {
+            border-right: 4px solid $c-one;
+        }
+        &:nth-child(n+3) {
+            border-bottom: 4px solid $c-one;
+        }
+    };
 }
 
 .risd-container {
-    /* display: none; */
     position: absolute;
     font-size: 10vw;
     color: white;
-    width: 49%;
+    width: 90%;
     height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    @include v-tablet {
+        width: 49%;
+        height: 50vh;
+    };
+
 }
 
 .risd-text {
@@ -97,10 +118,17 @@
     h2 {
         font-family: $t-font--one;
     }
+    span {
+        border-bottom: 4px solid $c-one;
+    }
 }
 
 .posterItem-campaignText--small {
     font-family: $t-font--one;
+
+    span {
+        border-bottom: 4px solid $c-one;
+    }
 }
 
 .posterItem-inaugurationText--large {
