@@ -755,7 +755,7 @@ svg#risd-seal:hover path {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.9);
+  background: white;
   z-index: 900;
   left: -100%;
   transition: left 0.4s ease-in-out;
@@ -1176,7 +1176,7 @@ article {
 }
 
 .risd-quadrant {
-  width: 90%;
+  width: 100%;
   /* min-width: 45vw; */
   height: 50vh;
   /* min-height: 45vh; */
@@ -1187,13 +1187,6 @@ article {
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
   box-sizing: border-box;
-  border-top: 4px solid black;
-  border-left: 4px solid black;
-}
-.risd-quadrant:nth-child(2n) {
-  border-right: 4px solid black;
-}
-.risd-quadrant:nth-child(n+3) {
   border-bottom: 4px solid black;
 }
 @media (min-width: 768px) {
@@ -1209,13 +1202,12 @@ article {
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
     box-sizing: border-box;
-    border-top: 4px solid black;
-    border-left: 4px solid black;
   }
-  .risd-quadrant:nth-child(2n) {
+  .risd-quadrant:nth-child(2n+1) {
     border-right: 4px solid black;
   }
   .risd-quadrant:nth-child(n+3) {
+    border-top: 4px solid black;
     border-bottom: 4px solid black;
   }
 }
@@ -1224,7 +1216,7 @@ article {
   position: absolute;
   font-size: 10vw;
   color: white;
-  width: 90%;
+  width: 98%;
   height: 50vh;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1319,16 +1311,38 @@ article {
 }
 .posterItem-campaignText--large h2 {
   font-family: "Circular", "Helvetica", "sans-serif";
+  font-size: 6vmax;
+}
+@media (min-width: 1024px) {
+  .posterItem-campaignText--large h2 {
+    font-size: 5vmax;
+  }
 }
 .posterItem-campaignText--large span {
-  border-bottom: 4px solid black;
+  border-bottom: 0.6vmax solid black;
+}
+@media (min-width: 1024px) {
+  .posterItem-campaignText--large span {
+    border-bottom: 0.4vmax solid black;
+  }
 }
 
 .posterItem-campaignText--small {
   font-family: "Circular", "Helvetica", "sans-serif";
+  font-size: 3.5vmax;
+}
+@media (min-width: 1024px) {
+  .posterItem-campaignText--small {
+    font-size: 2.7vmax;
+  }
 }
 .posterItem-campaignText--small span {
-  border-bottom: 4px solid black;
+  border-bottom: 0.3vmax solid black;
+}
+@media (min-width: 1024px) {
+  .posterItem-campaignText--small span {
+    border-bottom: 0.3vmax solid black;
+  }
 }
 
 .posterItem-inaugurationText--large {
@@ -1344,18 +1358,28 @@ article {
       -ms-flex-pack: center;
           justify-content: center;
   text-transform: uppercase;
-  letter-spacing: .1rem;
 }
 .posterItem-inaugurationText--large h2 {
   font-family: "Mercury Display", "Georgia", "serif";
   font-weight: 600;
+  font-size: 6vmax;
+}
+@media (min-width: 1024px) {
+  .posterItem-inaugurationText--large h2 {
+    font-size: 5vmax;
+  }
 }
 
 .posterItem-inaugurationText--small {
   font-family: "Mercury Display", "Georgia", "serif";
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: .1rem;
+  font-size: 2.9vmax;
+}
+@media (min-width: 1024px) {
+  .posterItem-inaugurationText--small {
+    font-size: 1.7vmax;
+  }
 }
 
 .slider-container {

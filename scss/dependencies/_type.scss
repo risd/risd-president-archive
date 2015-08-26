@@ -95,7 +95,7 @@ $t-lineHeight--loose: 2;
 }
 @mixin t-allCaps() {
     text-transform: uppercase;
-    letter-spacing: .1rem;
+    // letter-spacing: .1rem;
 }
 
 @mixin t-noDecoration() {
