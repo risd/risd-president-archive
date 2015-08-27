@@ -34,16 +34,22 @@
 }
 .campaign-links {
     display: flex;
+    flex-wrap: wrap;
     box-sizing: border-box;
+    align-items: center;
+    margin: $l-space--xlarge auto;
+    @include v-tablet {
+        margin: $l-space--xxlarge auto;
+    };
 }
 .campaign-links--item {
-    width: 50%;
+    width: 100%;
     text-align: center;
     box-sizing: border-box;
-    margin: $l-space--xxlarge auto;
-    &:nth-child(2n+1) {
-        margin-right: $l-space--large;
-    }
+    margin: $l-space--medium auto;
+    @include v-tablet {
+        width: 50%;
+    };
 }
 
 
@@ -52,32 +58,30 @@
     margin-top: $l-space--small;
 }
 .inauguration-title {
-
+    margin-bottom: $l-space--xlarge;
 }
 .inauguration-info {
     display: flex;
     flex-wrap: wrap;
-    p {
-        @include l-textWidth;
-    }
 }
-.inauguration-date {
-    width: 50%;
+.inauguration-date, .inauguration-address {
+    width: 100%;
     text-align: center;
+    font-family: $t-font--one;
     font-size: $t-size--large;
-    margin: $l-space--xlarge auto;
+    margin-bottom: $l-space--medium;
+    line-height: $t-lineHeight--tight;
+    @include v-tablet {
+        width: 50%;
+        margin: $l-space--xlarge auto;
+    };
     p {
         max-width: 20rem;
     }
 }
-.inauguration-address {
-    width: 50%;
-    text-align: center;
-    font-size: $t-size--large;
-    margin: $l-space--xlarge auto;
-    p {
-        max-width: 20rem;
-    }
+.inauguration-info--note {
+    margin: $l-space--large 0;
+    @include l-textWidth;
 }
 
 
@@ -93,11 +97,14 @@
     blockquote {
         font-family: $t-font--one;
         font-style: normal;
-        font-size: $t-size--xlarge;
+        font-size: $t-size--large;
         text-align: center;
         line-height: $t-lineHeight--normal;
         margin: $l-space--medium auto;
         max-width: 20em;
+        @include v-tablet {
+            font-size: $t-size--xlarge;
+        };
     }
 }
 .biography-title {
@@ -122,8 +129,14 @@
 }
 .biography-title--timeline {
     margin: 0 auto;
-    font-size: $t-size--xlarge;
+    font-size: $t-size--large;
     max-width: 40rem;
+    @include v-tablet {
+        font-size: $t-size--xlarge;
+    };
+}
+.biography-section--timeline {
+    margin-bottom: 0;
 }
 
 
@@ -132,7 +145,7 @@
     margin: $l-space--large auto 0 auto;
     font-size: $t-size--medium;
     border-top: 4px solid $c-one;
-    border-bottom: 4px solid $c-one;
+    // border-bottom: 4px solid $c-one;
     // display: flex;
     // flex-wrap: wrap;
     // align-items: flex-start;
@@ -146,22 +159,51 @@
     }
 }
 .timeline-entry{
-	width:50%;
+	width:100%;
     text-align: center;
     border-bottom: 4px solid $c-one;
     box-sizing: border-box;
-    padding: $l-space--xxlarge 0;
+    padding: $l-space--large 0;
+    @include v-tablet {
+        width:50%;
+        padding: $l-space--xlarge 0;
+    };
     &:nth-child(odd) {
-        border-right: 4px solid $c-one;
+        border-right: none;
         float: left;
+        @include v-tablet {
+            border-right: 4px solid $c-one;
+            float: left;
+        };
         .timeline-entry--item {
-            margin-left: 20%;
+            margin-left: 0;
+            @include v-tablet {
+                margin-left: 0;
+            };
+            @include v-laptop {
+                margin-left: 10%;
+            };
+            @include v-desktop {
+                margin-left: 35%;
+            };
         }
     }
     &:nth-child(even) {
-        float: right;
+        float: left;
+        @include v-tablet {
+            float: right;
+        };
         .timeline-entry--item {
-            margin-right: 20%;
+            margin-right: 0;
+            @include v-tablet {
+                margin-right: 0;
+            };
+            @include v-laptop {
+                margin-right: 10%;
+            };
+            @include v-desktop {
+                margin-right: 35%;
+            };
         }
     }
     &:first-child {
@@ -169,10 +211,13 @@
     }
     &:last-child {
         border-bottom: none;
-        padding: $l-space--xlarge 0;
+        padding: $l-space--large 0;
     }
     &:nth-last-child(2) {
-        border-bottom: none;
+        border-bottom: 4px solid $c-one;
+        @include v-tablet {
+            border-bottom: none;
+        };
     }
 }
 .timeline-title{
@@ -181,58 +226,43 @@
 }
 .timeline-date{
     font-family: $t-font--one;
-    font-size: $t-size--xxlarge;
+    font-size: $t-size--xlarge;
     padding: 0 $l-space--medium;
     line-height: $t-lineHeight--tight;
+    @include v-laptop {
+        font-size: $t-size--xxlarge;
+    };
 }
 
 
 
 //Fact Sheet
-.infoGraphic-category {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    border: 4px solid $c-one;
+.factSheet {
+    margin-top: $l-space--small;
+}
+.factSheet-title {
     margin-bottom: $l-space--medium;
 }
-.infoGraphic-category--title {
-    text-align: center;
-    font-family: $t-font--one;
-    margin-top: $l-space--xlarge;
-    margin-bottom: $l-space--xlarge;
-    width: 100%;
+.factSheet-intro {
+    margin-top: $l-space--medium;
+    @include v-tablet {
+        margin-top: $l-space--xlarge;
+    };
 }
-.infoGraphic-item {
-    width: 50%;
-    box-sizing: border-box;
-    display: inline-block;
-    margin-bottom: $l-space--xlarge;
-}
-.infoGraphic-item--title {
-    font-size: $t-size--small;
-    text-transform: uppercase;
-    margin-bottom: $l-space--small;
-
-    span {
-        border-bottom: 4px solid $c-one;
-        padding-bottom: 0.2rem;
-    }
-}
-.infoGraphic-item--data {
-    margin-bottom: 0;
-}
-.infoGraphic-item--note {
-    text-align: center;
+.factSheet-intro--text {
+    font-size: $t-size--medium;
+    margin-bottom: $l-space--xxlarge;
+    @include l-textWidth;
 }
 .factSheet-description {
     margin-top: $l-space--xxlarge;
-    h3 {
-        text-align: center;
-        font-family: $t-font--one;
-        margin-top: $l-space--medium;
-        margin-bottom: $l-space--medium;
-    }
+}
+.factSheet-description--title {
+    text-align: center;
+    font-family: $t-font--one;
+    font-size: $t-size--xlarge;
+    margin-top: $l-space--medium;
+    margin-bottom: $l-space--medium;
 }
 .factSheet-description--item {
     font-size: $t-size--medium;
@@ -241,10 +271,77 @@
     @include l-textWidth;
 }
 .factSheet-description--image {
-    max-width: 100%;
+    max-width: 10%;
+
     border: 4px solid $c-one;
     box-sizing: border-box;
+    display: inline-block;
+    position: absolute;
+    // margin: 0;
+    padding-bottom: 1rem;
+    transform: translate(-100%, 0);
+    transform-origin: top left;
+    img {
+        width: 100%;
+        margin-right: $l-space--large;
+    }
 }
+.infoGraphic-category {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    &:first-child {
+        border-top: 4px solid $c-one;
+    }
+}
+.infoGraphic-category--title {
+    text-align: center;
+    font-family: $t-font--one;
+    font-size: $t-size--large;
+    margin: $l-space--small 0 0 0;
+    padding-bottom: $l-space--small;
+    border-bottom: 4px solid $c-one;
+    width: 100%;
+    @include v-tablet {
+        font-size: $t-size--large;
+    };
+}
+.infoGraphic-item {
+    width: 50%;
+    box-sizing: border-box;
+    padding: $l-space--medium $l-space--xsmall;
+    border-bottom: 4px solid $c-one;
+    flex-grow: 1;
+    @include v-tablet {
+        padding: $l-space--xlarge;
+    };
+    &:nth-child(even) {
+        border-right: 4px solid $c-one;
+        &:last-child {
+            border-right: none;
+        }
+    }
+}
+.infoGraphic-item--title {
+    font-size: $t-size--small;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    line-height: $t-lineHeight--normal;
+    @include v-tablet {
+        font-size: $t-size--medium;
+    };
+}
+.infoGraphic-item--data {
+    margin-bottom: $l-space--xsmall;
+    max-width: 5em;
+}
+.infoGraphic-item--note {
+    text-align: center;
+    font-family: $t-font--one;
+    font-size: $t-size--medium;
+}
+
 
 
 

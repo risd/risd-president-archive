@@ -17,22 +17,22 @@
 {% endblock %}
 
 <main class="factSheet">
-    <section class="image-break">
+    {# <section class="image-break">
         <div class="image-container" style="background-image:url('{{cms.imagebreaks.image_breaks[4].image|imageSize(1500)}}');"></div>
-    </section>
+    </section> #}
     <h1 class="factSheet-title">{{cms.factsheet.name}}</h1>
-    <section id="factSheet-description narrowColumn">
-        <article class="eight columns">
+    <section class="factSheet-intro narrowColumn">
+        <article class="factSheet-intro--text narrowColumn">
             {{cms.factsheet.overview|safe}}
         </article>
     </section>
-    <section class="infoGraphic narrowColumn">
+    <section class="infoGraphic">
         <article class="infoGraphic-category">
-            <h3 class="infoGraphic-category--title">student body</h3>
+            <h2 class="infoGraphic-category--title">Student Body</h2>
             {% for row in cms.factsheet.student_body %}
             <figure class="infoGraphic-item">
-                <h2 class="infoGraphic-item--title"><span>{{row.title}}</span></h2>
                 <h1 class="infoGraphic-item--data">{{row.data}}</h1>
+                <h2 class="infoGraphic-item--title">{{row.title}}</h2>
                 {% if row.note %}
                 <p class="infoGraphic-item--note">{{row.note}}</p>
                 {% endif %}
@@ -41,41 +41,41 @@
         </article>
 
         <article class="infoGraphic-category">
-            <h3 class="infoGraphic-category--title">faculty</h3>
+            <h2 class="infoGraphic-category--title">Faculty</h2>
             {% for row in cms.factsheet.faculty %}
             <figure class="infoGraphic-item">
-                <h2 class="infoGraphic-item--title"><span>{{row.title}}</span></h2>
                 <h1 class="infoGraphic-item--data">{{row.data}}</h1>
+                <h2 class="infoGraphic-item--title">{{row.title}}</h2>
             </figure>
             {% endfor %}
         </article>
 
         <article class="infoGraphic-category">
-            <h3 class="infoGraphic-category--title">acceptance rate</h3>
+            <h2 class="infoGraphic-category--title">Acceptance Rate</h2>
             {% for row in cms.factsheet.acceptance_rate %}
             <figure class="infoGraphic-item">
-                <h2 class="infoGraphic-item--title"><span>{{row.title}}</span></h2>
                 <h1 class="infoGraphic-item--data">{{row.data}}</h1>
+                <h2 class="infoGraphic-item--title">{{row.title}}</h2>
             </figure>
             {% endfor %}
         </article>
 
         <article class="infoGraphic-category">
-            <h3 class="infoGraphic-category--title">retention rate</h3>
+            <h2 class="infoGraphic-category--title">Retention Rate</h2>
             {% for row in cms.factsheet.retention_rate %}
             <figure class="infoGraphic-item">
-                <h2 class="infoGraphic-item--title"><span>{{row.title}}</span></h2>
                 <h1 class="infoGraphic-item--data">{{row.data}}</h1>
+                <h2 class="infoGraphic-item--title">{{row.title}}</h2>
             </figure>
             {% endfor %}
         </article>
 
         <article class="infoGraphic-category">
-            <h3 class="infoGraphic-category--title">graduation rate</h3>
+            <h2 class="infoGraphic-category--title">Graduation Rate</h2>
             {% for row in cms.factsheet.graduation_rate %}
             <figure class="infoGraphic-item">
-                <h2 class="infoGraphic-item--title"><span>{{row.title}}</span></h2>
                 <h1 class="infoGraphic-item--data">{{row.data}}</h1>
+                <h2 class="infoGraphic-item--title">{{row.title}}</h2>
             </figure>
             {% endfor %}
         </article>
@@ -83,34 +83,47 @@
 
     <section class="factSheet-description narrowColumn">
         <article class="factSheet-description--item">
-            <img alt="" class="factSheet-description--image" src="{{cms.factsheet.mission_image|imageSize(800)}}">
+            <h3 class="factSheet-description--title">{{ cms.factsheet.mission_title}}</h3>
+            <div class="factSheet-description--image">
+                <img alt="" class="" src="{{cms.factsheet.mission_image|imageSize(800)}}">
+            </div>
             {{cms.factsheet.mission|safe}}
         </article>
 
         <article class="factSheet-description--item">
+            <h3 class="factSheet-description--title">{{ cms.factsheet.academics_title}}</h3>
             {{cms.factsheet.academics|safe}}
         </article>
 
         <article class="factSheet-description--item">
-            <img alt="" class="factSheet-description--image" src="{{cms.factsheet.degree_programs_image|imageSize(800)}}">
-            {{cms.factsheet.degree_programs|safe}}
+            <h3 class="factSheet-description--title">{{ cms.factsheet.degree_programs_title}}</h3>
+            <div class="factSheet-description--image">
+                <img alt="" class="" src="{{cms.factsheet.degree_programs_image|imageSize(800)}}">
+                {{cms.factsheet.degree_programs|safe}}
+            </div>
         </article>
 
         <article class="factSheet-description--item">
+            <h3 class="factSheet-description--title">{{ cms.factsheet.alumni_title}}</h3>
             {# <img src="{{cms.factsheet.alumni_image|imageSize(800)}}" class="factSheet-description--image" alt=""> #}
             {{cms.factsheet.alumni|safe}}
         </article>
 
         <article class="factSheet-description--item">
-            <img alt="" class="factSheet-description--image" src="{{cms.factsheet.location_image|imageSize(800)}}">
-            {{cms.factsheet.location|safe}}
+            <h3 class="factSheet-description--title">{{ cms.factsheet.location_title}}</h3>
+            <div class="factSheet-description--image">
+                <img alt="" class="" src="{{cms.factsheet.location_image|imageSize(800)}}">
+                {{cms.factsheet.location|safe}}
+            </div>
         </article>
 
         <article class="factSheet-description--item">
+            <h3 class="factSheet-description--title">{{ cms.factsheet.accreditation_title}}</h3>
             {{cms.factsheet.accreditation|safe}}
         </article>
 
         <article class="factSheet-description--item">
+            <h3 class="factSheet-description--title">{{ cms.factsheet.financial_info_title}}</h3>
             {{cms.factsheet.financial_info|safe}}
         </article>
     </section>

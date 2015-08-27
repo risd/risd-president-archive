@@ -65,13 +65,22 @@ p {
 
 h1 {
     font-family: $t-font--one;
-    font-size: $t-size--xxxlarge;
+    font-size: $t-size--xlarge;
     font-weight: $t-weight--book;
     line-height: $t-lineHeight--tight;
     margin-bottom: $l-space--large;
     margin-left: -$t-size--xsmall/2;
     text-align: center;
     @include l-textWidth;
+    @include v-tablet {
+        font-size: $t-size--xxxlarge;
+    };
+    @include v-laptop {
+        font-size: $t-size--xxxlarge;
+    };
+    @include v-desktop {
+        font-size: $t-size--xxxlarge;
+    };
 }
 
 h2 {
