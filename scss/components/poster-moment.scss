@@ -33,6 +33,7 @@
         display: flex;
         flex-wrap: wrap;
         box-sizing: border-box;
+        border-bottom: none;
         &:nth-child(2n+1) {
             border-right: 4px solid $c-one;
         }
@@ -61,7 +62,7 @@
 
 .risd-text {
     font-family: $t-font--one;
-    font-size: $t-size--xxxlarge*3.5;
+    font-size: 62vh;
     margin-bottom: 1rem;
 }
 

@@ -29,6 +29,10 @@
         {{ cms.home.last_updated|date('F d Y') }}
       </li>
       <li>
+        <strong>Campaign Intro Title: </strong>
+        {{ cms.home.campaign_intro_title }}
+      </li>
+      <li>
         <strong>Campaign Intro: </strong>
         {{ cms.home.campaign_intro|safe }}
       </li>
@@ -47,6 +51,14 @@
             </li>
         {% endfor %}
         </ul>
+      </li>
+      <li>
+        <strong>Preview URL: </strong>
+        {{ cms.home.preview_url }}
+      </li>
+      <li>
+        <strong>Slug: </strong>
+        {{ cms.home.slug }}
       </li>
   </ul>
 {% endblock %}

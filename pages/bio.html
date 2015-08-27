@@ -16,47 +16,66 @@
         <div class="image-container" style="background-image:url('{{cms.imagebreaks.image_breaks[3].image|imageSize(1500)}}');"></div>
     </section>
     <h1 class="bio-title">About Rosanne Somerson</h1>
-    <section class="bio-description narrowColumn">
-        {{cms.bio.long_bio|safe}}
-        <div class="slider-container">
-            {% for image in cms.bio.risd_roots %}
-            <div class="slider-image">
-                <img src="{{image|imageSize(1200)}}">
-                <p class="caption">{{image.caption}}</p>
+    <section class="biography">
+        <article class="biography-section narrowColumn">
+            {{cms.bio.long_bio|safe}}
+            <div class="slider-container">
+                {% for image in cms.bio.risd_roots %}
+                <div class="slider-image">
+                    <img src="{{image|imageSize(1200)}}">
+                    <p class="caption">{{image.caption}}</p>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-        {{cms.bio.deep_roots|safe}}
-        <div class="slider-container">
-            {% for image in cms.bio.work %}
-            <div class="slider-image">
-                <img src="{{image|imageSize(800)}}">
-                <p class="caption">{{image.caption}}</p>
+        </article>
+        <article class="biography-section narrowColumn">
+            <h2 class="biography-title">{{ cms.bio.risd_roots_title }}</h2>
+            {{cms.bio.deep_roots|safe}}
+            <div class="slider-container">
+                {% for image in cms.bio.work %}
+                <div class="slider-image">
+                    <img src="{{image|imageSize(800)}}">
+                    <p class="caption">{{image.caption}}</p>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-        {{cms.bio.studio_practice|safe}}
-        <h3>Highlights from President Somerson's RISD years</h3>
-        <article class="timeline">
-            {% for row in cms.bio.timeline|sort('year')  %}
-            <div class="timeline-entry">
-                <p class="timeline-date">
-                    {{row.year}}
-                </p>
-                <p class="timeline-title">
-                    {{row.event|safe}}
-                </p>
-                {% if image %}
-                <img </div src="{{row.image}}">
-                {% endif %}
+        </article>
+        <article class="biography-section narrowColumn">
+            <h2 class="biography-title">{{ cms.bio.studio_practice_title }}</h2>
+            {{cms.bio.studio_practice|safe}}
+        </article>
+        <article class="biography-section">
+            <div class="timeline">
+                <div class="timeline-entry">
+                    <h2 class="biography-title--timeline">{{ cms.bio.timeline_title }}</h2>
+                </div>
+                {% for row in cms.bio.timeline|sort('year')  %}
+                <div class="timeline-entry">
+                    <div class="timeline-entry--item">
+                        <p class="timeline-date">
+                            {{row.year|safe}}
+                        </p>
+                        <p class="timeline-title">
+                            {{row.event|safe}}
+                        </p>
+                        {% if image %}
+                        <img </div src="{{row.image}}">
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="timeline-entry">
+                    <h3 class="narrativeLinks">
+                        <a href="../fact-sheet">Learn more about RISD</a>
+                    </h3>
+                </div>
             </div>
-            {% endfor %}
         </article>
     </section>
-    <section class="narrativeLinks">
+    {# <section class="narrativeLinks">
         <h3 class="narrativeLinks-item">
             <a href="../fact-sheet">Learn more about RISD</a>
         </h3>
-    </section>
+    </section> #}
 </main>
 {% endblock %}

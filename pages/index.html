@@ -20,24 +20,27 @@
 {% set home = cms.home %}
 
 <main class="campaign">
-    <section class="campaign-description narrowColumn">
-        <article class="campaign-intro">
+    <section class="campaign-description">
+        <article class="campaign-intro narrowColumn">
+            <h2 class="campaign-intro--title wideColumn">{{ home.campaign_intro_title }}</h2>
             {{ home.campaign_intro|safe }}
         </article>
 
-        <article class="campaign-links">
+        <article class="narrativeLinks narrowColumn">
+            <h3 class="narrativeLinks-item">
+                <a href="../bio">Read more about Rosanne</a>
+            </h3>
+        </article>
+
+        <article class="campaign-links narrowColumn">
             {% for link in home.links %}
-                <h3 class="campaign-links--item">
+                <h3 class="campaign-links--item externalLinks">
                     <a href="{{ link.link_url }}" target="_blank"><span>{{ link.link_text }}</span></a>
                 </h3>
             {% endfor %}
         </article>
     </section>
-    <section class="narrativeLinks">
-        <h3 class="narrativeLinks-item">
-            <a href="../bio">Read more about Rosanne</a>
-        </h3>
-    </section>
+
 </main>
 
 {% endblock %}

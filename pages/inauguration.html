@@ -20,8 +20,8 @@
 <main class="inauguration">
     <h1 class="inauguration-title">Inauguration</h1>
     <section class="inauguration-info narrowColumn">
-        <article class="inauguration-date">{{ inauguration.inauguration_date|safe }}</article>
-        <article class="inauguration-address">{{ inauguration.inauguration_address|safe }}</article>
+        <article class="inauguration-date">{{ inauguration.inauguration_date|date('l')}}</br>{{ inauguration.inauguration_date|date('F, j Y')}}</br>{{ inauguration.inauguration_date|date('g:ia')}}</article>
+        <article class="inauguration-address externalLinks"><a href="" target=_blank><span>{{ inauguration.inauguration_address.street1  }}</br>{{ inauguration.inauguration_address.street2 }}</br>{{ inauguration.inauguration_address.city }}, {{ inauguration.inauguration_address.state }}</span></a></article>
         {{ inauguration.inauguration_info|safe }}
     </section>
 </main>
