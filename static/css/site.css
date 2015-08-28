@@ -794,10 +794,6 @@ svg#risd-seal {
   max-height: 50px;
 }
 svg#risd-seal path {
-  fill: white;
-}
-
-svg#risd-seal:hover path {
   fill: black;
 }
 
@@ -805,12 +801,13 @@ svg#risd-seal:hover path {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: white;
+  background-color: black;
+  color: white;
   z-index: 900;
   left: -100%;
   transition: left 0.4s ease-in-out;
   top: 0;
-  border: 4px solid black;
+  border: 4px solid white;
   box-sizing: border-box;
   font-family: "Circular", "Helvetica", "sans-serif";
 }
@@ -819,9 +816,23 @@ svg#risd-seal:hover path {
   width: 90%;
   height: 90vh;
   margin: 5vh 5%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .mainNav-item {
+  width: 100%;
+  text-align: center;
   font-size: 3rem;
   line-height: 1.666;
 }
@@ -843,13 +854,19 @@ svg#risd-seal:hover path {
     line-height: 1.666;
   }
 }
+.mainNav-item a {
+  display: inline-block;
+}
+.mainNav-item a:hover span {
+  border-bottom: 4px solid white;
+}
 
 .on {
   left: 0%;
 }
 
 .mainNav-active span {
-  border-bottom: 4px solid black;
+  border-bottom: 4px solid white;
 }
 
 @font-face {
@@ -1279,6 +1296,7 @@ article {
 
 .risd-container {
   position: absolute;
+  z-index: -1000;
   font-size: 10vw;
   color: white;
   width: 98%;
@@ -2201,6 +2219,10 @@ article {
   display: inline-block;
   padding: 1.666rem;
   border: 4px solid black;
+}
+.narrativeLinks a:hover {
+  background-color: black;
+  color: white;
 }
 
 .narrativeLinks-item {

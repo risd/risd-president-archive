@@ -51,12 +51,6 @@ svg#risd-seal{
     max-width:50px;
     max-height:50px;
     path{
-        fill:$c-three;
-    }
-}
-
-svg#risd-seal:hover{
-    path{
         fill:$c-one;
     }
 }
@@ -67,12 +61,13 @@ svg#risd-seal:hover{
 	position:fixed;
 	width:100%;
 	height:100%;
-	background: $c-three;
+	background-color: $c-one;
+	color: $c-three;
 	z-index:900;
 	left:-100%;
     transition: left 0.4s ease-in-out;
 	top: 0;
-	border: 4px solid $c-one;
+	border: 4px solid $c-three;
 	box-sizing: border-box;
 	font-family: $t-font--one;
 }
@@ -80,8 +75,14 @@ svg#risd-seal:hover{
 	width: 90%;
     height: 90vh;
 	margin: 5vh 5%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
 }
 .mainNav-item {
+	width: 100%;
+	text-align: center;
     font-size: $t-size--xlarge;
     line-height: $t-lineHeight--normal;
     @include v-tablet {
@@ -96,13 +97,21 @@ svg#risd-seal:hover{
 		font-size: $t-size--xxxlarge;
 	    line-height: $t-lineHeight--normal;
     };
+	a {
+		display: inline-block;
+		&:hover {
+			span {
+				border-bottom: 4px solid $c-three;
+			}
+		}
+	}
 }
 .on{
 	left:0%;
 }
 .mainNav-active {
 	span {
-		border-bottom: 4px solid $c-one;
+		border-bottom: 4px solid $c-three;
 	}
 
 }
