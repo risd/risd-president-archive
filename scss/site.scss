@@ -171,11 +171,11 @@
         width:50%;
         padding: $l-space--xlarge 0;
     };
-    &:nth-child(odd) {
+    &:nth-child(even) {
         border-right: none;
         float: left;
         @include v-tablet {
-            border-right: 4px solid $c-one;
+            // border-right: 4px solid $c-one;
             float: left;
         };
         .timeline-entry--item {
@@ -191,9 +191,10 @@
             };
         }
     }
-    &:nth-child(even) {
+    &:nth-child(odd) {
         float: left;
         @include v-tablet {
+            border-left: 4px solid $c-one;
             float: right;
         };
         .timeline-entry--item {

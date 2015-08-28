@@ -8,9 +8,6 @@ function hamburgerMenu() {
 	$('.hamburger-activator, .hamburger-deactivator').click(function(){
 		$('.mainNav').toggleClass('on');
 	});
-	// $('.nav-link').click(function(){
-	// 	$('.mainNav').toggleClass('on');
-	// });
 }
 
 function masonrySetup () {
@@ -42,5 +39,4 @@ function slickSetup() {
 		prevArrow: '<div class="left-arrow" aria-label="previous"><p>❮</p></div>',
 		nextArrow: '<div class="right-arrow" aria-label="next"><p>❯</p></div>'
 	});
-	// $('.slider-container').slick();
 }

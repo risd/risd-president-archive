@@ -1963,57 +1963,57 @@ article {
     padding: 6.664rem 0;
   }
 }
-.timeline-entry:nth-child(odd) {
+.timeline-entry:nth-child(even) {
   border-right: none;
   float: left;
 }
 @media (min-width: 768px) {
-  .timeline-entry:nth-child(odd) {
-    border-right: 4px solid black;
+  .timeline-entry:nth-child(even) {
     float: left;
   }
 }
-.timeline-entry:nth-child(odd) .timeline-entry--item {
+.timeline-entry:nth-child(even) .timeline-entry--item {
   margin-left: 0;
 }
 @media (min-width: 768px) {
-  .timeline-entry:nth-child(odd) .timeline-entry--item {
+  .timeline-entry:nth-child(even) .timeline-entry--item {
     margin-left: 0;
   }
 }
 @media (min-width: 1024px) {
-  .timeline-entry:nth-child(odd) .timeline-entry--item {
+  .timeline-entry:nth-child(even) .timeline-entry--item {
     margin-left: 10%;
   }
 }
 @media (min-width: 1824px) {
-  .timeline-entry:nth-child(odd) .timeline-entry--item {
+  .timeline-entry:nth-child(even) .timeline-entry--item {
     margin-left: 35%;
   }
 }
-.timeline-entry:nth-child(even) {
+.timeline-entry:nth-child(odd) {
   float: left;
 }
 @media (min-width: 768px) {
-  .timeline-entry:nth-child(even) {
+  .timeline-entry:nth-child(odd) {
+    border-left: 4px solid black;
     float: right;
   }
 }
-.timeline-entry:nth-child(even) .timeline-entry--item {
+.timeline-entry:nth-child(odd) .timeline-entry--item {
   margin-right: 0;
 }
 @media (min-width: 768px) {
-  .timeline-entry:nth-child(even) .timeline-entry--item {
+  .timeline-entry:nth-child(odd) .timeline-entry--item {
     margin-right: 0;
   }
 }
 @media (min-width: 1024px) {
-  .timeline-entry:nth-child(even) .timeline-entry--item {
+  .timeline-entry:nth-child(odd) .timeline-entry--item {
     margin-right: 10%;
   }
 }
 @media (min-width: 1824px) {
-  .timeline-entry:nth-child(even) .timeline-entry--item {
+  .timeline-entry:nth-child(odd) .timeline-entry--item {
     margin-right: 35%;
   }
 }
