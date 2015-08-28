@@ -15,7 +15,7 @@
 @font-face {
     font-family: Mercury Display;
     src: url("../fonts/MercuryDisplay-Bold.otf");
-    font-weight: 600;
+    font-weight: 900;
     font-style: normal;
 }
 
@@ -29,7 +29,7 @@
 @font-face {
     font-family: Mercury Display;
     src: url("../fonts/MercuryDisplay-BolIta.otf");
-    font-weight: 600;
+    font-weight: 900;
     font-style: italic;
 }
 
@@ -49,15 +49,29 @@
 
 @font-face {
     font-family: Mercury Text;
-    src: url("../fonts/MercuryTextG1-Bold-Pro.otf");
+    src: url("../fonts/MercuryTextG1-Semibold-Pro.otf");
     font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
     font-family: Mercury Text;
-    src: url("../fonts/MercuryTextG1-BoldItalic-Pro.otf");
+    src: url("../fonts/MercuryTextG1-SemiItalic-Pro.otf");
     font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Mercury Text;
+    src: url("../fonts/MercuryTextG1-Bold-Pro.otf");
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Mercury Text;
+    src: url("../fonts/MercuryTextG1-BoldItalic-Pro.otf");
+    font-weight: 900;
     font-style: italic;
 }
 
@@ -80,10 +94,10 @@ $t-size--xxxlarge: 7rem;
 $t-weight--xlight: 100;
 $t-weight--light: 200;
 $t-weight--book: 400;
-$t-weight--bold: 600;
-$t-weight--black: 900;
+$t-weight--semibold: 600;
+$t-weight--bold: 900;
 
-$t-lineHeight--tight: 1.2;
+$t-lineHeight--tight: 1.4;
 $t-lineHeight--normal: 1.666;
 $t-lineHeight--loose: 2;
 

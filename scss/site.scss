@@ -37,9 +37,12 @@
     flex-wrap: wrap;
     box-sizing: border-box;
     align-items: center;
-    margin: $l-space--xlarge auto;
+    margin: $l-space--xlarge auto 0 auto;
+    padding: $l-space--large 0;
+    background-color: $c-one;
+    color: $c-three;
     @include v-tablet {
-        margin: $l-space--xxlarge auto;
+        margin: $l-space--xxlarge auto 0 auto;
     };
 }
 .campaign-links--item {
@@ -102,7 +105,7 @@
         font-style: normal;
         font-size: $t-size--large;
         text-align: center;
-        line-height: $t-lineHeight--normal;
+        line-height: $t-lineHeight--tight;
         margin: $l-space--medium auto;
         max-width: 20em;
         @include v-tablet {
@@ -319,16 +322,20 @@
     };
 }
 .infoGraphic-item {
-    width: 50%;
+    width: 100%;
     box-sizing: border-box;
     padding: $l-space--medium $l-space--xsmall;
     border-bottom: 4px solid $c-one;
     flex-grow: 1;
     @include v-tablet {
+        width: 50%;
         padding: $l-space--xlarge;
     };
     &:nth-child(even) {
-        border-right: 4px solid $c-one;
+        border-right: none;
+        @include v-tablet {
+            border-right: 4px solid $c-one;
+        };
         &:last-child {
             border-right: none;
         }
@@ -398,12 +405,12 @@
 .externalLinks {
     text-align: center;
     box-sizing: border-box;
-    font-family: $t-font--two;
+    font-family: $t-font--one;
     a {
         display: inline-block;
         max-width: 20rem;
     }
     span {
-        border-bottom: 2px solid $c-one;
+        // border-bottom: 2px solid $c-one;
     }
 }

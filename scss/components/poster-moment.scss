@@ -14,6 +14,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    -webkit-font-smoothing: antialiased;
 }
 
 .risd-quadrant {
@@ -94,7 +95,7 @@
     justify-content: center;
     display: flex;
     box-sizing: border-box;
-
+    -webkit-font-smoothing: antialiased;
     z-index: 100;
     &:nth-child(2n+1) {
         border-right: 4px solid $c-one;
@@ -162,8 +163,14 @@
     font-weight: $t-weight--bold;
     @include t-allCaps;
     font-size: 2.9vmax;
+    @include v-tablet {
+        font-size: 2.3vmax;
+    };
 
     @include v-laptop {
         font-size: 1.7vmax;
+    };
+    @include v-desktop {
+        font-size: 1.3vmax;
     };
 }

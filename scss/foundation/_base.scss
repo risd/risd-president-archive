@@ -32,6 +32,7 @@ html {
     -o-font-feature-settings:"ss02" 1;
     -webkit-font-feature-settings:"ss02" 1;
     font-feature-settings:"ss02" 1;
+    text-rendering: optimizeLegibility;
     //lost-utility: edit;
 }
 
@@ -49,7 +50,7 @@ a {
 }
 
 strong, b {
-    font-weight: $t-weight--bold;
+    font-weight: $t-weight--semibold;
 }
 
 i,
@@ -71,6 +72,7 @@ h1 {
     margin-bottom: $l-space--large;
     margin-left: -$t-size--xsmall/2;
     text-align: center;
+    // -webkit-font-smoothing: antialiased;
     @include l-textWidth;
     @include v-tablet {
         font-size: $t-size--xxxlarge;
@@ -89,6 +91,7 @@ h2 {
     font-weight: $t-weight--book;
     line-height: $t-lineHeight--tight;
     text-align: center;
+    -webkit-font-smoothing: antialiased;
     @include v-tablet {
         font-size: $t-size--xxlarge;
     };

@@ -31,8 +31,9 @@
                 <a href="../bio">Read more about Rosanne</a>
             </h3>
         </article>
-
-        <article class="campaign-links narrowColumn">
+    </section>
+    <section class="campaign-links--container">
+        <article class="campaign-links">
             {% for link in home.links %}
                 <h3 class="campaign-links--item externalLinks">
                     <a href="{{ link.link_url }}" target="_blank"><span>{{ link.link_text }}</span></a>
@@ -40,7 +41,6 @@
             {% endfor %}
         </article>
     </section>
-
 </main>
 
 {% endblock %}

@@ -13,7 +13,7 @@
 @font-face {
   font-family: Mercury Display;
   src: url("../fonts/MercuryDisplay-Bold.otf");
-  font-weight: 600;
+  font-weight: 900;
   font-style: normal;
 }
 @font-face {
@@ -25,7 +25,7 @@
 @font-face {
   font-family: Mercury Display;
   src: url("../fonts/MercuryDisplay-BolIta.otf");
-  font-weight: 600;
+  font-weight: 900;
   font-style: italic;
 }
 @font-face {
@@ -42,14 +42,26 @@
 }
 @font-face {
   font-family: Mercury Text;
-  src: url("../fonts/MercuryTextG1-Bold-Pro.otf");
+  src: url("../fonts/MercuryTextG1-Semibold-Pro.otf");
   font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: Mercury Text;
-  src: url("../fonts/MercuryTextG1-BoldItalic-Pro.otf");
+  src: url("../fonts/MercuryTextG1-SemiItalic-Pro.otf");
   font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: Mercury Text;
+  src: url("../fonts/MercuryTextG1-Bold-Pro.otf");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: Mercury Text;
+  src: url("../fonts/MercuryTextG1-BoldItalic-Pro.otf");
+  font-weight: 900;
   font-style: italic;
 }
 .wideColumn {
@@ -232,6 +244,7 @@ html {
   -o-font-feature-settings: "ss02" 1;
   -webkit-font-feature-settings: "ss02" 1;
   font-feature-settings: "ss02" 1;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -271,7 +284,7 @@ h1 {
   font-family: "Circular", "Helvetica", "sans-serif";
   font-size: 3rem;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.4;
   margin-bottom: 4.165rem;
   margin-left: -0.5rem;
   text-align: center;
@@ -299,8 +312,9 @@ h2 {
   font-family: "Circular", "Helvetica", "sans-serif";
   font-size: 3rem;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.4;
   text-align: center;
+  -webkit-font-smoothing: antialiased;
 }
 @media (min-width: 768px) {
   h2 {
@@ -317,7 +331,7 @@ h3 {
   font-family: "Mercury Display", "Georgia", "serif";
   font-size: 2rem;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.4;
   text-align: center;
 }
 
@@ -383,7 +397,7 @@ article {
 @font-face {
   font-family: Mercury Display;
   src: url("../fonts/MercuryDisplay-Bold.otf");
-  font-weight: 600;
+  font-weight: 900;
   font-style: normal;
 }
 @font-face {
@@ -395,7 +409,7 @@ article {
 @font-face {
   font-family: Mercury Display;
   src: url("../fonts/MercuryDisplay-BolIta.otf");
-  font-weight: 600;
+  font-weight: 900;
   font-style: italic;
 }
 @font-face {
@@ -412,14 +426,26 @@ article {
 }
 @font-face {
   font-family: Mercury Text;
-  src: url("../fonts/MercuryTextG1-Bold-Pro.otf");
+  src: url("../fonts/MercuryTextG1-Semibold-Pro.otf");
   font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: Mercury Text;
-  src: url("../fonts/MercuryTextG1-BoldItalic-Pro.otf");
+  src: url("../fonts/MercuryTextG1-SemiItalic-Pro.otf");
   font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: Mercury Text;
+  src: url("../fonts/MercuryTextG1-Bold-Pro.otf");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: Mercury Text;
+  src: url("../fonts/MercuryTextG1-BoldItalic-Pro.otf");
+  font-weight: 900;
   font-style: italic;
 }
 .wideColumn {
@@ -602,6 +628,7 @@ html {
   -o-font-feature-settings: "ss02" 1;
   -webkit-font-feature-settings: "ss02" 1;
   font-feature-settings: "ss02" 1;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -641,7 +668,7 @@ h1 {
   font-family: "Circular", "Helvetica", "sans-serif";
   font-size: 3rem;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.4;
   margin-bottom: 4.165rem;
   margin-left: -0.5rem;
   text-align: center;
@@ -669,8 +696,9 @@ h2 {
   font-family: "Circular", "Helvetica", "sans-serif";
   font-size: 3rem;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.4;
   text-align: center;
+  -webkit-font-smoothing: antialiased;
 }
 @media (min-width: 768px) {
   h2 {
@@ -687,7 +715,7 @@ h3 {
   font-family: "Mercury Display", "Georgia", "serif";
   font-size: 2rem;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.4;
   text-align: center;
 }
 
@@ -743,7 +771,7 @@ article {
   position: fixed;
   z-index: 1000;
   width: 100%;
-  top: 5vh;
+  top: 3.5rem;
 }
 
 .hamburger-activator {
@@ -902,7 +930,7 @@ svg#risd-seal path {
 @font-face {
   font-family: Mercury Display;
   src: url("../fonts/MercuryDisplay-Bold.otf");
-  font-weight: 600;
+  font-weight: 900;
   font-style: normal;
 }
 @font-face {
@@ -914,7 +942,7 @@ svg#risd-seal path {
 @font-face {
   font-family: Mercury Display;
   src: url("../fonts/MercuryDisplay-BolIta.otf");
-  font-weight: 600;
+  font-weight: 900;
   font-style: italic;
 }
 @font-face {
@@ -931,14 +959,26 @@ svg#risd-seal path {
 }
 @font-face {
   font-family: Mercury Text;
-  src: url("../fonts/MercuryTextG1-Bold-Pro.otf");
+  src: url("../fonts/MercuryTextG1-Semibold-Pro.otf");
   font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: Mercury Text;
-  src: url("../fonts/MercuryTextG1-BoldItalic-Pro.otf");
+  src: url("../fonts/MercuryTextG1-SemiItalic-Pro.otf");
   font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: Mercury Text;
+  src: url("../fonts/MercuryTextG1-Bold-Pro.otf");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: Mercury Text;
+  src: url("../fonts/MercuryTextG1-BoldItalic-Pro.otf");
+  font-weight: 900;
   font-style: italic;
 }
 .wideColumn {
@@ -1121,6 +1161,7 @@ html {
   -o-font-feature-settings: "ss02" 1;
   -webkit-font-feature-settings: "ss02" 1;
   font-feature-settings: "ss02" 1;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -1160,7 +1201,7 @@ h1 {
   font-family: "Circular", "Helvetica", "sans-serif";
   font-size: 3rem;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.4;
   margin-bottom: 4.165rem;
   margin-left: -0.5rem;
   text-align: center;
@@ -1188,8 +1229,9 @@ h2 {
   font-family: "Circular", "Helvetica", "sans-serif";
   font-size: 3rem;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.4;
   text-align: center;
+  -webkit-font-smoothing: antialiased;
 }
 @media (min-width: 768px) {
   h2 {
@@ -1206,7 +1248,7 @@ h3 {
   font-family: "Mercury Display", "Georgia", "serif";
   font-size: 2rem;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.4;
   text-align: center;
 }
 
@@ -1273,6 +1315,7 @@ article {
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
+  -webkit-font-smoothing: antialiased;
 }
 
 .risd-quadrant {
@@ -1389,6 +1432,7 @@ article {
   display: -ms-flexbox;
   display: flex;
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
   z-index: 100;
 }
 .posterItem-box--small:nth-child(2n+1) {
@@ -1464,7 +1508,7 @@ article {
 }
 .posterItem-inaugurationText--large h2 {
   font-family: "Mercury Display", "Georgia", "serif";
-  font-weight: 600;
+  font-weight: 900;
   font-size: 6vmax;
 }
 @media (min-width: 1024px) {
@@ -1475,13 +1519,23 @@ article {
 
 .posterItem-inaugurationText--small {
   font-family: "Mercury Display", "Georgia", "serif";
-  font-weight: 600;
+  font-weight: 900;
   text-transform: uppercase;
   font-size: 2.9vmax;
+}
+@media (min-width: 768px) {
+  .posterItem-inaugurationText--small {
+    font-size: 2.3vmax;
+  }
 }
 @media (min-width: 1024px) {
   .posterItem-inaugurationText--small {
     font-size: 1.7vmax;
+  }
+}
+@media (min-width: 1824px) {
+  .posterItem-inaugurationText--small {
+    font-size: 1.3vmax;
   }
 }
 
@@ -1817,11 +1871,14 @@ article {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 6.664rem auto;
+  margin: 6.664rem auto 0 auto;
+  padding: 4.165rem 0;
+  background-color: black;
+  color: white;
 }
 @media (min-width: 768px) {
   .campaign-links {
-    margin: 9.996rem auto;
+    margin: 9.996rem auto 0 auto;
   }
 }
 
@@ -1865,7 +1922,7 @@ article {
   font-family: "Circular", "Helvetica", "sans-serif";
   font-size: 2rem;
   margin-bottom: 2.499rem;
-  line-height: 1.2;
+  line-height: 1.4;
 }
 @media (min-width: 768px) {
   .inauguration-date, .inauguration-address {
@@ -1894,7 +1951,7 @@ article {
   font-style: normal;
   font-size: 2rem;
   text-align: center;
-  line-height: 1.666;
+  line-height: 1.4;
   margin: 2.499rem auto;
   max-width: 20em;
 }
@@ -2042,7 +2099,7 @@ article {
   font-family: "Circular", "Helvetica", "sans-serif";
   font-size: 3rem;
   padding: 0 2.499rem;
-  line-height: 1.2;
+  line-height: 1.4;
 }
 @media (min-width: 1024px) {
   .timeline-date {
@@ -2162,7 +2219,7 @@ article {
 }
 
 .infoGraphic-item {
-  width: 50%;
+  width: 100%;
   box-sizing: border-box;
   padding: 2.499rem 0.833rem;
   border-bottom: 4px solid black;
@@ -2172,11 +2229,17 @@ article {
 }
 @media (min-width: 768px) {
   .infoGraphic-item {
+    width: 50%;
     padding: 6.664rem;
   }
 }
 .infoGraphic-item:nth-child(even) {
-  border-right: 4px solid black;
+  border-right: none;
+}
+@media (min-width: 768px) {
+  .infoGraphic-item:nth-child(even) {
+    border-right: 4px solid black;
+  }
 }
 .infoGraphic-item:nth-child(even):last-child {
   border-right: none;
@@ -2252,13 +2315,10 @@ article {
 .externalLinks {
   text-align: center;
   box-sizing: border-box;
-  font-family: "Mercury Display", "Georgia", "serif";
+  font-family: "Circular", "Helvetica", "sans-serif";
 }
 .externalLinks a {
   display: inline-block;
   max-width: 20rem;
-}
-.externalLinks span {
-  border-bottom: 2px solid black;
 }
 /*# sourceMappingURL=site.css.map */
