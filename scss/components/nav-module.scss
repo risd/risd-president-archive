@@ -16,20 +16,34 @@
 .hamburger-activator{
     max-width:30px;
     max-height:30px;
-    margin-left: 1rem;
+    margin-left: 5vw;
+	margin-top: -4px;
+	@include v-tablet {
+		margin-left: 1vw;
+	};
+	@include v-laptop {
+		margin-left: 1.5vw;
+	};
     &:hover {
         cursor:pointer;
     }
     line{
         stroke:$c-one;
-        stroke-width:3;
+        stroke-width:4;
     }
 }
 .risd-link {
     position: absolute;
     right: 0;
     display: inline-block;
-    margin-right: 1rem;
+    margin-right: 5vw;
+	margin-top: -4px;
+	@include v-tablet {
+		margin-right: 0;
+	};
+	@include v-laptop {
+		margin-right: 0.7vw;
+	};
 }
 svg#risd-seal{
     z-index:1010;
