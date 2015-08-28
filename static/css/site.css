@@ -747,10 +747,12 @@ article {
 }
 
 .hamburger-activator {
+  position: relative;
   max-width: 30px;
   max-height: 30px;
   margin-left: 5vw;
   margin-top: -4px;
+  z-index: 800;
 }
 @media (min-width: 768px) {
   .hamburger-activator {
@@ -767,6 +769,22 @@ article {
 }
 .hamburger-activator line {
   stroke: black;
+  stroke-width: 4;
+}
+
+.hamburger-deactivator {
+  position: absolute;
+  max-width: 35px;
+  max-height: 35px;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  z-index: 1500;
+}
+.hamburger-deactivator:hover {
+  cursor: pointer;
+}
+.hamburger-deactivator line {
+  stroke: white;
   stroke-width: 4;
 }
 
@@ -789,7 +807,8 @@ article {
 }
 
 svg#risd-seal {
-  z-index: 1010;
+  position: relative;
+  z-index: 1210;
   max-width: 50px;
   max-height: 50px;
 }
@@ -803,7 +822,7 @@ svg#risd-seal path {
   height: 100%;
   background-color: black;
   color: white;
-  z-index: 900;
+  z-index: 1200;
   left: -100%;
   transition: left 0.4s ease-in-out;
   top: 0;
@@ -1269,6 +1288,8 @@ article {
           flex-wrap: wrap;
   box-sizing: border-box;
   border-bottom: 4px solid black;
+  background-color: #ffe800;
+  z-index: 2000;
 }
 @media (min-width: 768px) {
   .risd-quadrant {
@@ -1296,7 +1317,6 @@ article {
 
 .risd-container {
   position: absolute;
-  z-index: -1000;
   font-size: 10vw;
   color: white;
   width: 98%;
