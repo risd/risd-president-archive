@@ -61,7 +61,6 @@ module.exports = function(grunt) {
             options: {
                 map: true,
                 processors: [
-                    require('lost'),
                 ]
             },
             dist: {
