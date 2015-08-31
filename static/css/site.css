@@ -2307,6 +2307,7 @@ article {
   background-position: 50% 25%;
   box-sizing: border-box;
   border: 4px solid black;
+  background-size: cover;
 }
 
 .narrativeLinks {
