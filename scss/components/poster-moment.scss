@@ -113,10 +113,6 @@
     align-items: center;
     justify-content: center;
     border: 4px solid $c-one;
-    // animation: showHide random(5)+s linear infinite;
-    // &:last-child {
-    //     animation: showHide random(4)+s linear infinite;
-    // }
     h2 {
         font-family: $t-font--one;
         font-size: 6vmax;
@@ -186,16 +182,3 @@
 .hidePosterPart {
     visibility: hidden;
 }
-
-
-// @keyframes showHide {
-//     0%, 49% {
-//         opacity: 0;
-//     }
-//     51%, 100% {
-//         opacity: 1;
-//     }
-// }
-
-
-// $for $i from 1 through 8
