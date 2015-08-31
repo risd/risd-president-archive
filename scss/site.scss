@@ -21,7 +21,7 @@
 
 //Home Page
 .campaign {
-    margin-top: $l-space--xxxlarge;
+    margin: $l-space--xxxlarge 0;
 }
 .campaign-description {
 
@@ -37,22 +37,30 @@
     flex-wrap: wrap;
     box-sizing: border-box;
     align-items: center;
-    margin: $l-space--xlarge auto 0 auto;
-    padding: $l-space--large 0;
-    background-color: $c-one;
-    color: $c-three;
+    margin: $l-space--xlarge auto;
+    color: $c-one;
     @include v-tablet {
-        margin: $l-space--xxlarge auto 0 auto;
+        margin: $l-space--xlarge auto;
     };
 }
 .campaign-links--item {
     width: 100%;
     text-align: center;
     box-sizing: border-box;
-    margin: $l-space--medium auto;
+    margin: 0 auto;
+    padding: $l-space--large 0;
+    border-top: 4px solid $c-one;
+    border-bottom: 4px solid $c-one;
     @include v-tablet {
         width: 50%;
     };
+    &:first-child {
+        border-right: 4px solid $c-one;
+    }
+    &:hover {
+        background-color: $c-one;
+        color: $c-three;
+    }
 }
 
 
@@ -412,5 +420,9 @@
     }
     span {
         // border-bottom: 2px solid $c-one;
+    }
+    h3 {
+        font-family: $t-font--one;
+        text-align: center;
     }
 }

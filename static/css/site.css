@@ -1862,7 +1862,7 @@ article {
 }
 
 .campaign {
-  margin-top: 13.328rem;
+  margin: 13.328rem 0;
 }
 
 .campaign-intro--title {
@@ -1880,14 +1880,12 @@ article {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 6.664rem auto 0 auto;
-  padding: 4.165rem 0;
-  background-color: black;
-  color: white;
+  margin: 6.664rem auto;
+  color: black;
 }
 @media (min-width: 768px) {
   .campaign-links {
-    margin: 9.996rem auto 0 auto;
+    margin: 6.664rem auto;
   }
 }
 
@@ -1895,12 +1893,22 @@ article {
   width: 100%;
   text-align: center;
   box-sizing: border-box;
-  margin: 2.499rem auto;
+  margin: 0 auto;
+  padding: 4.165rem 0;
+  border-top: 4px solid black;
+  border-bottom: 4px solid black;
 }
 @media (min-width: 768px) {
   .campaign-links--item {
     width: 50%;
   }
+}
+.campaign-links--item:first-child {
+  border-right: 4px solid black;
+}
+.campaign-links--item:hover {
+  background-color: black;
+  color: white;
 }
 
 .inauguration {
@@ -2329,5 +2337,9 @@ article {
 .externalLinks a {
   display: inline-block;
   max-width: 20rem;
+}
+.externalLinks h3 {
+  font-family: "Circular", "Helvetica", "sans-serif";
+  text-align: center;
 }
 /*# sourceMappingURL=site.css.map */
