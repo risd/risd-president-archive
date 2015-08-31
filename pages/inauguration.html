@@ -21,7 +21,7 @@
     <h1 class="inauguration-title">Inauguration</h1>
     <section class="inauguration-info narrowColumn">
         <article class="inauguration-date">
-            {{ inauguration.inauguration_date|date('l')}}</br>{{ inauguration.inauguration_date|date('F, j Y')}}</br>{{ inauguration.inauguration_date|date('g:ia')}}
+            {{ inauguration.inauguration_date|date('l')}}</br>{{ inauguration.inauguration_date|date('F j, Y')}}</br>{{ inauguration.inauguration_date|date('g a')}}
         </article>
         <article class="inauguration-address">
             <a href="" target=_blank>{{ inauguration.inauguration_address.street1  }}</br>{{ inauguration.inauguration_address.street2 }}</br>{{ inauguration.inauguration_address.city }}, {{ inauguration.inauguration_address.state }}</a>
