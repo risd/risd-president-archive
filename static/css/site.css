@@ -1548,23 +1548,6 @@ article {
   visibility: hidden;
 }
 
-@-webkit-keyframes showHide {
-  0%, 49% {
-    opacity: 0;
-  }
-  51%, 100% {
-    opacity: 1;
-  }
-}
-
-@keyframes showHide {
-  0%, 49% {
-    opacity: 0;
-  }
-  51%, 100% {
-    opacity: 1;
-  }
-}
 .slider-container {
   font-size: 1.5rem;
   margin-top: 4.165rem;
