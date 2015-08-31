@@ -2,6 +2,7 @@ $(document).ready(function(){
 	hamburgerMenu();
 	slickSetup();
     masonrySetup();
+	posterAnimation();
 });
 
 function hamburgerMenu() {
@@ -39,4 +40,16 @@ function slickSetup() {
 		prevArrow: '<div class="left-arrow" aria-label="previous"><p>❮</p></div>',
 		nextArrow: '<div class="right-arrow" aria-label="next"><p>❯</p></div>'
 	});
+}
+
+function posterAnimation() {
+	var posterItems = $('.posterItem-campaignText--small').add('.posterItem-campaignText--large').add('.posterItem-inaugurationText--small');
+	for (var i = 0; i < posterItems.length; i++) {
+		console.log(posterItems[i]);
+		$(posterItems[i]).delay(i*400).queue(function(){
+			$(this).addClass('showPosterPart').removeClass('hidePosterPart')
+		}).delay(i*400).queue(function(){
+			$(this).addClass('hidePosterPart').removeClass('showPosterPart');
+		});;
+	}
 }

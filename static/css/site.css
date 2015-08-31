@@ -375,6 +375,8 @@ iframe {
 *:focus {
   outline: 0;
 }
+
+@lost gutter 4.165rem;
 section {
   box-sizing: border-box;
 }
@@ -759,6 +761,8 @@ iframe {
 *:focus {
   outline: 0;
 }
+
+@lost gutter 4.165rem;
 section {
   box-sizing: border-box;
 }
@@ -1292,6 +1296,8 @@ iframe {
 *:focus {
   outline: 0;
 }
+
+@lost gutter 4.165rem;
 section {
   box-sizing: border-box;
 }
@@ -1374,12 +1380,6 @@ article {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-@media (min-width: 768px) {
-  .risd-container {
-    width: 49%;
-    height: 50vh;
-  }
 }
 
 .risd-text {
@@ -1531,7 +1531,7 @@ article {
 }
 @media (min-width: 1024px) {
   .posterItem-inaugurationText--small {
-    font-size: 1.7vmax;
+    font-size: 1.4vmax;
   }
 }
 @media (min-width: 1824px) {
@@ -1540,6 +1540,31 @@ article {
   }
 }
 
+.showPosterPart {
+  visibility: visible;
+}
+
+.hidePosterPart {
+  visibility: hidden;
+}
+
+@-webkit-keyframes showHide {
+  0%, 49% {
+    opacity: 0;
+  }
+  51%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes showHide {
+  0%, 49% {
+    opacity: 0;
+  }
+  51%, 100% {
+    opacity: 1;
+  }
+}
 .slider-container {
   font-size: 1.5rem;
   margin-top: 4.165rem;
