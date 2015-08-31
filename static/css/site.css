@@ -261,6 +261,7 @@ a {
 }
 p a {
   display: initial;
+  border-bottom: 2px solid black;
 }
 
 strong, b {
@@ -647,6 +648,7 @@ a {
 }
 p a {
   display: initial;
+  border-bottom: 2px solid black;
 }
 
 strong, b {
@@ -1182,6 +1184,7 @@ a {
 }
 p a {
   display: initial;
+  border-bottom: 2px solid black;
 }
 
 strong, b {
@@ -1865,6 +1868,10 @@ article {
   margin: 13.328rem 0;
 }
 
+.campaign-description p a {
+  border-bottom: 2px solid black;
+}
+
 .campaign-intro--title {
   margin-bottom: 4.165rem;
 }
@@ -1894,21 +1901,24 @@ article {
   text-align: center;
   box-sizing: border-box;
   margin: 0 auto;
-  padding: 4.165rem 0;
-  border-top: 4px solid black;
+  padding: 4.165rem 2.499rem;
   border-bottom: 4px solid black;
 }
-@media (min-width: 768px) {
-  .campaign-links--item {
-    width: 50%;
-  }
-}
 .campaign-links--item:first-child {
-  border-right: 4px solid black;
+  border-top: 4px solid black;
 }
 .campaign-links--item:hover {
   background-color: black;
   color: white;
+}
+@media (min-width: 768px) {
+  .campaign-links--item {
+    width: 50%;
+    border-top: 4px solid black;
+  }
+  .campaign-links--item:first-child {
+    border-right: 4px solid black;
+  }
 }
 
 .inauguration {
@@ -2199,7 +2209,6 @@ article {
 }
 .factSheet-description--image img {
   width: 100%;
-  margin-right: 4.165rem;
   border: 4px solid black;
   box-sizing: border-box;
 }

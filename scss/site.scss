@@ -24,7 +24,11 @@
     margin: $l-space--xxxlarge 0;
 }
 .campaign-description {
-
+    p {
+        a {
+            border-bottom: 2px solid $c-one;
+        }
+    }
 }
 .campaign-intro {
 
@@ -48,19 +52,22 @@
     text-align: center;
     box-sizing: border-box;
     margin: 0 auto;
-    padding: $l-space--large 0;
-    border-top: 4px solid $c-one;
+    padding: $l-space--large $l-space--medium;
     border-bottom: 4px solid $c-one;
-    @include v-tablet {
-        width: 50%;
-    };
     &:first-child {
-        border-right: 4px solid $c-one;
+        border-top: 4px solid $c-one;
     }
     &:hover {
         background-color: $c-one;
         color: $c-three;
     }
+    @include v-tablet {
+        width: 50%;
+        border-top: 4px solid $c-one;
+        &:first-child {
+            border-right: 4px solid $c-one;
+        }
+    };
 }
 
 
@@ -303,7 +310,7 @@
     };
     img {
         width: 100%;
-        margin-right: $l-space--large;
+        // margin-right: $l-space--large;
         border: 4px solid $c-one;
         box-sizing: border-box;
     }
