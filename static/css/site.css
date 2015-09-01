@@ -2000,6 +2000,11 @@ article {
   margin-left: auto;
   margin-right: auto;
 }
+.inauguration-accommodation a {
+  border-bottom: 2px solid black;
+  margin-bottom: 0;
+  display: inline-block;
+}
 
 .inauguration-accommodation--title {
   font-family: "Circular", "Helvetica", "sans-serif";

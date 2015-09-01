@@ -29,16 +29,15 @@
         <article class="inauguration-info--note">{{ inauguration.inauguration_info|safe }}
         </article>
         <article class="inauguration-accommodation">
-            <h2 class="inauguration-accommodation--title">Accommodation</h2>
+            <h2 class="inauguration-accommodation--title">Accommodations</h2>
             {{ inauguration.hotel_info_intro|safe }}
             {% for hotel in inauguration.hotels %}
-                <a href="{{ hotel.website }}">
-                    <strong>{{ hotel.name }}</strong></br>
+                <a href="{{ hotel.website }}" target="_blank">
+                    <strong>{{ hotel.name }}</strong></a></br>
                     <em>{{ hotel.cost }}</em></br>
                     <p>
                         {{ hotel.phone_number }}
                     </p>
-                </a>
             {% endfor %}
         </article>
     </section>

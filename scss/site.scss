@@ -103,6 +103,11 @@
 .inauguration-accommodation {
     margin: $l-space--large 0;
     @include l-textWidth;
+    a {
+        border-bottom: 2px solid $c-one;
+        margin-bottom: 0;
+        display: inline-block;
+    }
 }
 .inauguration-accommodation--title {
     font-family: $t-font--one;
