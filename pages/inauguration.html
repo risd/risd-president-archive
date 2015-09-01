@@ -24,7 +24,7 @@
             {{ inauguration.inauguration_date|date('l')}}</br>{{ inauguration.inauguration_date|date('F j, Y')}}</br>{{ inauguration.inauguration_date|date('g a')}}
         </article>
         <article class="inauguration-address">
-            <a href="" target=_blank>{{ inauguration.inauguration_address.street1  }}</br>{{ inauguration.inauguration_address.street2 }}</br>{{ inauguration.inauguration_address.city }}, {{ inauguration.inauguration_address.state }}</a>
+            <a href="{{ inauguration.google_map_link.original_url }}" target=_blank>{{ inauguration.inauguration_address.street1  }}</br>{{ inauguration.inauguration_address.street2 }}</br>{{ inauguration.inauguration_address.city }}, {{ inauguration.inauguration_address.state }}</a>
         </article>
         <article class="inauguration-info--note">{{ inauguration.inauguration_info|safe }}
         </article>
