@@ -1994,6 +1994,18 @@ article {
   margin-right: auto;
 }
 
+.inauguration-accommodation {
+  margin: 4.165rem 0;
+  max-width: 30em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inauguration-accommodation--title {
+  font-family: "Circular", "Helvetica", "sans-serif";
+  margin-bottom: 2.499rem;
+}
+
 .biography figure[data-type=quote] {
   margin: 0;
   padding: 0;
