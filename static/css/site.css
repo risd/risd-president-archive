@@ -1469,6 +1469,16 @@ article {
     font-size: 5vmax;
   }
 }
+@media (min-aspect-ratio: 16 / 8) {
+  .posterItem-campaignText--large h2 {
+    font-size: 4vw;
+  }
+}
+@media (min-aspect-ratio: 16 / 7) {
+  .posterItem-campaignText--large h2 {
+    font-size: 3vw;
+  }
+}
 .posterItem-campaignText--large span {
   border-bottom: 0.6vmax solid black;
 }
@@ -1485,6 +1495,16 @@ article {
 @media (min-width: 1024px) {
   .posterItem-campaignText--small {
     font-size: 2.7vmax;
+  }
+}
+@media (min-aspect-ratio: 16 / 8) {
+  .posterItem-campaignText--small {
+    font-size: 2.2vw;
+  }
+}
+@media (min-aspect-ratio: 16 / 7) {
+  .posterItem-campaignText--small {
+    font-size: 1.6vw;
   }
 }
 .posterItem-campaignText--small span {
@@ -1529,7 +1549,7 @@ article {
 }
 @media (min-width: 768px) {
   .posterItem-inaugurationText--small {
-    font-size: 2.3vmax;
+    font-size: 2.1vmax;
   }
 }
 @media (min-width: 1024px) {
@@ -1540,6 +1560,16 @@ article {
 @media (min-width: 1824px) {
   .posterItem-inaugurationText--small {
     font-size: 1.3vmax;
+  }
+}
+@media (min-aspect-ratio: 16 / 8) {
+  .posterItem-inaugurationText--small {
+    font-size: 1.1vw;
+  }
+}
+@media (min-aspect-ratio: 16 / 7) {
+  .posterItem-inaugurationText--small {
+    font-size: 0.9vw;
   }
 }
 

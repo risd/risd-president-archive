@@ -119,6 +119,12 @@
         @include v-laptop {
             font-size: 5vmax;
         };
+        @include v-shortHeight {
+            font-size: 4vw;
+        };
+        @include v-veryShortHeight {
+            font-size: 3vw;
+        };
     }
     span {
         border-bottom: 0.6vmax solid $c-one;
@@ -133,6 +139,12 @@
     font-size: 3.5vmax;
     @include v-laptop {
         font-size: 2.7vmax;
+    };
+    @include v-shortHeight {
+        font-size: 2.2vw;
+    };
+    @include v-veryShortHeight {
+        font-size: 1.6vw;
     };
     span {
         border-bottom: 0.3vmax solid $c-one;
@@ -165,7 +177,7 @@
     @include t-allCaps;
     font-size: 2.9vmax;
     @include v-tablet {
-        font-size: 2.3vmax;
+        font-size: 2.1vmax;
     };
 
     @include v-laptop {
@@ -173,6 +185,12 @@
     };
     @include v-desktop {
         font-size: 1.3vmax;
+    };
+    @include v-shortHeight {
+        font-size: 1.1vw;
+    };
+    @include v-veryShortHeight {
+        font-size: 0.9vw;
     };
 }
 
