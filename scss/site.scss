@@ -18,6 +18,10 @@
 @import "vendor/slick/slick";
 @import "vendor/slick/slick-theme";
 
+::selection{
+    background:$c-one;
+    color:white;
+}
 
 //Home Page
 .campaign {
@@ -102,6 +106,13 @@
 }
 .inauguration-accommodation {
     margin: $l-space--large 0;
+    h3{
+        font-weight:bold;
+        text-align:left;
+        margin-top:1.666rem;
+        margin-bottom:0.833rem;
+        // font-size:1rem;
+    }
     @include l-textWidth;
     a {
         border-bottom: 2px solid $c-one;
