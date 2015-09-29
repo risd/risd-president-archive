@@ -26,8 +26,15 @@
         <article class="inauguration-address">
             <a href="{{ inauguration.google_map_link.original_url }}" target=_blank>{{ inauguration.inauguration_address.street1  }}</br>{{ inauguration.inauguration_address.street2 }}</br>{{ inauguration.inauguration_address.city }}, {{ inauguration.inauguration_address.state }}</a>
         </article>
-        <article class="inauguration-info--note">{{ inauguration.inauguration_info|safe }}
+        <article class="inauguration-info--note">
+            {{ inauguration.inauguration_info|safe }}
         </article>
+
+        <article class="inauguration-info--events">
+            <h2 class="inauguration-accommodation--title">Inaugural Events</h2>
+            {{ inauguration.inaugural_events |safe}}
+        </article>
+
         <article class="inauguration-accommodation">
             <h2 class="inauguration-accommodation--title">Accommodations</h2>
             {{ inauguration.hotel_info_intro|safe }}

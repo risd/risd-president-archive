@@ -2004,6 +2004,31 @@ article {
   margin-right: auto;
 }
 
+.inauguration-info--events {
+  margin: 4.165rem 0;
+  max-width: 30em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.inauguration-info--events h4 {
+  font-family: "Circular", "Helvetica", "sans-serif";
+  font-size: 2rem;
+  text-align: left;
+  margin-bottom: 1em;
+}
+.inauguration-info--events h5 {
+  font-family: "Circular", "Helvetica", "sans-serif";
+  text-align: left;
+  font-size: 1.5rem;
+}
+.inauguration-info--events p {
+  margin-bottom: 0em;
+  margin-left: 1em;
+}
+.inauguration-info--events p + p {
+  margin-bottom: 2em;
+}
+
 .inauguration-accommodation {
   margin: 4.165rem 0;
   max-width: 30em;
