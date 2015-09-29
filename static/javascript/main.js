@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	smartquotes();
 	hamburgerMenu();
 	slickSetup();
     masonrySetup();

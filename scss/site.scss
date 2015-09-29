@@ -18,6 +18,10 @@
 @import "vendor/slick/slick";
 @import "vendor/slick/slick-theme";
 
+::selection{
+    background:$c-one;
+    color:white;
+}
 
 //Home Page
 .campaign {
@@ -100,8 +104,39 @@
     margin: $l-space--large 0;
     @include l-textWidth;
 }
+.inauguration-info--events{
+    margin: $l-space--large 0;
+    @include l-textWidth;
+    h4{
+        font-family:$t-font--one;
+        font-size:2rem;
+        text-align:left;
+        margin-bottom:1em;
+        // margin-top:1em;
+    }
+    h5{
+        font-family:$t-font--one;
+        text-align:left;
+        font-size:1.5rem;
+    }
+    p{
+        margin-bottom:0em;
+        margin-left:1em;
+    }
+    p + p{
+        margin-bottom:2em;
+    }
+}
+
 .inauguration-accommodation {
     margin: $l-space--large 0;
+    h3{
+        font-weight:bold;
+        text-align:left;
+        margin-top:1.666rem;
+        margin-bottom:0.833rem;
+        // font-size:1rem;
+    }
     @include l-textWidth;
     a {
         border-bottom: 2px solid $c-one;

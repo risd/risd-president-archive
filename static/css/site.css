@@ -1894,6 +1894,16 @@ article {
   opacity: 0.75;
 }
 
+::-moz-selection {
+  background: black;
+  color: white;
+}
+
+::selection {
+  background: black;
+  color: white;
+}
+
 .campaign {
   margin: 13.328rem 0;
 }
@@ -1994,11 +2004,42 @@ article {
   margin-right: auto;
 }
 
+.inauguration-info--events {
+  margin: 4.165rem 0;
+  max-width: 30em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.inauguration-info--events h4 {
+  font-family: "Circular", "Helvetica", "sans-serif";
+  font-size: 2rem;
+  text-align: left;
+  margin-bottom: 1em;
+}
+.inauguration-info--events h5 {
+  font-family: "Circular", "Helvetica", "sans-serif";
+  text-align: left;
+  font-size: 1.5rem;
+}
+.inauguration-info--events p {
+  margin-bottom: 0em;
+  margin-left: 1em;
+}
+.inauguration-info--events p + p {
+  margin-bottom: 2em;
+}
+
 .inauguration-accommodation {
   margin: 4.165rem 0;
   max-width: 30em;
   margin-left: auto;
   margin-right: auto;
+}
+.inauguration-accommodation h3 {
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.666rem;
+  margin-bottom: 0.833rem;
 }
 .inauguration-accommodation a {
   border-bottom: 2px solid black;
