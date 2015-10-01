@@ -1,9 +1,13 @@
+global.jQuery = require('jquery');
+
+var sortImages = require('./sortImages.js')();
+
 $(document).ready(function(){
 	smartquotes();
 	hamburgerMenu();
 	slickSetup();
-    masonrySetup();
-	posterAnimation();
+    // masonrySetup();
+	// posterAnimation();
 });
 
 function hamburgerMenu() {

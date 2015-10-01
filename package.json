@@ -15,9 +15,9 @@
   "scripts": {
     "start": "wh serve",
     "build": "wh build",
-    "deploy": "rm-deploy --prefix=edu",
+    "deploy": "rm-deploy --prefix=athena",
     "wh-deploy": "rm-deploy --bucket=master",
-    "init-webhook": "wh init edu-proto-hook",
+    "init-webhook": "wh init wh-athena",
     "wh-update": "wh update"
   },
   "homepage": "https://github.com/webhook/webhook-generate",
@@ -55,6 +55,7 @@
     "mkdirp": "~0.3.5",
     "moment": "~2.8.1",
     "nodejs-websocket": "~1.2.0",
+    "packery": "^1.4.3",
     "proxy-middleware": "~0.5.0",
     "request": "~2.31.0",
     "swig": "~1.4.1",

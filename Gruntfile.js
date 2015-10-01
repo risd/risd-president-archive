@@ -32,10 +32,15 @@ module.exports = function(grunt) {
                 'build-static']
             },
             browserify: {
-                files: ['script/src/**/*.js'],
+                files: ['static/javascript/**/*.js'],
                 tasks: ['jshint',
                 'browserify:client',
                 'build-static']
+            },
+            concat: {
+                files: ['<%= concat.dist.src %>'],
+                tasks: ['concat',
+                        'build-static']
             }
         },
 
@@ -113,8 +118,18 @@ module.exports = function(grunt) {
         // Build process for javascript
         browserify: {
             client: {
-                src: ['script/src/index.js'],
+                src: ['static/javascript/main.js'],
                 dest: 'static/javascript/site.js'
+            }
+        },
+
+        concat: {
+            options: {
+                separator: '\n\n'
+            },
+            dist: {
+                src: ['script/lib/**/*.js'],
+                dest: 'static/javascript/lib.js'
             }
         }
 

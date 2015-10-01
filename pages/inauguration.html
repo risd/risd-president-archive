@@ -29,12 +29,40 @@
         <article class="inauguration-info--note">
             {{ inauguration.inauguration_info|safe }}
         </article>
+    </section>
 
+    <section class="inauguration-info wideColumn">
+        {% if inauguration.video_gallery %}
+        <article class="inauguration-videoGallery">
+            {% for video in inauguration.video_gallery %}
+            <div class="inauguration-video--container">
+                <div class="inauguration-video--item">
+                    {{ video.link.html|safe }}
+                </div>
+            </div>
+            {% endfor %}
+        </article>
+        {% endif %}
+
+        {% if inauguration.image_gallery %}
+        <article class="inauguration-imageGallery">
+            <div class="inauguration-image--gutter"></div>
+            {% for item in inauguration.image_gallery %}
+                <a href="{{ item.image.url }}" class="inauguration-image--link">
+                    <img src="{{ item.image|imageSize(800) }}" alt="" class="inauguration-image--item"/>
+                </a>
+            {% endfor %}
+        </article>
+        {% endif %}
+
+        {% if inauguration.show_events %}
         <article class="inauguration-info--events">
             <h2 class="inauguration-accommodation--title">Inaugural Events</h2>
             {{ inauguration.inaugural_events |safe}}
         </article>
+        {% endif %}
 
+        {% if inauguration.show_campus_directions %}
         <article class="inauguration-accommodation">
             <h2 class="inauguration-accommodation--title">Accommodations</h2>
             {{ inauguration.hotel_info_intro|safe }}
@@ -47,13 +75,18 @@
                     </p>
             {% endfor %}
         </article>
+        {% endif %}
+    </section>
 
+    {% if inauguration.show_accommodation %}
+    <section class="inauguration-info narrowColumn">
         <article class="inauguration-accommodation">
             <h2 class="inauguration-accommodation--title">Getting to Campus</h2>
             {{inauguration.getting_to_campus|safe}}
         </article>
-
     </section>
+    {% endif %}
+
 </main>
 
 {% endblock %}

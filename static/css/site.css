@@ -2052,6 +2052,74 @@ article {
   margin-bottom: 2.499rem;
 }
 
+.inauguration-videoGallery {
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.inauguration-video--container {
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  min-width: 40%;
+  border: 4px solid black;
+  box-sizing: border-box;
+  margin-bottom: 2.499rem;
+}
+.inauguration-video--container:nth-child(2n+1) {
+  margin-right: 2.499rem;
+}
+.inauguration-video--container:last-child, .inauguration-video--container:nth-last-child(2):nth-child(odd) {
+  margin-right: 0;
+}
+
+.inauguration-video--item {
+  width: 100%;
+  height: 0;
+  position: relative;
+  padding-bottom: 56.25%;
+}
+.inauguration-video--item iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.inauguration-imageGallery {
+  width: 100%;
+  box-sizing: border-box;
+}
+.inauguration-imageGallery:after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+.inauguration-image--link {
+  width: 49%;
+  box-sizing: border-box;
+}
+
+.inauguration-image--item {
+  border: 4px solid black;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.inauguration-image--gutter {
+  width: 2%;
+}
+
 .biography figure[data-type=quote] {
   margin: 0;
   padding: 0;
