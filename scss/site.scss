@@ -153,18 +153,29 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
+    margin-top: $l-space--xlarge;
 }
 .inauguration-video--container {
-    flex-grow: 1;
-    min-width: 100%;
+    width: 100%;
     border: 4px solid $c-one;
     box-sizing: border-box;
-    margin-bottom: $l-space--medium;
+    margin-bottom: 2%;
     @include v-tablet {
-        min-width: 40%;
+        width: 49%;
         &:nth-child(2n+1) {
-            margin-right: $l-space--medium;
+            margin-right: 2%;
+        }
+        &:last-child,
+        &:nth-last-child(2):nth-child(odd) {
+            margin-right: 0;
+        }
+    };
+    @include v-desktop {
+        width: 32%;
+        margin-right: 2%;
+        &:nth-child(3n) {
+            margin-right: 0;
         }
         &:last-child,
         &:nth-last-child(2):nth-child(odd) {
@@ -189,9 +200,7 @@
 .inauguration-imageGallery {
     width: 100%;
     box-sizing: border-box;
-    // display: flex;
-    // flex-wrap: wrap;
-    // justify-content: center;
+    margin-top: $l-space--xlarge;
     &:after {
       content: ' ';
       display: block;
@@ -201,10 +210,14 @@
 .inauguration-image--link {
     width: 100%;
     box-sizing: border-box;
-    // margin-bottom: $l-space--medium;
-    // margin-right: $l-space--medium;
     @include v-tablet {
         width: 49%;
+    };
+    @include v-laptop {
+        width: 32%;
+    };
+    @include v-desktop {
+        width: 23.5%;
     };
 }
 .inauguration-image--item {
@@ -215,6 +228,12 @@
 .inauguration-image--gutter {
     width: 0;
     @include v-tablet {
+        width: 2%;
+    };
+    @include v-laptop {
+        width: 2%;
+    };
+    @include v-desktop {
         width: 2%;
     };
 }
