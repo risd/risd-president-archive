@@ -50,6 +50,7 @@
             {% for item in inauguration.image_gallery %}
                 <a href="{{ item.image.url }}" class="inauguration-image--link">
                     <img src="{{ item.image|imageSize(800) }}" alt="" class="inauguration-image--item"/>
+                    <figcaption class="inauguration-image--caption">{{ item.caption }}</figcaption>
                 </a>
             {% endfor %}
         </article>

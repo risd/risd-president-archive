@@ -237,6 +237,18 @@
         width: 2%;
     };
 }
+.inauguration-image--caption {
+    font-family: $t-font--one;
+    font-size: $t-size--small;
+    text-align: center;
+    margin-bottom: $l-space--small;
+    @include v-tablet {
+        margin-bottom: $l-space--xsmall;
+    };
+    @include v-laptop {
+        margin-bottom: 0;
+    };
+}
 
 
 //President's Bio page
