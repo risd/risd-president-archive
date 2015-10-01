@@ -85,6 +85,11 @@
     display: flex;
     flex-wrap: wrap;
 }
+.inauguration-text {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
 .inauguration-date, .inauguration-address {
     width: 100%;
     text-align: center;
