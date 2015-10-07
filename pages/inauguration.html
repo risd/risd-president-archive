@@ -32,7 +32,8 @@
     </section>
 
     <section class="inauguration-text wideColumn">
-        {% if inauguration.video_gallery %}
+
+        {% if inauguration.show_videos %}
         <article class="inauguration-videoGallery">
             {% for video in inauguration.video_gallery %}
             <div class="inauguration-video--container">
@@ -44,7 +45,7 @@
         </article>
         {% endif %}
 
-        {% if inauguration.image_gallery %}
+        {% if inauguration.show_image_gallery %}
         <article class="inauguration-imageGallery">
             <div class="inauguration-image--gutter"></div>
             {% for item in inauguration.image_gallery %}
