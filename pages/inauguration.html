@@ -63,30 +63,30 @@
         </article>
         {% endif %}
 
-        {% if inauguration.show_campus_directions %}
+        {% if inauguration.show_accommodation %}
         <article class="inauguration-accommodation">
             <h2 class="inauguration-accommodation--title">Accommodations</h2>
             {{ inauguration.hotel_info_intro|safe }}
             {% for hotel in inauguration.hotels %}
                 <a href="{{ hotel.website }}" target="_blank">
-                    <strong>{{ hotel.name }}</strong></a></br>
-                    <em>{{ hotel.cost }}</em></br>
+                    <h5>{{ hotel.name }}</h5></a>
                     <p>
+                        <em>{{ hotel.cost }}</em></br>
                         {{ hotel.phone_number }}
                     </p>
             {% endfor %}
         </article>
         {% endif %}
-    </section>
 
-    {% if inauguration.show_accommodation %}
-    <section class="inauguration-info narrowColumn">
-        <article class="inauguration-accommodation">
-            <h2 class="inauguration-accommodation--title">Getting to Campus</h2>
+        {% if inauguration.show_campus_directions %}
+        <article class="inauguration-directions">
+            <h2 class="inauguration-directions--title">Getting to Campus</h2>
             {{inauguration.getting_to_campus|safe}}
         </article>
+        {% endif %}
     </section>
-    {% endif %}
+
+
 
 </main>
 

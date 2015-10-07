@@ -112,36 +112,50 @@
 .inauguration-info--events{
     margin: $l-space--large 0;
     @include l-textWidth;
-    h4{
+    h4 {
         font-family:$t-font--one;
         font-size:2rem;
         text-align:left;
         margin-bottom:1em;
-        // margin-top:1em;
+        margin-top: $l-space--large;
     }
-    h5{
+    h5 {
         font-family:$t-font--one;
         text-align:left;
         font-size:1.5rem;
+        margin-top: $l-space--medium;
     }
-    p{
-        margin-bottom:0em;
-        margin-left:1em;
-    }
-    p + p{
-        margin-bottom:2em;
+    p {
+        margin-bottom: $l-space--medium;
+        margin-left:$l-space--xsmall;
     }
 }
 
 .inauguration-accommodation {
     margin: $l-space--large 0;
-    h3{
-        font-weight:bold;
+    h4 {
+        font-family:$t-font--one;
+        font-size:2rem;
         text-align:left;
-        margin-top:1.666rem;
-        margin-bottom:0.833rem;
-        // font-size:1rem;
+        margin-bottom:1em;
+        margin-top: $l-space--large;
     }
+    h5 {
+        font-family:$t-font--one;
+        text-align:left;
+        font-size:1.5rem;
+    }
+    p {
+        margin-bottom: $l-space--medium;
+        margin-left:$l-space--xsmall;
+    }
+    // h3 {
+    //     font-weight:bold;
+    //     text-align:left;
+    //     margin-top:1.666rem;
+    //     margin-bottom:0.833rem;
+        // font-size:1rem;
+    // }
     @include l-textWidth;
     a {
         border-bottom: 2px solid $c-one;
@@ -150,6 +164,44 @@
     }
 }
 .inauguration-accommodation--title {
+    font-family: $t-font--one;
+    margin-bottom: $l-space--medium;
+}
+
+.inauguration-directions {
+    margin: $l-space--large 0;
+    h4 {
+        font-family:$t-font--one;
+        font-size:2rem;
+        text-align:left;
+        margin-bottom:1em;
+        margin-top: $l-space--large;
+    }
+    h5 {
+        font-family:$t-font--one;
+        text-align:left;
+        font-size:1.5rem;
+        margin-top: $l-space--medium;
+    }
+    p {
+        margin-bottom: $l-space--medium;
+        margin-left:$l-space--xsmall;
+    }
+    // h3 {
+    //     font-weight:bold;
+    //     text-align:left;
+    //     margin-top:1.666rem;
+    //     margin-bottom:0.833rem;
+        // font-size:1rem;
+    // }
+    @include l-textWidth;
+    a {
+        border-bottom: 2px solid $c-one;
+        margin-bottom: 0;
+        display: inline-block;
+    }
+}
+.inauguration-directions--title {
     font-family: $t-font--one;
     margin-bottom: $l-space--medium;
 }

@@ -2027,18 +2027,17 @@ article {
   font-size: 2rem;
   text-align: left;
   margin-bottom: 1em;
+  margin-top: 4.165rem;
 }
 .inauguration-info--events h5 {
   font-family: "Circular", "Helvetica", "sans-serif";
   text-align: left;
   font-size: 1.5rem;
+  margin-top: 2.499rem;
 }
 .inauguration-info--events p {
-  margin-bottom: 0em;
-  margin-left: 1em;
-}
-.inauguration-info--events p + p {
-  margin-bottom: 2em;
+  margin-bottom: 2.499rem;
+  margin-left: 0.833rem;
 }
 
 .inauguration-accommodation {
@@ -2047,11 +2046,21 @@ article {
   margin-left: auto;
   margin-right: auto;
 }
-.inauguration-accommodation h3 {
-  font-weight: bold;
+.inauguration-accommodation h4 {
+  font-family: "Circular", "Helvetica", "sans-serif";
+  font-size: 2rem;
   text-align: left;
-  margin-top: 1.666rem;
-  margin-bottom: 0.833rem;
+  margin-bottom: 1em;
+  margin-top: 4.165rem;
+}
+.inauguration-accommodation h5 {
+  font-family: "Circular", "Helvetica", "sans-serif";
+  text-align: left;
+  font-size: 1.5rem;
+}
+.inauguration-accommodation p {
+  margin-bottom: 2.499rem;
+  margin-left: 0.833rem;
 }
 .inauguration-accommodation a {
   border-bottom: 2px solid black;
@@ -2060,6 +2069,40 @@ article {
 }
 
 .inauguration-accommodation--title {
+  font-family: "Circular", "Helvetica", "sans-serif";
+  margin-bottom: 2.499rem;
+}
+
+.inauguration-directions {
+  margin: 4.165rem 0;
+  max-width: 30em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.inauguration-directions h4 {
+  font-family: "Circular", "Helvetica", "sans-serif";
+  font-size: 2rem;
+  text-align: left;
+  margin-bottom: 1em;
+  margin-top: 4.165rem;
+}
+.inauguration-directions h5 {
+  font-family: "Circular", "Helvetica", "sans-serif";
+  text-align: left;
+  font-size: 1.5rem;
+  margin-top: 2.499rem;
+}
+.inauguration-directions p {
+  margin-bottom: 2.499rem;
+  margin-left: 0.833rem;
+}
+.inauguration-directions a {
+  border-bottom: 2px solid black;
+  margin-bottom: 0;
+  display: inline-block;
+}
+
+.inauguration-directions--title {
   font-family: "Circular", "Helvetica", "sans-serif";
   margin-bottom: 2.499rem;
 }
