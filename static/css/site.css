@@ -2134,7 +2134,7 @@ article {
   .inauguration-video--container:nth-child(2n+1) {
     margin-right: 2%;
   }
-  .inauguration-video--container:last-child, .inauguration-video--container:nth-last-child(2):nth-child(odd) {
+  .inauguration-video--container:last-child {
     margin-right: 0;
   }
 }
