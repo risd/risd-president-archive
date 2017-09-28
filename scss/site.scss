@@ -13,45 +13,627 @@
 @import "foundation/base";
 @import "components/nav-module";
 @import "components/poster-moment";
+@import "components/image-slider";
+// @import "vendor/flexslider";
+@import "vendor/slick/slick";
+@import "vendor/slick/slick-theme";
 
-
-main {
-    max-width: 90%;
-    margin: 0 auto;
-    @include v-tablet {
-        max-width: 80%;
-    };
-    @include v-laptop {
-        max-width: 60%;
-    };
-    @include v-desktop {
-        max-width: 40%;
-    };
+::selection{
+    background:$c-one;
+    color:white;
 }
 
-
+//Home Page
 .campaign {
-    margin-top: $l-space--xxxlarge;
+    margin: $l-space--xxxlarge 0;
+}
+.campaign-description {
+
 }
 .campaign-intro {
 
 }
+.campaign-intro--title {
+    margin-bottom: $l-space--large;
+}
 .campaign-links {
     display: flex;
+    flex-wrap: wrap;
     box-sizing: border-box;
+    align-items: center;
+    margin: $l-space--xlarge auto;
+    color: $c-one;
+    @include v-tablet {
+        margin: $l-space--xlarge auto;
+    };
 }
 .campaign-links--item {
-    width: 50%;
+    width: 100%;
     text-align: center;
     box-sizing: border-box;
-    &:nth-child(2n+1) {
-        margin-right: $l-space--large;
+    margin: 0 auto;
+    padding: $l-space--large $l-space--medium;
+    border-bottom: 4px solid $c-one;
+    &:first-child {
+        border-top: 4px solid $c-one;
     }
+    &:hover {
+        background-color: $c-one;
+        color: $c-three;
+    }
+    @include v-tablet {
+        width: 50%;
+        border-top: 4px solid $c-one;
+        &:first-child {
+            border-right: 4px solid $c-one;
+        }
+    };
+}
+
+
+//Inauguration Page
+.inauguration {
+    margin-top: $l-space--medium;
+    @include v-tablet {
+        margin-top: $l-space--small;
+    };
+}
+.inauguration-title {
+    margin-bottom: $l-space--xlarge;
+}
+.inauguration-info {
+    display: flex;
+    flex-wrap: wrap;
+}
+.inauguration-text {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.inauguration-date, .inauguration-address {
+    width: 100%;
+    text-align: center;
+    font-family: $t-font--one;
+    font-size: $t-size--large;
+    margin-bottom: $l-space--medium;
+    line-height: $t-lineHeight--tight;
+    @include v-tablet {
+        width: 50%;
+        margin: $l-space--xlarge auto;
+    };
+    p {
+        max-width: 20rem;
+    }
+}
+.inauguration-info--note {
+    margin: $l-space--large 0;
+    @include l-textWidth;
+}
+.inauguration-info--events{
+    margin: $l-space--large 0;
+    @include l-textWidth;
+    h4 {
+        font-family:$t-font--one;
+        font-size:2rem;
+        text-align:left;
+        margin-bottom:1em;
+        margin-top: $l-space--large;
+    }
+    h5 {
+        font-family:$t-font--one;
+        text-align:left;
+        font-size:1.5rem;
+        margin-top: $l-space--medium;
+    }
+    p {
+        margin-bottom: $l-space--medium;
+        margin-left:$l-space--xsmall;
+    }
+}
+
+.inauguration-accommodation {
+    margin: $l-space--large 0;
+    h4 {
+        font-family:$t-font--one;
+        font-size:2rem;
+        text-align:left;
+        margin-bottom:1em;
+        margin-top: $l-space--large;
+    }
+    h5 {
+        font-family:$t-font--one;
+        text-align:left;
+        font-size:1.5rem;
+    }
+    p {
+        margin-bottom: $l-space--medium;
+        margin-left:$l-space--xsmall;
+    }
+    // h3 {
+    //     font-weight:bold;
+    //     text-align:left;
+    //     margin-top:1.666rem;
+    //     margin-bottom:0.833rem;
+        // font-size:1rem;
+    // }
+    @include l-textWidth;
+    a {
+        border-bottom: 2px solid $c-one;
+        margin-bottom: 0;
+        display: inline-block;
+    }
+}
+.inauguration-accommodation--title {
+    font-family: $t-font--one;
+    margin-bottom: $l-space--medium;
+}
+
+.inauguration-directions {
+    margin: $l-space--large 0;
+    h4 {
+        font-family:$t-font--one;
+        font-size:2rem;
+        text-align:left;
+        margin-bottom:1em;
+        margin-top: $l-space--large;
+    }
+    h5 {
+        font-family:$t-font--one;
+        text-align:left;
+        font-size:1.5rem;
+        margin-top: $l-space--medium;
+    }
+    p {
+        margin-bottom: $l-space--medium;
+        margin-left:$l-space--xsmall;
+    }
+    // h3 {
+    //     font-weight:bold;
+    //     text-align:left;
+    //     margin-top:1.666rem;
+    //     margin-bottom:0.833rem;
+        // font-size:1rem;
+    // }
+    @include l-textWidth;
+    a {
+        border-bottom: 2px solid $c-one;
+        margin-bottom: 0;
+        display: inline-block;
+    }
+}
+.inauguration-directions--title {
+    font-family: $t-font--one;
+    margin-bottom: $l-space--medium;
+}
+
+.inauguration-videoGallery {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: $l-space--xlarge;
+}
+.inauguration-video--container {
+    width: 100%;
+    border: 4px solid $c-one;
+    box-sizing: border-box;
+    margin-bottom: 2%;
+    @include v-tablet {
+        width: 49%;
+        &:nth-child(2n+1) {
+            margin-right: 2%;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    };
+    @include v-desktop {
+        width: 32%;
+        margin-right: 2%;
+        &:nth-child(3n) {
+            margin-right: 0;
+        }
+        &:last-child,
+        &:nth-last-child(2):nth-child(odd) {
+            margin-right: 0;
+        }
+    };
+}
+.inauguration-video--item {
+    width: 100%;
+    height: 0;
+    position: relative;
+    padding-bottom: 56.25%;
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.inauguration-imageGallery {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: $l-space--xlarge;
+    &:after {
+      content: ' ';
+      display: block;
+      clear: both;
+    }
+}
+.inauguration-image--link {
+    width: 100%;
+    box-sizing: border-box;
+    @include v-tablet {
+        width: 49%;
+    };
+    @include v-laptop {
+        width: 32%;
+    };
+    @include v-desktop {
+        width: 23.5%;
+    };
+}
+.inauguration-image--item {
+    border: 4px solid $c-one;
+    box-sizing: border-box;
+    width: 100%;
+}
+.inauguration-image--gutter {
+    width: 0;
+    @include v-tablet {
+        width: 2%;
+    };
+    @include v-laptop {
+        width: 2%;
+    };
+    @include v-desktop {
+        width: 2%;
+    };
+}
+.inauguration-image--caption {
+    font-family: $t-font--one;
+    font-size: $t-size--small;
+    text-align: center;
+    margin-bottom: $l-space--small;
+    @include v-tablet {
+        margin-bottom: $l-space--xsmall;
+    };
+    @include v-laptop {
+        margin-bottom: 0;
+    };
+}
+
+
+//President's Bio page
+.bio {
+}
+.biography {
+    figure[data-type=quote] {
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+    blockquote {
+        font-family: $t-font--one;
+        font-style: normal;
+        font-size: $t-size--large;
+        text-align: center;
+        line-height: $t-lineHeight--tight;
+        margin: $l-space--medium auto;
+        max-width: 20em;
+        @include v-tablet {
+            font-size: $t-size--xlarge;
+        };
+    }
+}
+.biography-title {
+    text-align: center;
+    font-family: $t-font--one;
+    margin-top: $l-space--xlarge;
+    margin-bottom: $l-space--medium;
+    @include v-tablet {
+        font-size: $t-size--xxlarge;
+    };
+    @include v-laptop {
+        font-size: $t-size--xxlarge;
+        // display: inline-block;
+        // position: absolute;
+        // margin: 0;
+        // padding-bottom: 1rem;
+        // max-width: 15em;
+        // transform: rotateZ(270deg) translate(-100%, -100%);
+        // transform-origin: top left;
+    };
+    @include v-desktop;
+}
+.biography-title--timeline {
+    margin: 0 auto;
+    font-size: $t-size--large;
+    max-width: 40rem;
+    @include v-tablet {
+        font-size: $t-size--xlarge;
+    };
+}
+.biography-section--timeline {
+    margin-bottom: 0;
+}
+
+
+// timeline
+.timeline {
+    margin: $l-space--large auto 0 auto;
+    font-size: $t-size--medium;
+    border-top: 4px solid $c-one;
+    // border-bottom: 4px solid $c-one;
+    // display: flex;
+    // flex-wrap: wrap;
+    // align-items: flex-start;
+    &:after {
+        content:"";
+        display:table;
+        clear:both;
+    }
+    p {
+        max-width: 15em;
+    }
+}
+.timeline-entry{
+	width:100%;
+    text-align: center;
+    border-bottom: 4px solid $c-one;
+    box-sizing: border-box;
+    padding: $l-space--large 0;
+    @include v-tablet {
+        width:50%;
+        padding: $l-space--xlarge 0;
+    };
+    &:nth-child(even) {
+        border-right: none;
+        float: left;
+        @include v-tablet {
+            // border-right: 4px solid $c-one;
+            float: left;
+        };
+        .timeline-entry--item {
+            margin-left: 0;
+            @include v-tablet {
+                margin-left: 0;
+            };
+            @include v-laptop {
+                margin-left: 10%;
+            };
+            @include v-desktop {
+                margin-left: 35%;
+            };
+        }
+    }
+    &:nth-child(odd) {
+        float: left;
+        @include v-tablet {
+            border-left: 4px solid $c-one;
+            float: right;
+        };
+        .timeline-entry--item {
+            margin-right: 0;
+            @include v-tablet {
+                margin-right: 0;
+            };
+            @include v-laptop {
+                margin-right: 10%;
+            };
+            @include v-desktop {
+                margin-right: 35%;
+            };
+        }
+    }
+    &:first-child {
+        padding: $l-space--large 0;
+    }
+    &:last-child {
+        border-bottom: none;
+        padding: $l-space--large 0;
+    }
+    &:nth-last-child(2) {
+        border-bottom: 4px solid $c-one;
+        @include v-tablet {
+            border-bottom: none;
+        };
+    }
+}
+.timeline-title{
+    font-family: $t-font--one;
+    padding: 0 $l-space--medium;
+}
+.timeline-date{
+    font-family: $t-font--one;
+    font-size: $t-size--xlarge;
+    padding: 0 $l-space--medium;
+    line-height: $t-lineHeight--tight;
+    @include v-laptop {
+        font-size: $t-size--xxlarge;
+    };
+}
+
+
+
+//Fact Sheet
+.factSheet {
+    margin-top: $l-space--medium;
+    @include v-tablet {
+        margin-top: $l-space--small;
+    };
+}
+.factSheet-title {
+    margin-bottom: $l-space--medium;
+}
+.factSheet-intro {
+    margin-top: $l-space--medium;
+    @include v-tablet {
+        margin-top: $l-space--xlarge;
+    };
+}
+.factSheet-intro--text {
+    font-size: $t-size--medium;
+    margin-bottom: $l-space--xxlarge;
+    @include l-textWidth;
+}
+.factSheet-description {
+    margin-top: $l-space--xxlarge;
+}
+.factSheet-description--title {
+    text-align: center;
+    font-family: $t-font--one;
+    font-size: $t-size--xlarge;
+    margin-top: $l-space--medium;
+    margin-bottom: $l-space--medium;
+}
+.factSheet-description--item {
+    font-size: $t-size--medium;
+    margin-top: $l-space--small;
+    margin-bottom: $l-space--xxlarge;
+    @include l-textWidth;
+}
+.factSheet-description--image {
+    max-width: 100%;
+    padding-bottom: 1rem;
+    @include v-tablet {
+        max-width: 10%;
+        transform: translate(-120%, 0);
+        transform-origin: top left;
+        display: inline-block;
+        position: absolute;
+    };
+    @include v-laptop {
+        max-width: 15%;
+    };
+    img {
+        width: 100%;
+        // margin-right: $l-space--large;
+        border: 4px solid $c-one;
+        box-sizing: border-box;
+    }
+}
+.infoGraphic-category {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    &:first-child {
+        border-top: 4px solid $c-one;
+    }
+}
+.infoGraphic-category--title {
+    text-align: center;
+    font-family: $t-font--one;
+    font-size: $t-size--large;
+    margin: $l-space--small 0 0 0;
+    padding-bottom: $l-space--small;
+    border-bottom: 4px solid $c-one;
+    width: 100%;
+    @include v-tablet {
+        font-size: $t-size--xlarge;
+    };
+}
+.infoGraphic-item {
+    width: 100%;
+    box-sizing: border-box;
+    padding: $l-space--medium $l-space--xsmall;
+    border-bottom: 4px solid $c-one;
+    flex-grow: 1;
+    @include v-tablet {
+        width: 50%;
+        padding: $l-space--xlarge;
+    };
+    &:nth-child(even) {
+        border-right: none;
+        @include v-tablet {
+            border-right: 4px solid $c-one;
+        };
+        &:last-child {
+            border-right: none;
+        }
+    }
+}
+.infoGraphic-item--title {
+    font-size: $t-size--small;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    line-height: $t-lineHeight--normal;
+    @include v-tablet {
+        font-size: $t-size--medium;
+    };
+}
+.infoGraphic-item--data {
+    margin-bottom: $l-space--xsmall;
+    max-width: 5em;
+}
+.infoGraphic-item--note {
+    text-align: center;
+    font-family: $t-font--one;
+    font-size: $t-size--medium;
+}
+
+
+
+
+
+//Hero Images
+.image-break {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: $l-space--large;
+}
+.image-container {
+    width: 90%;
+    height: 90vh;
+    background-position: 50% 25%;
+    box-sizing: border-box;
+    border: 4px solid $c-one;
+    background-size: cover;
+}
+
+//Links
+.narrativeLinks {
+    text-align: center;
+    box-sizing: border-box;
+    font-family: $t-font--one;
+    margin: $l-space--medium auto 0 auto;
+    a {
+        display: inline-block;
+        // max-width: 20rem;
+        padding: $l-space--small;
+        border: 4px solid $c-one;
+        &:hover {
+            background-color: $c-one;
+            color: $c-three;
+        }
+    }
+}
+.narrativeLinks-item {
+    font-family: $t-font--one;
+}
+.externalLinks {
+    text-align: center;
+    box-sizing: border-box;
+    font-family: $t-font--one;
     a {
         display: inline-block;
         max-width: 20rem;
     }
     span {
-        border-bottom: 2px solid $c-one;
+        // border-bottom: 2px solid $c-one;
+    }
+    h3 {
+        font-family: $t-font--one;
+        text-align: center;
+        max-width: 16em;
+        margin: 0 auto;
     }
 }

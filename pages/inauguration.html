@@ -1,4 +1,3 @@
-
 {# ------------------------------------------------------- #}
 
 {# Confused what extends and blocks do? Watch a primer: #}
@@ -6,23 +5,90 @@
 {% extends "templates/partials/base.html" %}
 
 {# This sets our page <title>. It will append "- Homepage" to the site title defined in base. #}
-{% block title %}{% parent %} - {{ cms.factsheet.name }}{% endblock %}
+{% block title %}{% parent %}
+-
+{{ cms.factsheet.name }}{% endblock %}
 
 {% block content %}
+{% set inauguration = cms.inauguration %}
 
+{% block header %}
+{% set activeNavItem = 'Inauguration' %}
 {% include "templates/partials/header.html" %}
-<!--
-<section class="image-break">
-  <div class="container">
-    <header class="six columns">
-      <h1>{{cms.inauguration.name}}</h1>
-    </header>
-  </div>
-</section> -->
+{% endblock %}
 
-<section class="inauguration">
-    <article class="inauguration-info">
-        <h2 class="inauguration-title">Inauguration</h2>
-        {{cms.inauguration.inauguration_info|safe}}
-    </article>
-</section>
+<main class="inauguration">
+    <h1 class="inauguration-title">Inauguration</h1>
+    <section class="inauguration-info narrowColumn">
+        <article class="inauguration-date">
+            {{ inauguration.inauguration_date|date('l')}}</br>{{ inauguration.inauguration_date|date('F j, Y')}}</br>{{ inauguration.inauguration_date|date('g a')}}
+        </article>
+        <article class="inauguration-address">
+            <a href="{{ inauguration.google_map_link.original_url }}" target=_blank>{{ inauguration.inauguration_address.street1  }}</br>{{ inauguration.inauguration_address.street2 }}</br>{{ inauguration.inauguration_address.city }}, {{ inauguration.inauguration_address.state }}</a>
+        </article>
+        <article class="inauguration-info--note">
+            {{ inauguration.inauguration_info|safe }}
+        </article>
+    </section>
+
+    <section class="inauguration-text wideColumn">
+
+        {% if inauguration.show_videos %}
+        <article class="inauguration-videoGallery">
+            {% for video in inauguration.video_gallery %}
+            <div class="inauguration-video--container">
+                <div class="inauguration-video--item">
+                    {{ video.link.html|safe }}
+                </div>
+            </div>
+            {% endfor %}
+        </article>
+        {% endif %}
+
+        {% if inauguration.show_image_gallery %}
+        <article class="inauguration-imageGallery">
+            <div class="inauguration-image--gutter"></div>
+            {% for item in inauguration.image_gallery %}
+                <a href="{{ item.image.url }}" class="inauguration-image--link">
+                    <img src="{{ item.image|imageSize(800) }}" alt="" class="inauguration-image--item"/>
+                    <figcaption class="inauguration-image--caption">{{ item.caption }}</figcaption>
+                </a>
+            {% endfor %}
+        </article>
+        {% endif %}
+
+        {% if inauguration.show_events %}
+        <article class="inauguration-info--events">
+            <h2 class="inauguration-accommodation--title">Inaugural Events</h2>
+            {{ inauguration.inaugural_events |safe}}
+        </article>
+        {% endif %}
+
+        {% if inauguration.show_accommodation %}
+        <article class="inauguration-accommodation">
+            <h2 class="inauguration-accommodation--title">Accommodations</h2>
+            {{ inauguration.hotel_info_intro|safe }}
+            {% for hotel in inauguration.hotels %}
+                <a href="{{ hotel.website }}" target="_blank">
+                    <h5>{{ hotel.name }}</h5></a>
+                    <p>
+                        <em>{{ hotel.cost }}</em></br>
+                        {{ hotel.phone_number }}
+                    </p>
+            {% endfor %}
+        </article>
+        {% endif %}
+
+        {% if inauguration.show_campus_directions %}
+        <article class="inauguration-directions">
+            <h2 class="inauguration-directions--title">Getting to Campus</h2>
+            {{inauguration.getting_to_campus|safe}}
+        </article>
+        {% endif %}
+    </section>
+
+
+
+</main>
+
+{% endblock %}

@@ -20,3 +20,21 @@ $v-desktop--width: 1824px;
         @content;
     }
 }
+
+@mixin v-normalHeight {
+    @media (min-aspect-ratio: 16/9) {
+        @content;
+    }
+}
+
+@mixin v-shortHeight {
+    @media (min-aspect-ratio: 16/8) {
+        @content;
+    }
+}
+
+@mixin v-veryShortHeight {
+    @media (min-aspect-ratio: 16/7) {
+        @content;
+    }
+}

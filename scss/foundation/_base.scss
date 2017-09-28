@@ -26,6 +26,13 @@ html {
     font-size: $t-size--base;
     color: $c-one;
     background-color: $c-two;
+    -moz-font-feature-settings:"ss02" 1;
+    -moz-font-feature-settings:"ss02=1";
+    -ms-font-feature-settings:"ss02" 1;
+    -o-font-feature-settings:"ss02" 1;
+    -webkit-font-feature-settings:"ss02" 1;
+    font-feature-settings:"ss02" 1;
+    text-rendering: optimizeLegibility;
     //lost-utility: edit;
 }
 
@@ -39,11 +46,12 @@ a {
     display: block;
     p & {
         display: initial;
+        border-bottom: 2px solid $c-one;
     }
 }
 
 strong, b {
-    font-weight: $t-weight--bold;
+    font-weight: $t-weight--semibold;
 }
 
 i,
@@ -65,14 +73,33 @@ h1 {
     margin-bottom: $l-space--large;
     margin-left: -$t-size--xsmall/2;
     text-align: center;
+    // -webkit-font-smoothing: antialiased;
     @include l-textWidth;
+    @include v-tablet {
+        font-size: $t-size--xxxlarge;
+    };
+    @include v-laptop {
+        font-size: $t-size--xxxlarge;
+    };
+    @include v-desktop {
+        font-size: $t-size--xxxlarge;
+    };
 }
 
 h2 {
     font-family: $t-font--one;
-    font-size: $t-size--large;
+    font-size: $t-size--xlarge;
     font-weight: $t-weight--book;
     line-height: $t-lineHeight--tight;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    @include v-tablet {
+        font-size: $t-size--xxlarge;
+    };
+    @include v-laptop {
+        font-size: $t-size--xxlarge;
+    };
+    @include v-desktop;
 }
 
 h3 {
@@ -80,6 +107,7 @@ h3 {
     font-size: $t-size--large;
     font-weight: $t-weight--book;
     line-height: $t-lineHeight--tight;
+    text-align: center;
 }
 
 h4 {
@@ -87,6 +115,7 @@ h4 {
     font-size: $t-size--medium;
     font-weight: $t-weight--book;
     line-height: $t-lineHeight--normal;
+    text-align: center;
 }
 
 h5, h6 {
@@ -94,6 +123,7 @@ h5, h6 {
     font-size: $t-size--small;
     font-weight: $t-weight--book;
     line-height: $t-lineHeight--normal;
+    text-align: center;
 }
 
 blockquote {
@@ -110,12 +140,16 @@ ul {
 
 div,
 img {
-    @include l-autoSize;
+    // @include l-autoSize;
 }
 
 iframe {
     width: 100%;
     height: 300px;
+}
+
+*:focus {
+    outline: 0;
 }
 
 @lost gutter 4.165rem;

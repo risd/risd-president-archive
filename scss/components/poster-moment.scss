@@ -7,48 +7,68 @@
 
 
 .posterMoment {
-    margin: 5vh 5vw;
+    margin: 0;
 
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     text-align: center;
+    -webkit-font-smoothing: antialiased;
 }
 
 .risd-quadrant {
-    width: 50%;
+    position: relative;
+    width: 100%;
     /* min-width: 45vw; */
-    height: 45vh;
+    height: 50vh;
     /* min-height: 45vh; */
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
-    border-top: 4px solid $c-one;
-    border-left: 4px solid $c-one;
-    &:nth-child(2n) {
-        border-right: 4px solid $c-one;
-    }
-    &:nth-child(n+3) {
-        border-bottom: 4px solid $c-one;
-    }
+    border-bottom: 4px solid $c-one;
+    background-color: $c-two;
+    z-index: 2000;
+    @include v-tablet {
+        width: 50%;
+        /* min-width: 45vw; */
+        height: 50vh;
+        /* min-height: 45vh; */
+        display: flex;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        border-bottom: none;
+        &:nth-child(2n+1) {
+            border-right: 4px solid $c-one;
+        }
+        &:nth-child(n+3) {
+            border-top: 4px solid $c-one;
+            border-bottom: 4px solid $c-one;
+        }
+    };
 }
 
 .risd-container {
-    /* display: none; */
     position: absolute;
+    // z-index: -1000;
     font-size: 10vw;
     color: white;
-    width: 45vw;
-    height: 45vh;
+    width: 98%;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    @include v-tablet {
+        // width: 49%;
+        // height: 50vh;
+    };
+
 }
 
 .risd-text {
     font-family: $t-font--one;
-    font-size: $t-size--xxxlarge*3;
+    font-size: 62vh;
+    margin-bottom: 1rem;
 }
 
 .posterItems {
@@ -76,7 +96,7 @@
     justify-content: center;
     display: flex;
     box-sizing: border-box;
-
+    -webkit-font-smoothing: antialiased;
     z-index: 100;
     &:nth-child(2n+1) {
         border-right: 4px solid $c-one;
@@ -95,11 +115,43 @@
     border: 4px solid $c-one;
     h2 {
         font-family: $t-font--one;
+        font-size: 6vmax;
+        @include v-laptop {
+            font-size: 5vmax;
+        };
+        @include v-shortHeight {
+            font-size: 4vw;
+        };
+        @include v-veryShortHeight {
+            font-size: 3vw;
+        };
+    }
+    span {
+        border-bottom: 0.6vmax solid $c-one;
+        @include v-laptop {
+            border-bottom: 0.4vmax solid $c-one;
+        };
     }
 }
 
 .posterItem-campaignText--small {
     font-family: $t-font--one;
+    font-size: 3.5vmax;
+    @include v-laptop {
+        font-size: 2.7vmax;
+    };
+    @include v-shortHeight {
+        font-size: 2.2vw;
+    };
+    @include v-veryShortHeight {
+        font-size: 1.6vw;
+    };
+    span {
+        border-bottom: 0.3vmax solid $c-one;
+        @include v-laptop {
+            border-bottom: 0.3vmax solid $c-one;
+        };
+    }
 }
 
 .posterItem-inaugurationText--large {
@@ -112,6 +164,10 @@
     h2 {
         font-family: $t-font--two;
         font-weight: $t-weight--bold;
+        font-size: 6vmax;
+        @include v-laptop {
+            font-size: 5vmax;
+        };
     }
 }
 
@@ -119,4 +175,28 @@
     font-family: $t-font--two;
     font-weight: $t-weight--bold;
     @include t-allCaps;
+    font-size: 2.9vmax;
+    @include v-tablet {
+        font-size: 2.1vmax;
+    };
+
+    @include v-laptop {
+        font-size: 1.4vmax;
+    };
+    @include v-desktop {
+        font-size: 1.3vmax;
+    };
+    @include v-shortHeight {
+        font-size: 1.1vw;
+    };
+    @include v-veryShortHeight {
+        font-size: 0.9vw;
+    };
+}
+
+.showPosterPart {
+    visibility: visible;
+}
+.hidePosterPart {
+    visibility: hidden;
 }
