@@ -73,6 +73,8 @@
     "touch": "^1.0.0"
   },
   "devDependencies": {
-    "connect-header": "0.0.5"
+    "connect-header": "0.0.5",
+    "grunt-cli": "^1.2.0",
+    "rm-webhook": "^1.1.1"
   }
 }
