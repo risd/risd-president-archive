@@ -25,10 +25,8 @@ var exec = require('child_process').exec;
 require('colors');
 
 // Template requires
-// TODO: Abstract these later to make it simpler to change
 var swig = require('swig');
 swig.setDefaults({ loader: swig.loaders.fs(__dirname + '/..') });
-
 var swigFunctions = require('./swig_functions').swigFunctions();
 var swigFilters = require('./swig_filters');
 var swigTags = require('./swig_tags');
@@ -77,7 +75,39 @@ Function = wrap;
 
 var cmsSocketPort = 6557;
 var BUILD_DIRECTORY = '.build';
-var DATA_CACHE_PATH = [ BUILD_DIRECTORY, 'data.json' ].join('/');
+var DATA_CACHE_PATH = path.join( BUILD_DIRECTORY, 'data.json' )
+
+// listened to by the webhook/push command
+// to determine if the deploy should halt.
+var BUILD_STRICT_ERROR = function ( file ) {
+  return `build-strict:error:${ file }`
+}
+
+// listened to by the webhook-server-open/builder
+// to be notified of when the current file has produced all its files
+var BUILD_TEMPLATE_START = function ( file ) {
+  return `build-template:start:${ file }`
+}
+
+var BUILD_TEMPLATE_END = function ( file ) {
+  return `build-template:end:${ file }`
+}
+
+
+var BUILD_PAGE_START = function ( file ) {
+  return `build-page:start:${ file }`
+}
+
+var BUILD_PAGE_END = function ( file ) {
+  return `build-page:end:${ file }`
+}
+
+// listened to by the webhook-server-open/builder
+// to be notified of written documents to upload.
+var BUILD_DOCUMENT_WRITTEN = function ( file ) {
+  return `build:document-written:${ file }`
+}
+
 
 /**
  * Generator that handles various commands
@@ -86,11 +116,12 @@ var DATA_CACHE_PATH = [ BUILD_DIRECTORY, 'data.json' ].join('/');
  */
 module.exports.generator = function (config, options, logger, fileParser) {
   var self = this;
-  var firebaseUrl = config.get('webhook').firebase || 'webhook';
+  var firebaseName = config.get('webhook').firebase;
+  var firebaseAPIKey = config.get('webhook').firebaseAPIKey;
   var liveReloadPort = config.get('connect')['wh-server'].options.livereload;
 
   if(liveReloadPort !== 35730) {
-    cmsSocketPort = liveReloadPort + 1; 
+    cmsSocketPort = liveReloadPort + 1;
   }
 
   var websocket = null;
@@ -99,6 +130,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
 
   this.versionString = null;
   this.cachedData = null;
+  this._settings = {};
 
   if(liveReloadPort === true)
   {
@@ -108,25 +140,47 @@ module.exports.generator = function (config, options, logger, fileParser) {
   logger = logger || { ok: function() {}, error: function() {}, write: function() {}, writeln: function() {} };
 
   // We dont error out here so init can still be run
-  if (firebaseUrl)
+  if (firebaseName && firebaseAPIKey)
   {
-    this.root = new firebase('https://' + firebaseUrl +  '.firebaseio.com/');
+    firebase.initializeApp({
+      apiKey: firebaseAPIKey,
+      authDomain: `${ firebaseName }.firebaseapp.com`,
+      databaseURL: `${ firebaseName }.firebaseio.com`,
+    });
+    this.root = firebase.database();
   } else {
     this.root = null;
   }
+
+  var userSwigConfig = config.get('swig');
+  if ( userSwigConfig ) {
+    // functions
+    if ( userSwigConfig.functions ) {
+      swigFunctions.userFunctions( userSwigConfig.functions )
+    }
+    // filters
+    if ( userSwigConfig.filters ) {
+      swigFilters.userFilters( userSwigConfig.filters )
+    }
+    // tags
+    if ( userSwigConfig.tags ) {
+      swigTags.userTags( userSwigConfig.tags )
+    }
+  }
+
 
   /**
    * Used to get the bucket were using (combinaton of config and environment)
    */
   var getBucket = function() {
-    return self.root.child('buckets/' + config.get('webhook').siteName + '/' + config.get('webhook').secretKey + '/dev');
+    return self.root.ref('buckets/' + config.get('webhook').siteName + '/' + config.get('webhook').siteKey + '/dev');
   };
 
   /**
    * Used to get the dns information about a site (used for certain swig functions)
    */
   var getDnsChild = function() {
-    return self.root.child('management/sites/' + config.get('webhook').siteName + '/dns');
+    return self.root.ref('management/sites/' + config.get('webhook').siteName + '/dns');
   };
 
 
@@ -144,6 +198,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
 
     if(self.cachedData)
     {
+      Object.assign(self.cachedData.settings.general, self._settings)
       if (self.cachedData.hasOwnProperty('contentType'))
         self.cachedData.typeInfo = self.cachedData.contentType
       swigFunctions.setData(self.cachedData.data);
@@ -152,6 +207,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
       swigFilters.setSiteDns(self.cachedData.siteDns);
       swigFilters.setFirebaseConf(config.get('webhook'));
       swigFilters.setTypeInfo(self.cachedData.typeInfo);
+      if (self._settings.site_url) swigFilters.setSiteDns(self._settings.site_url);
 
       callback(self.cachedData.data, self.cachedData.typeInfo);
       return;
@@ -163,7 +219,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
     }
 
     getBucket().once('value', function(data) {
-      data = data.val();
+      data = data.val() || {};
       var typeInfo = {};
       var settings = {};
 
@@ -175,10 +231,12 @@ module.exports.generator = function (config, options, logger, fileParser) {
       }
 
       if(!data || !data.settings) {
-        settings = {};
+        settings = { general: {} };
       } else {
         settings = data.settings;
+        if ( ! settings.general ) settings.general = {};
       }
+      Object.assign(settings.general, self._settings)
 
       // Get the data portion of bucket, other things are not needed for templates
       if(!data || !data.data) {
@@ -203,6 +261,10 @@ module.exports.generator = function (config, options, logger, fileParser) {
         var siteDns = snap.val() || config.get('webhook').siteName + '.webhook.org';
         self.cachedData.siteDns = siteDns;
         swigFilters.setSiteDns(siteDns);
+        if (self._settings.site_url) {
+          self.cachedData.siteDns = self._settings.site_url;
+          swigFilters.setSiteDns(self._settings.site_url);
+        }
         swigFilters.setFirebaseConf(config.get('webhook'));
 
         callback(data, typeInfo);
@@ -226,7 +288,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
    * downloadData function to download data to a file path for files
    * to continually use as they are built between processes.
    * Defaults saving to DATA_CACHE_PATH
-   * 
+   *
    * @param  {object}   options
    * @param  {object}   options.file?     Specificy which file to write to. Optional.
    * @param  {object}   options.emitter?  Specificy whether to emit progress to process.stout
@@ -338,7 +400,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
     var excludeExtensions = filterExtensions([ '' ])
 
     var opts = { files: [] };
-    
+
     return miss.pipe(
       miss.from.obj( [ opts, null ] ),
       getTemplates(),
@@ -413,7 +475,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
    * Sets the `default` build order, and opens an `ordered`.
    * These are used by the server to determine the order in which
    * templates are built and uploaded.
-   * 
+   *
    * @param  {Function} callback Callback is executed with an array of the files
    */
   this.buildOrder = function ( callback ) {
@@ -433,7 +495,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
         if ( error ) callback( error )
         else callback();
       })
-    
+
     function makeFolder () {
       return miss.through.obj( function ( opts, enc, next ) {
         mkdirp( opts.folder, function ( error ) {
@@ -468,7 +530,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
       return miss.through.obj( function ( opts, enc, next ) {
         console.log( 'touch' )
         var file =  [ opts.folder, fileName ].join( '/' )
-        
+
         console.log( file )
         touch( file, function ( error ) {
           console.log( error )
@@ -499,7 +561,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
   var writeDocument = function ( options ) {
     if ( !options ) options = {}
     fs.writeFileSync( options.file, options.content )
-    if ( options.emitter ) console.log( 'build:document-written:' + options.file )
+    if ( options.emitter ) console.log( BUILD_DOCUMENT_WRITTEN( options.file ) )
   }
 
   var doNoPublishPageTemplate = swig.renderFile( './libs/do-not-publish-page.html' ).trim()
@@ -511,7 +573,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
 
   /**
    * Writes an instance of a template to the build directory
-   * 
+   *
    * @param  {string}   inFile          Template to read
    * @param  {string}   outFile         Destination in build directory
    * @param  {Object}   params          The parameters to pass to the template
@@ -547,6 +609,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
       self.sendSockMessage(e.toString());
 
       if(strictMode) {
+        console.log( BUILD_STRICT_ERROR( inFile ) )
         throw e;
       } else {
         console.log('Error while rendering template: ' + inFile);
@@ -744,7 +807,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
                   fs.unlinkSync('.reset.zip');
 
                   self.init(config.get('webhook').siteName,
-                    config.get('webhook').secretKey,
+                    config.get('webhook').siteKey,
                     true,
                     config.get('webhook').firebase,
                     config.get('webhook').server,
@@ -889,7 +952,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
 
           newFile = dir + '/' + filename + path.extname(file);
 
-          if(extension === '.html' || extension === '.xml' || extension === '.rss' || extension === '.xhtml' || extension === '.atom' || extension === '.txt') { 
+          if(extension === '.html' || extension === '.xml' || extension === '.rss' || extension === '.xhtml' || extension === '.atom' || extension === '.txt' || extension === '.json') {
             writeTemplate(file, newFile, { emitter: opts.emitter });
           } else {
             mkdirp.sync(path.dirname(newFile));
@@ -948,7 +1011,8 @@ module.exports.generator = function (config, options, logger, fileParser) {
    * Render a single template file.
    * @param  {object}   opts
    * @param  {string}   opts.file      The template file to build
-   * @param  {string}   opts.data?     Data object to use. If not supplied, `getData` is run.
+   * @param  {string|object}  opts.data?      The data to use
+   * @param  {string|object}  opts.settings?  The settings to use
    * @param  {boolean}  opts.emitter?  Boolean to determine if the build process should emit events of progress to process.stdin
    *                                   If true, other processes can operate on the partially built site.
    * @param  {Function} done           callback
@@ -959,13 +1023,14 @@ module.exports.generator = function (config, options, logger, fileParser) {
       ? opts.file
       : path.join( 'templates', opts.file );
 
+    setSettingsFrom( opts.settings )
     setDataFrom( opts.data )
     getData( function ( data, typeInfo ) {
-      if ( opts.emitter ) console.log( 'build-template:start:' + opts.file )
+      if ( opts.emitter ) console.log(  BUILD_TEMPLATE_START( opts.file ) )
       processFile( opts.file );
-      if ( opts.emitter ) console.log( 'build-template:end:' + opts.file )
+      if ( opts.emitter ) console.log( BUILD_TEMPLATE_END( opts.file ) )
       done();
-      
+
       function processFile ( file ) {
         // Here we try and abstract out the content type name from directory structure
         var baseName = path.basename(file, '.html');
@@ -984,7 +1049,11 @@ module.exports.generator = function (config, options, logger, fileParser) {
 
         items = _.map(items, function(value, key) { value._id = key; value._type = objectName; return value });
 
-        if ( opts.itemKey ) items = items.filter( function ( item ) { return item._id === opts.itemKey } )
+        var build_preview = true;
+        if ( opts.itemKey ) {
+          build_preview = true;
+          items = items.filter( function ( item ) { return item._id === opts.itemKey } )
+        }
 
         var publishedItems = _.filter(items, function(item) {
           if(!item.publish_date) {
@@ -1067,7 +1136,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
                 baseNewPath = origNewPath + '/' + utils.parseCustomUrl(typeInfo[objectName].customUrls.individualUrl, val) + '/';
               } else {
                 baseNewPath = origNewPath + '/';
-              }                
+              }
             }
 
             var tmpSlug = '';
@@ -1092,6 +1161,9 @@ module.exports.generator = function (config, options, logger, fileParser) {
             }
           }
 
+          // early return if we are not building preview pages
+          if ( build_preview === false ) return;
+
           for(var key in items)
           {
             var val = items[key];
@@ -1109,6 +1181,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
               writeTemplate(file, newPath, { item: val, emitter: opts.emitter });
             }
           }
+
         } else if(filePath.indexOf('templates/' + objectName + '/layouts') !== 0) { // Handle sub pages in here
           baseNewPath = newPath;
 
@@ -1128,7 +1201,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
                 baseNewPath = origNewPath + '/' + utils.parseCustomUrl(typeInfo[objectName].customUrls.individualUrl, val) + '/';
               }   else {
                 baseNewPath = origNewPath + '/';
-              }                  
+              }
             }
 
             var tmpSlug = '';
@@ -1150,7 +1223,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
         }
       }
 
-    } ) 
+    } )
   }
 
 
@@ -1163,7 +1236,8 @@ module.exports.generator = function (config, options, logger, fileParser) {
    * Renders all templates in the /templates directory to the build directory
    * @param  {object}     opts?
    * @param  {number}     opts?.concurrency?  Number of CPUs to use when building templats.
-   * @param  {string}     opts?.data?         The data object to use 
+   * @param  {string|object}  opts.data?      The data to use
+   * @param  {string|object}  opts.settings?  The settings to use
    * @param  {string}     opts?.templates?    The template filtering string to pass into renderTemplates
    * @param  {boolean}    opts?.emitter?      Boolean to determine if the build process should emit events of progress to process.stdin
    *                                          If true, other processes can operate on the partially built site.
@@ -1181,6 +1255,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
 
     var concurrency = opts.concurrency || 1;
 
+    if ( opts.settings ) setSettingsFrom( opts.settings )
     if ( opts.data ) setDataFrom( opts.data )
 
     getData(function(data, typeInfo) {
@@ -1227,8 +1302,12 @@ module.exports.generator = function (config, options, logger, fileParser) {
           var args = [ 'run', 'build-template', '--' ];
           args = args.concat( [ '--inFile=' + file ] )
           args = args.concat( [ '--data=' + DATA_CACHE_PATH ] )
-          if ( opts.emitter ) args = args.concat( [ '--emitter' ] )
           var pipe = opts.emitter ? false : true; // write to child thread?
+          if ( strictMode ) {
+            pipe = true;  // if strict mode, we are deploying, and want to catch errors.
+            args = args.concat( [ '--strict=true' ] )
+          }
+          if ( opts.emitter ) args = args.concat( [ '--emitter' ] )
           return function parallelBuildTask ( step ) {
             runCommand(options.npm || 'npm', '.', args, pipe, function onEnd () {
               step();
@@ -1252,7 +1331,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
 
   /**
    * Copies the static directory into .build/static for asset generation
-   * @param  {boolean}  opts 
+   * @param  {boolean}  opts
    * @param  {boolean}  opts.emitter?      Boolean to determine if the build process should emit events of progress to process.stdin
    *                                        If true, other processes can operate on the partially built site.
    * @param  {Function} callback     Callback called after creation of directory is done
@@ -1265,10 +1344,10 @@ module.exports.generator = function (config, options, logger, fileParser) {
       mkdirp.sync( staticDirectory );
       wrench.copyDirSyncRecursive(baseDirectory, staticDirectory, { forceDelete: true });
       if ( opts.emitter ) {
-        var buildStaticFiles = wrench.readdirSyncRecursive( staticDirectory ) 
+        var buildStaticFiles = wrench.readdirSyncRecursive( staticDirectory )
         buildStaticFiles.forEach( function ( builtFile ) {
           var builtFilePath = path.join( staticDirectory, builtFile );
-          console.log( 'build:document-written:./' + builtFilePath )
+          console.log( BUILD_DOCUMENT_WRITTEN( `./${ builtFilePath }` ) )
         } )
       }
     }
@@ -1391,7 +1470,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
 
     try { // reading from stringified json?
         read = JSON.parse(readFrom)
-      } catch (e) { 
+      } catch (e) {
         // not json
         try { // reading from json file?
           read = JSON.parse(
@@ -1414,7 +1493,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
    */
   var writeDataCache = function ( options ) {
     if ( !options ) options = {}
-    
+
     mkdirp.sync( path.dirname( options.file ) );
 
     if ( typeof options.data === 'function') var data = options.data();
@@ -1428,7 +1507,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
    * If a data object is passed in, it is set as the
    * `self.cachedData` & `data` objects that get used
    * throughout the generator.
-   * 
+   *
    * @param {object} optionalData Webhook CMS data object
    */
   function setDataFrom ( optionalData ) {
@@ -1441,10 +1520,19 @@ module.exports.generator = function (config, options, logger, fileParser) {
 
       if ( data.hasOwnProperty( 'contentType' ) ) {
         data.typeInfo = data.contentType;
-        delete data.contentType; 
+        delete data.contentType;
       }
-      
+
       self.cachedData = data;
+      return true;
+    }
+    else return false;
+  }
+
+  function setSettingsFrom ( optionalSettings ) {
+    var settings = readData( optionalSettings )
+    if ( ( typeof settings == 'object' ) ) {
+      self._settings = settings;
       return true;
     }
     else return false;
@@ -1455,7 +1543,8 @@ module.exports.generator = function (config, options, logger, fileParser) {
    * @param  {object}   opts
    * @param  {string}   opts.inFile
    * @param  {string}   opts.outFile?
-   * @param  {object}   opts.data?
+   * @param  {string|object}  opts.data?
+   * @param  {string|object}  opts.settings?
    * @param  {boolean}  opts.emitter?
    * @param  {Function} done    callback when done
    */
@@ -1467,12 +1556,13 @@ module.exports.generator = function (config, options, logger, fileParser) {
     if ( ! opts.outFile ) opts.outFile = opts.inFile.replace('pages/', './.build/')
 
     if ( opts.data ) setDataFrom( opts.data )
+    if ( opts.settings ) setSettingsFrom( opts.settings )
 
     getData(function ( data ) {
-      if ( opts.emitter ) console.log( 'build-page:start:' + opts.inFile )
+      if ( opts.emitter ) console.log( BUILD_PAGE_START( opts.inFile ) )
       var extension = path.extname( opts.inFile );
-      if( extension === '.html' || extension === '.xml' || extension === '.rss' || extension === '.xhtml' || extension === '.atom' || extension === '.txt' ) {
-        writeTemplate( opts.inFile, opts.outFile, { emitter: opts.emitter } );  
+      if( extension === '.html' || extension === '.xml' || extension === '.rss' || extension === '.xhtml' || extension === '.atom' || extension === '.txt' || extension === '.json' ) {
+        writeTemplate( opts.inFile, opts.outFile, { emitter: opts.emitter } );
       } else {
         mkdirp.sync( path.dirname( opts.outFile ) );
         writeDocument( {
@@ -1481,15 +1571,15 @@ module.exports.generator = function (config, options, logger, fileParser) {
           emitter: opts.emitter,
         } );
       }
-      
-      if ( opts.emitter ) console.log( 'build-page:end:' + opts.inFile )
+
+      if ( opts.emitter ) console.log( BUILD_PAGE_END( opts.inFile ) )
       done();
     })
   }
 
   /**
    * Build static task.
-   * @param  {boolean}  opts 
+   * @param  {boolean}  opts
    * @param  {boolean}  opts.emitter?  Boolean to determine if the build process should emit events of progress to process.stdin
    *                                   If true, other processes can operate on the partially built site.
    * @param  {Function} done Task done callback.
@@ -1506,7 +1596,8 @@ module.exports.generator = function (config, options, logger, fileParser) {
    * Builds templates from both /pages and /templates to the build directory
    * @param  {object}     opts
    * @param  {number}     opts.concurrency  Number of CPUs to use for build tasks
-   * @param  {object}     opts.data?        Webhook CMS data for the site
+   * @param  {string|object}  opts.data?
+   * @param  {string|object}  opts.settings?
    * @param  {string}     opts.templates?   The template filtering string to pass into renderTemplates
    * @param  {string}     opts.pages?       The page filtering string to pass into renderTemplates
    * @param  {boolean}    opts.emitter?     Boolean to determine if the build process should emit events of progress to process.stdin
@@ -1520,6 +1611,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
     self.cleanFiles(null, function() {
       self.openSearchEntryStream(function() {
         setDataFrom( opts.data )
+        setSettingsFrom( opts.settings )
         getData(function ( data ) {
 
           if ( buildInParallel( opts.concurrency ) )
@@ -1614,7 +1706,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
 
       var prefix = overridePrefix || 'item.';
 
-      var widgetString = _.template(fs.readFileSync('./libs/widgets/' + controlType + '.html'), { value: prefix + fieldName, controlInfo: controlInfo, renderWidget: renderWidget, controls: controls, widgetFiles: widgetFiles });
+      var widgetString = _.template(fs.readFileSync('./libs/widgets/' + controlType + '.html'))({ value: prefix + fieldName, controlInfo: controlInfo, renderWidget: renderWidget, controls: controls, widgetFiles: widgetFiles });
 
       var lines = widgetString.split('\n');
       var newLines = [];
@@ -1653,7 +1745,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
           return false;
         }
 
-        var oneOffFile = _.template(oneOffTemplate, { widgetFiles: widgetFiles, typeName: name, typeInfo: typeInfo[name] || {}, controls: controlsObj }, { 'imports': { 'renderWidget' : renderWidget}});
+        var oneOffFile = _.template(oneOffTemplate)({ widgetFiles: widgetFiles, typeName: name, typeInfo: typeInfo[name] || {}, controls: controlsObj, 'renderWidget' : renderWidget });
         oneOffFile = oneOffFile.replace(/^\s*\n/gm, '');
 
         oneOffMD5 = md5(oneOffFile);
@@ -1668,13 +1760,13 @@ module.exports.generator = function (config, options, logger, fileParser) {
 
         mkdirp.sync(directory);
 
-        var template = _.template(individualTemplate, { widgetFiles: widgetFiles, typeName: name, typeInfo: typeInfo[name] || {}, controls: controlsObj }, { 'imports': { 'renderWidget' : renderWidget}});
+        var template = _.template(individualTemplate)({ widgetFiles: widgetFiles, typeName: name, typeInfo: typeInfo[name] || {}, controls: controlsObj, 'renderWidget' : renderWidget });
         template = template.replace(/^\s*\n/gm, '');
 
         individualMD5 = md5(template);
         fs.writeFileSync(individual, template);
 
-        var lTemplate = _.template(listTemplate, { typeName: name });
+        var lTemplate = _.template(listTemplate)({ typeName: name });
 
         listMD5 = md5(lTemplate);
         fs.writeFileSync(list, lTemplate);
@@ -1795,7 +1887,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
       runCommand(options.npm || 'npm', '.', ['install'], function() {
         console.log('NPM done');
         cb();
-      }); 
+      });
     }
   };
 
@@ -1857,7 +1949,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
 
             if(typeInfo && typeInfo.customUrls && typeInfo.customUrls.individualUrl) {
               tmpSlug = utils.parseCustomUrl(typeInfo.customUrls.individualUrl, date) + '/' + tmpSlug;
-            } 
+            }
 
             if(typeInfo && typeInfo.customUrls && typeInfo.customUrls.listUrl) {
 
@@ -1869,11 +1961,11 @@ module.exports.generator = function (config, options, logger, fileParser) {
             } else {
               tmpSlug = type + '/' + tmpSlug;
             }
-              
+
             sock.sendText('done:' + JSON.stringify(tmpSlug));
           });
         } else if (message === 'build') {
-          buildQueue.push({ type: 'all' }, function(err) { 
+          buildQueue.push({ type: 'all' }, function(err) {
             sock.sendText('done');
           });
         } else if (message.indexOf('preset_local:') === 0) {
@@ -1909,46 +2001,35 @@ module.exports.generator = function (config, options, logger, fileParser) {
 
   /**
    * Inintializes firebase configuration for a new site
-   * @param  {String}    sitename  Name of site to generate config for
-   * @param  {String}    secretkey Secret key for the site (gotten from firebase)
+   * @param  {Object}    firebaseConfOptions Object to be used in creating the .firebase.conf file.
    * @param  {Boolean}   copyCms   True if the CMS should be overwritten, false otherwise
    * @param  {Function}  done      Callback to call when operation is done
    */
-  this.init = function(sitename, secretkey, copyCms, firebase, server, embedly, imgix_host, imgix_secret, generator_url, done) {
+  this.init = function(firebaseConfOptions, copyCms, done) {
     var oldConf = config.get('webhook');
 
     var confFile = fs.readFileSync('./libs/.firebase.conf.jst');
 
-    if(firebase) {
+    if(firebaseConfOptions && firebaseConfOptions.firebase) {
       confFile = fs.readFileSync('./libs/.firebase-custom.conf.jst');
     }
 
-    var noSearch = null;
-
-    if(oldConf.noSearch !== null && typeof oldConf.noSearch !== 'undefined') {
-      noSearch = oldConf.noSearch;
-    }
-
     // TODO: Grab bucket information from server eventually, for now just use the site name
-    var templated = _.template(confFile, {
-      secretKey: secretkey,
-      siteName: sitename,
-      firebase: firebase,
-      embedlyKey: embedly || oldConf.embedly || 'your-embedly-key',
-      serverAddr: server || oldConf.server || 'your-server-address',
-      noSearch: noSearch,
-      imageproxy: oldConf.imageproxy || null,
-      imgix_host: imgix_host || '',
-      imgix_secret: imgix_secret || '',
-      generator_url: generator_url || default_generator_url,
-    });
+    var baseOptions = {
+      noSearch: null,
+      imageproxy: null,
+    }
+    var templated = _.template(confFile)( Object.assign( {}, baseOptions, oldConf, firebaseConfOptions ));
 
     fs.writeFileSync('./.firebase.conf', templated);
 
     if(copyCms) {
       var cmsFile = fs.readFileSync('./libs/cms.html');
 
-      var cmsTemplated = _.template(cmsFile, { siteName: sitename });
+      var cmsTemplated = _.template(cmsFile)({
+        siteName: firebaseConfOptions.siteName,
+        title: cmsTitleForSiteName( firebaseConfOptions.siteName ),
+      });
 
       mkdirp.sync('./pages/');
 
@@ -1956,6 +2037,12 @@ module.exports.generator = function (config, options, logger, fileParser) {
     }
 
     done(true);
+
+    function cmsTitleForSiteName ( siteName ) {
+      var base = 'CMS'
+      if ( ! siteName ) return base;
+      return `${ siteName.split( ',1' )[ 0 ] } ${base}`
+    }
   };
 
   /**
@@ -2041,7 +2128,6 @@ module.exports.generator = function (config, options, logger, fileParser) {
    * @param  {Object}    grunt  Grunt object from generatorTasks
    */
   this.assetsMiddle = function(grunt) {
-
     grunt.option('force', true);
 
     if(!_.isEmpty(grunt.config.get('concat')))
@@ -2062,7 +2148,6 @@ module.exports.generator = function (config, options, logger, fileParser) {
     grunt.task.run('rev');
     grunt.task.run('usemin');
     grunt.task.run('assetsAfter');
-
   }
 
   /**
