@@ -77,9 +77,9 @@
   "devDependencies": {
     "connect-header": "0.0.5",
     "grunt-cli": "^1.2.0",
-    "rm-webhook": "^2.0.1"
+    "rm-webhook": "^2.0.5"
   },
   "risd.systems": {
-    "generate": "2.2.10"
+    "generate": "2.2.17"
   }
 }
