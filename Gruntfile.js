@@ -29,13 +29,13 @@ module.exports = function(grunt) {
                 tasks: ['sass',
                 'postcss',
                 'autoprefixer',
-                'build-static']
+                'build-styles']
             },
             browserify: {
                 files: ['static/javascript/**/*.js'],
                 tasks: ['jshint',
                 'browserify:client',
-                'build-static']
+                'build-scripts']
             },
             concat: {
                 files: ['<%= concat.dist.src %>'],
