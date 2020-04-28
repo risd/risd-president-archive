@@ -242,7 +242,6 @@ html {
   background-color: #ffe800;
   -ms-font-feature-settings: "ss02" 1;
   -o-font-feature-settings: "ss02" 1;
-  -webkit-font-feature-settings: "ss02" 1;
   font-feature-settings: "ss02" 1;
   text-rendering: optimizeLegibility;
 }
@@ -629,7 +628,6 @@ html {
   background-color: #ffe800;
   -ms-font-feature-settings: "ss02" 1;
   -o-font-feature-settings: "ss02" 1;
-  -webkit-font-feature-settings: "ss02" 1;
   font-feature-settings: "ss02" 1;
   text-rendering: optimizeLegibility;
 }
@@ -869,18 +867,14 @@ svg#risd-seal path {
   width: 90%;
   height: 90vh;
   margin: 5vh 5%;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
 }
 
 .mainNav-item {
@@ -1165,7 +1159,6 @@ html {
   background-color: #ffe800;
   -ms-font-feature-settings: "ss02" 1;
   -o-font-feature-settings: "ss02" 1;
-  -webkit-font-feature-settings: "ss02" 1;
   font-feature-settings: "ss02" 1;
   text-rendering: optimizeLegibility;
 }
@@ -1311,18 +1304,14 @@ article {
 
 .posterMoment {
   margin: 0;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
   text-align: center;
   -webkit-font-smoothing: antialiased;
 }
@@ -1333,12 +1322,10 @@ article {
   /* min-width: 45vw; */
   height: 50vh;
   /* min-height: 45vh; */
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   box-sizing: border-box;
   border-bottom: 4px solid black;
   background-color: #ffe800;
@@ -1350,12 +1337,10 @@ article {
     /* min-width: 45vw; */
     height: 50vh;
     /* min-height: 45vh; */
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     box-sizing: border-box;
     border-bottom: none;
   }
@@ -1374,15 +1359,12 @@ article {
   color: white;
   width: 98%;
   height: 50vh;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
 }
 
 .risd-text {
@@ -1394,45 +1376,35 @@ article {
 .posterItems {
   width: 100%;
   height: 100%;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
 }
 
 .posterItem-box--large {
   width: 100%;
   height: 100%;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
   z-index: 100;
 }
 
 .posterItem-box--small {
   width: 50%;
   height: 50%;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  display: -webkit-flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
   display: -ms-flexbox;
   display: flex;
   box-sizing: border-box;
@@ -1449,15 +1421,12 @@ article {
 .posterItem-campaignText--large {
   width: 80%;
   height: 80%;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
   border: 4px solid black;
 }
 .posterItem-campaignText--large h2 {
@@ -1519,15 +1488,12 @@ article {
 .posterItem-inaugurationText--large {
   width: 80%;
   height: 80%;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
   text-transform: uppercase;
 }
 .posterItem-inaugurationText--large h2 {
@@ -1611,7 +1577,6 @@ article {
   left: -25px;
   padding-right: 5px;
   position: absolute;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   height: 100%;
@@ -1623,19 +1588,16 @@ article {
   padding: 0;
   border: none;
   outline: none;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .right-arrow {
   right: -25px;
   padding-left: 5px;
   position: absolute;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   height: 100%;
@@ -1647,12 +1609,10 @@ article {
   padding: 0;
   border: none;
   outline: none;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 /* Slider */
@@ -1689,7 +1649,6 @@ article {
 
 .slick-slider .slick-track,
 .slick-slider .slick-list {
-  -webkit-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
@@ -1913,16 +1872,13 @@ article {
 }
 
 .campaign-links {
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   box-sizing: border-box;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
   margin: 6.664rem auto;
   color: black;
 }
@@ -1971,24 +1927,19 @@ article {
 }
 
 .inauguration-info {
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .inauguration-text {
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-direction: column;
+      flex-direction: column;
 }
 
 .inauguration-date, .inauguration-address {
@@ -2109,15 +2060,12 @@ article {
 
 .inauguration-videoGallery {
   width: 100%;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  -webkit-justify-content: flex-start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
   margin-top: 6.664rem;
 }
 
@@ -2462,12 +2410,10 @@ article {
 @media (min-width: 768px) {
   .factSheet-description--image {
     max-width: 10%;
-    -webkit-transform: translate(-120%, 0);
-        -ms-transform: translate(-120%, 0);
-            transform: translate(-120%, 0);
-    -webkit-transform-origin: top left;
-        -ms-transform-origin: top left;
-            transform-origin: top left;
+    -ms-transform: translate(-120%, 0);
+        transform: translate(-120%, 0);
+    -ms-transform-origin: top left;
+        transform-origin: top left;
     display: inline-block;
     position: absolute;
   }
@@ -2484,15 +2430,12 @@ article {
 }
 
 .infoGraphic-category {
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin-bottom: 0;
 }
 .infoGraphic-category:first-child {
@@ -2519,9 +2462,8 @@ article {
   box-sizing: border-box;
   padding: 2.499rem 0.833rem;
   border-bottom: 4px solid black;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  -ms-flex-positive: 1;
+      flex-grow: 1;
 }
 @media (min-width: 768px) {
   .infoGraphic-item {
@@ -2567,16 +2509,13 @@ article {
 .image-break {
   width: 100%;
   height: 100vh;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   box-sizing: border-box;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
   margin-bottom: 4.165rem;
 }
 
