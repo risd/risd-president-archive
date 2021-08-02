@@ -19,7 +19,8 @@
     "build-page": "grunt build-page",
     "build-pages": "grunt build-pages",
     "build-template": "grunt build-template",
-    "develop": "grunt --force"
+    "develop": "grunt --force",
+    "conf": "rm-wh conf president-archive"
   },
   "homepage": "https://github.com/webhook/webhook-generate",
   "dependencies": {
