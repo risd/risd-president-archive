@@ -1,6 +1,6 @@
 {
   "name": "risd-president-archive",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Grunt site generator for webhook",
   "repository": {
     "type": "git",
@@ -19,7 +19,8 @@
     "build-page": "grunt build-page",
     "build-pages": "grunt build-pages",
     "build-template": "grunt build-template",
-    "develop": "grunt --force"
+    "develop": "grunt --force",
+    "conf": "rm-wh conf president-archive"
   },
   "homepage": "https://github.com/webhook/webhook-generate",
   "dependencies": {
